@@ -1,2 +1,3 @@
-# buckler
-Development board for teaching embedded systems
+# Berkeley Buckler
+
+A development board for teaching embedded systems.
