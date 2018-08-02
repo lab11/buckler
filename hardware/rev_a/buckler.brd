@@ -1030,11 +1030,15 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="MPN" value="GCM155R71C104KA55D" x="26.035" y="70.485" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="U3" library="chips" package="QFN-24/3MM" value="MPU-9250" x="31.75" y="76.2" rot="R270">
+<attribute name="DESCRIPTION" value="IMU ACCEL/GYRO/MAG I2C/SPI 24QFN" x="31.75" y="76.2" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="DIGIKEY" value="1428-1019-1-ND" x="34.29" y="82.55" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MANUFACTURER" value="TDK InvenSense" x="31.75" y="76.2" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="MPN" value="MPU-9250" x="31.75" y="76.2" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="U2" library="chips" package="UDFN-6-EXPOSED" value="MAX44009" x="59.69" y="107.315" rot="R90">
+<attribute name="DESCRIPTION" value="SENSOR AMBIENT LIGHT 6UTDFN" x="59.69" y="107.315" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="DIGIKEY" value="MAX44009EDT+TCT-ND" x="49.53" y="108.585" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MANUFACTURER" value="MAXIM" x="49.53" y="108.585" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" value="Maxim Integrated" x="49.53" y="108.585" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="MAX44009EDT+T" x="49.53" y="108.585" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="C3" library="passives" package="0402_CAP" value="100nF" x="59.944" y="104.775">
@@ -1050,7 +1054,9 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="MPN" value="RC1005F103CS" x="59.69" y="99.06" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="U5" library="chips" package="DFN-6/3MM" value="SI7021-A20-GM1" x="53.975" y="109.22">
+<attribute name="DESCRIPTION" value="SENS HUMI/TEMP 3.6V I2C 3% 6DFN" x="53.975" y="109.22" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="336-3141-ND" x="55.245" y="119.38" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Silicon Labs" x="53.975" y="109.22" size="1.778" layer="27" display="off"/>
 <attribute name="MOUSER" value="634-SI7021-A20-GM1" x="55.245" y="119.38" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="SI7021-A20-GM1 " x="55.245" y="119.38" size="1.778" layer="27" display="off"/>
 </element>
@@ -1067,6 +1073,7 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="MPN" value="RC1005F103CS" x="27.305" y="73.66" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="U4" library="chips" package="4-SMD" value="MS5637-02BA03" x="59.69" y="112.395">
+<attribute name="DESCRIPTION" value="SENSOR 17.4PSIA I2C 24B 4-QFN" x="59.69" y="112.395" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="223-1199-1-ND" x="60.96" y="112.395" size="1.778" layer="27" display="off"/>
 <attribute name="MANUFACTURER" value="TE CONNECTIVITY" x="60.96" y="112.395" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="MS563702BA03-50" x="60.96" y="112.395" size="1.778" layer="27" display="off"/>
@@ -1103,29 +1110,33 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </element>
 <element name="R9" library="passives" package="0402_RES" value="10k" x="22.225" y="106.68">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 1% 1/16W 0402" x="3.175" y="124.46" size="1.778" layer="27" display="off"/>
-<attribute name="DIGIKEY" value="RMCF0402FT10K0CT-ND" x="3.175" y="124.46" size="1.778" layer="27" display="off"/>
-<attribute name="MANUFACTURER" value="Stackpole Electronics" x="3.175" y="124.46" size="1.778" layer="27" display="off"/>
-<attribute name="MPN" value="RMCF0402FT10K0" x="3.175" y="124.46" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="1276-3431-1-ND" x="3.175" y="124.46" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics" x="3.175" y="124.46" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="RC1005F103CS" x="3.175" y="124.46" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R15" library="passives" package="0402_RES" value="100k" x="22.225" y="108.585">
-<attribute name="DESCRIPTION" value="RES SMD 100K OHM 1% 1/16W 0402" x="-1.905" y="113.665" size="1.778" layer="27" display="off"/>
-<attribute name="DIGIKEY" value="1276-3432-1-ND" x="-1.905" y="113.665" size="1.778" layer="27" display="off"/>
-<attribute name="MANUFACTURER" value="Samsung" x="-1.905" y="113.665" size="1.778" layer="27" display="off"/>
-<attribute name="MPN" value="RC1005F104CS" x="-1.905" y="113.665" size="1.778" layer="27" display="off"/>
+<attribute name="DESCRIPTION" value="RES SMD 100K OHM 1% 1/5W 0402" x="22.225" y="108.585" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="541-100KYCT-ND" x="22.225" y="108.585" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Vishay Dale" x="22.225" y="108.585" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="CRCW0402100KFKEDHP" x="22.225" y="108.585" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R16" library="passives" package="0402_RES" value="100k" x="29.845" y="95.885">
-<attribute name="DESCRIPTION" value="RES SMD 100K OHM 1% 1/16W 0402" x="0.635" y="97.155" size="1.778" layer="27" display="off"/>
-<attribute name="DIGIKEY" value="1276-3432-1-ND" x="0.635" y="97.155" size="1.778" layer="27" display="off"/>
-<attribute name="MANUFACTURER" value="Samsung" x="0.635" y="97.155" size="1.778" layer="27" display="off"/>
-<attribute name="MPN" value="RC1005F104CS" x="0.635" y="97.155" size="1.778" layer="27" display="off"/>
+<attribute name="DESCRIPTION" value="RES SMD 100K OHM 1% 1/5W 0402" x="29.845" y="95.885" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="541-100KYCT-ND" x="29.845" y="95.885" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Vishay Dale" x="29.845" y="95.885" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="CRCW0402100KFKEDHP" x="29.845" y="95.885" size="1.778" layer="27" display="off"/>
 </element>
 <element name="U6" library="chips" package="TSOT23-6" value="SIP32510" x="26.035" y="95.885" rot="R180">
+<attribute name="DESCRIPTION" value="IC LOAD SWITCH SOT23-6" x="26.035" y="95.885" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="DIGIKEY" value=" SIP32510DT-T1-GE3CT-ND" x="50.165" y="89.535" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MANUFACTURER" value="Vishay" x="50.165" y="89.535" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="SIP32510DT-T1-GE3" x="50.165" y="89.535" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="U1" library="chips" package="LFCSP-16" value="ADXL327" x="31.75" y="59.69">
+<attribute name="DESCRIPTION" value="ACCELEROMETER 2G ANALOG 16LFCSP" x="31.75" y="59.69" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="ADXL327BCPZ-ND" x="31.75" y="59.69" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Analog Devices Inc." x="31.75" y="59.69" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="ADXL327BCPZ" x="31.75" y="59.69" size="1.778" layer="27" display="off"/>
 </element>
 <element name="C6" library="passives" package="0402_CAP" value="100nF" x="31.115" y="63.5" rot="R180">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402" x="31.115" y="63.5" size="1.778" layer="27" rot="R180" display="off"/>
@@ -1153,8 +1164,11 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 </element>
 <element name="A1" library="headers" package="NHD-0216KZW" value="NHD-0216KZWSERIAL" x="49.53" y="116.84" rot="R270">
 <attribute name="DIGIKEY" value="NHD-0216KZW-AG5-ND,952-3305-ND" x="49.53" y="116.84" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="DIGIKEY1" value="NHD-0216KZW-AG5-ND" x="49.53" y="116.84" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="DIGIKEY2" value="952-3305-ND" x="49.53" y="116.84" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="S1" library="switches" package="B3U-1000P" value="B3U-1000P" x="6.35" y="48.895" rot="R180">
+<attribute name="DESCRIPTION" value="SWITCH TACTILE SPST-NO 0.05A 12V" x="6.35" y="48.895" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="DIGIKEY" value="SW1020CT-ND" x="11.43" y="42.545" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MANUFACTURER" value="Omron" x="6.35" y="48.895" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="B3U-1000P" x="11.43" y="42.545" size="1.778" layer="27" rot="R180" display="off"/>
@@ -1165,21 +1179,38 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="MANUFACTURER" value="TE Connectivity AMP Connectors" x="48.387" y="0.762" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="5747846-4" x="48.387" y="0.762" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="J9" library="headers" package="NRF52840DK_SHIELD" value="NRF52840DK_SHIELD" x="7.62" y="91.44"/>
+<element name="J9" library="headers" package="NRF52840DK_SHIELD" value="NRF52840DK_SHIELD" x="7.62" y="91.44">
+<attribute name="DESCRIPTION" value="Headers for nRF52840DK. There are 6 separate headers to be installed through the board." x="7.62" y="91.44" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY1" value="S1011EC-10-ND" x="7.62" y="91.44" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY2" value="S1011EC-08-ND" x="7.62" y="91.44" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY3" value="S1011EC-08-ND" x="7.62" y="91.44" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY4" value="S1011EC-08-ND" x="7.62" y="91.44" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY5" value="S1011EC-06-ND" x="7.62" y="91.44" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY6" value="S2011EC-09-ND" x="7.62" y="91.44" size="1.778" layer="27" display="off"/>
+</element>
 <element name="R10" library="passives" package="0402_RES" value="10k" x="13.335" y="117.475" rot="R90">
-<attribute name="DIGIKEY" value="311-10KJRCT-ND " x="13.335" y="118.745" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="MPN" value="RC0402JR-0710KL" x="13.335" y="118.745" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="DESCRIPTION" value="RES SMD 10K OHM 1% 1/16W 0402" x="13.335" y="117.475" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="DIGIKEY" value="1276-3431-1-ND" x="13.335" y="118.745" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics" x="13.335" y="117.475" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="MPN" value="RC1005F103CS" x="13.335" y="118.745" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="S2" library="switches" package="PTS645" value="PTS645SM43SMTR92" x="6.35" y="114.3">
+<attribute name="DESCRIPTION" value="SWITCH TACTILE SPST-NO 0.05A 12V" x="6.35" y="114.3" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="CKN9112CT-ND" x="6.35" y="114.3" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="C&amp;K" x="6.35" y="114.3" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="PTS645SM43SMTR92 LFS" x="6.35" y="114.3" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R11" library="passives" package="0402_RES" value="10k" x="56.515" y="103.505">
-<attribute name="DIGIKEY" value="311-10KJRCT-ND " x="56.515" y="103.505" size="1.778" layer="27" display="off"/>
-<attribute name="MPN" value="RC0402JR-0710KL" x="56.515" y="103.505" size="1.778" layer="27" display="off"/>
+<attribute name="DESCRIPTION" value="RES SMD 10K OHM 1% 1/16W 0402" x="56.515" y="103.505" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="1276-3431-1-ND" x="56.515" y="103.505" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics" x="56.515" y="103.505" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="RC1005F103CS" x="56.515" y="103.505" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R12" library="passives" package="0402_RES" value="10k" x="53.975" y="103.505" rot="R180">
-<attribute name="DIGIKEY" value="311-10KJRCT-ND " x="53.975" y="103.505" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="MPN" value="RC0402JR-0710KL" x="53.975" y="103.505" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DESCRIPTION" value="RES SMD 10K OHM 1% 1/16W 0402" x="53.975" y="103.505" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="DIGIKEY" value="1276-3431-1-ND" x="53.975" y="103.505" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics" x="53.975" y="103.505" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="MPN" value="RC1005F103CS" x="53.975" y="103.505" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="D2" library="leds" package="LED-0603" value="RED" x="3.81" y="43.815">
 <attribute name="DESCRIPTION" value="LED RED CLEAR CHIP SMD" x="3.81" y="43.815" size="1.778" layer="27" display="off"/>
@@ -1230,24 +1261,40 @@ This Sunstone Circuits 2 Layer .DRU has been set to cover our minimum requiremen
 <attribute name="MPN" value="RMCF0402FT1K00" x="63.5" y="109.855" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="R13" library="passives" package="0402_RES" value="10k" x="14.605" y="30.48">
-<attribute name="DIGIKEY" value="311-10KJRCT-ND " x="15.875" y="39.37" size="1.778" layer="27" display="off"/>
-<attribute name="MPN" value="RC0402JR-0710KL" x="15.875" y="39.37" size="1.778" layer="27" display="off"/>
+<attribute name="DESCRIPTION" value="RES SMD 10K OHM 1% 1/16W 0402" x="14.605" y="30.48" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="1276-3431-1-ND" x="15.875" y="39.37" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics" x="14.605" y="30.48" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="RC1005F103CS" x="15.875" y="39.37" size="1.778" layer="27" display="off"/>
 </element>
 <element name="S3" library="switches" package="PTS645" value="PTS645SM43SMTR92" x="7.62" y="33.655">
+<attribute name="DESCRIPTION" value="SWITCH TACTILE SPST-NO 0.05A 12V" x="7.62" y="33.655" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="CKN9112CT-ND" x="7.62" y="29.845" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="C&amp;K" x="7.62" y="33.655" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="PTS645SM43SMTR92 LFS" x="7.62" y="33.655" size="1.778" layer="27" display="off"/>
 </element>
 <element name="R14" library="passives" package="0402_RES" value="10k" x="14.605" y="27.305">
-<attribute name="DIGIKEY" value="311-10KJRCT-ND " x="15.875" y="36.195" size="1.778" layer="27" display="off"/>
-<attribute name="MPN" value="RC0402JR-0710KL" x="15.875" y="36.195" size="1.778" layer="27" display="off"/>
+<attribute name="DESCRIPTION" value="RES SMD 10K OHM 1% 1/16W 0402" x="14.605" y="27.305" size="1.778" layer="27" display="off"/>
+<attribute name="DIGIKEY" value="1276-3431-1-ND" x="15.875" y="36.195" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics" x="14.605" y="27.305" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="RC1005F103CS" x="15.875" y="36.195" size="1.778" layer="27" display="off"/>
 </element>
 <element name="S4" library="switches" package="PTS645" value="PTS645SM43SMTR92" x="7.62" y="22.86">
+<attribute name="DESCRIPTION" value="SWITCH TACTILE SPST-NO 0.05A 12V" x="7.62" y="22.86" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="CKN9112CT-ND" x="7.62" y="19.05" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="C&amp;K" x="7.62" y="22.86" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="PTS645SM43SMTR92 LFS" x="7.62" y="22.86" size="1.778" layer="27" display="off"/>
 </element>
 <element name="S5" library="switches" package="TE_SSA12/SPDT" value="TE_SSA12/SPDT" x="21.59" y="30.48">
+<attribute name="DESCRIPTION" value="SWITCH SLIDE SPDT 100MA 30V" x="21.59" y="30.48" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="450-1602-ND" x="20.32" y="30.48" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="TE Connectivity ALCOSWITCH Switches" x="21.59" y="30.48" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="SSA12" x="21.59" y="30.48" size="1.778" layer="27" display="off"/>
 </element>
 <element name="S6" library="switches" package="TE_SSA12/SPDT" value="TE_SSA12/SPDT" x="21.59" y="21.59">
+<attribute name="DESCRIPTION" value="SWITCH SLIDE SPDT 100MA 30V" x="21.59" y="21.59" size="1.778" layer="27" display="off"/>
 <attribute name="DIGIKEY" value="450-1602-ND" x="20.32" y="21.59" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER" value="TE Connectivity ALCOSWITCH Switches" x="21.59" y="21.59" size="1.778" layer="27" display="off"/>
+<attribute name="MPN" value="SSA12" x="21.59" y="21.59" size="1.778" layer="27" display="off"/>
 </element>
 <element name="J3" library="headers" package="HW4-2.0" value="4P-2.0" x="15.24" y="10.16" rot="R90">
 <attribute name="DESCRIPTION" value="Grove - Universal 4 pin connector" x="15.24" y="10.16" size="1.778" layer="27" rot="R90" display="off"/>
