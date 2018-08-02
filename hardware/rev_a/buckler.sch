@@ -2726,10 +2726,10 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <part name="U$2" library="lab11-frames" deviceset="LETTER_L_CAL" device=""/>
 <part name="U$3" library="lab11-frames" deviceset="LETTER_L_CAL" device=""/>
 <part name="C2" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DESCRIPTION" value="CAP CER 0.1UF 10V X7R 0402"/>
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
+<attribute name="DIGIKEY" value="490-4759-1-ND"/>
 <attribute name="MANUFACTURER" value="Murata"/>
-<attribute name="MPN" value="GRM155R71A104JA01D"/>
+<attribute name="MPN" value="GCM155R71C104KA55D"/>
 </part>
 <part name="GND10" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GND12" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
@@ -2739,25 +2739,33 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <part name="+3V3" library="regulators" deviceset="+3V3" device=""/>
 <part name="U2" library="chips" deviceset="MAX44009" device=""/>
 <part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DIGIKEY" value="490-7195-1-ND "/>
-<attribute name="MPN" value="GRM155R70G105KA12D "/>
+<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
+<attribute name="DIGIKEY" value="490-4759-1-ND"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GCM155R71C104KA55D"/>
 </part>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R5" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
-<attribute name="DIGIKEY" value="311-10KJRCT-ND "/>
-<attribute name="MPN" value="RC0402JR-0710KL"/>
+<attribute name="DESCRIPTION" value="RES SMD 10K OHM 1% 1/16W 0402"/>
+<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics"/>
+<attribute name="MPN" value="RC1005F103CS"/>
 </part>
 <part name="U5" library="chips" deviceset="SI7021" device="-A20-GM1">
 <attribute name="MPN" value="SI7021-A20-GM1 "/>
 </part>
 <part name="C4" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DIGIKEY" value="490-6328-1-ND"/>
-<attribute name="MPN" value="GRM155R71C104KA88J "/>
+<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
+<attribute name="DIGIKEY" value="490-4759-1-ND"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GCM155R71C104KA55D"/>
 </part>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R6" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
-<attribute name="DIGIKEY" value="311-10KJRCT-ND "/>
-<attribute name="MPN" value="RC0402JR-0710KL"/>
+<attribute name="DESCRIPTION" value="RES SMD 10K OHM 1% 1/16W 0402"/>
+<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics"/>
+<attribute name="MPN" value="RC1005F103CS"/>
 </part>
 <part name="+3V2" library="regulators" deviceset="+3V3" device=""/>
 <part name="+3V4" library="regulators" deviceset="+3V3" device=""/>
@@ -2765,30 +2773,32 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <part name="+3V6" library="regulators" deviceset="+3V3" device=""/>
 <part name="U4" library="chips" deviceset="MS5637-02BA03" device=""/>
 <part name="C5" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DIGIKEY" value="490-6328-1-ND"/>
-<attribute name="MPN" value="GRM155R71C104KA88J "/>
+<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
+<attribute name="DIGIKEY" value="490-4759-1-ND"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GCM155R71C104KA55D"/>
 </part>
 <part name="GND15" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V7" library="regulators" deviceset="+3V3" device=""/>
 <part name="C11" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="4.7uF">
-<attribute name="DESCRIPTION" value="CAP CER 4.7UF 6.3V X5R 0402"/>
-<attribute name="DIGIKEY" value="445-5947-1-ND"/>
-<attribute name="MANUFACTURER" value="TDK"/>
-<attribute name="MPN" value="C1005X5R0J475K050BC"/>
+<attribute name="DESCRIPTION" value="CAP CER 4.7UF 10V X5R 0402"/>
+<attribute name="DIGIKEY" value="1276-1480-1-ND"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics"/>
+<attribute name="MPN" value="CL05A475KP5NRNC"/>
 </part>
 <part name="GND3" library="umich" deviceset="GND" device=""/>
 <part name="J2" library="connector" deviceset="DM3AT-SF-PEJM5" device=""/>
 <part name="R7" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 1% 1/16W 0402"/>
-<attribute name="DIGIKEY" value="RMCF0402FT10K0CT-ND"/>
-<attribute name="MANUFACTURER" value="Stackpole Electronics"/>
-<attribute name="MPN" value="RMCF0402FT10K0"/>
+<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics"/>
+<attribute name="MPN" value="RC1005F103CS"/>
 </part>
 <part name="R8" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 1% 1/16W 0402"/>
-<attribute name="DIGIKEY" value="RMCF0402FT10K0CT-ND"/>
-<attribute name="MANUFACTURER" value="Stackpole Electronics"/>
-<attribute name="MPN" value="RMCF0402FT10K0"/>
+<attribute name="DIGIKEY" value="1276-3431-1-ND"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics"/>
+<attribute name="MPN" value="RC1005F103CS"/>
 </part>
 <part name="R9" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
 <attribute name="DESCRIPTION" value="RES SMD 10K OHM 1% 1/16W 0402"/>
@@ -2812,22 +2822,30 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <part name="+3V8" library="regulators" deviceset="+3V3" device=""/>
 <part name="U1" library="chips" deviceset="ADXL327" device=""/>
 <part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DIGIKEY" value="490-6328-1-ND"/>
-<attribute name="MPN" value="GRM155R71C104KA88J "/>
+<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
+<attribute name="DIGIKEY" value="490-4759-1-ND"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GCM155R71C104KA55D"/>
 </part>
 <part name="GND4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V9" library="regulators" deviceset="+3V3" device=""/>
 <part name="C7" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DIGIKEY" value="490-6328-1-ND"/>
-<attribute name="MPN" value="GRM155R71C104KA88J "/>
+<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
+<attribute name="DIGIKEY" value="490-4759-1-ND"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GCM155R71C104KA55D"/>
 </part>
 <part name="C8" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DIGIKEY" value="490-6328-1-ND"/>
-<attribute name="MPN" value="GRM155R71C104KA88J "/>
+<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
+<attribute name="DIGIKEY" value="490-4759-1-ND"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GCM155R71C104KA55D"/>
 </part>
 <part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DIGIKEY" value="490-6328-1-ND"/>
-<attribute name="MPN" value="GRM155R71C104KA88J "/>
+<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
+<attribute name="DIGIKEY" value="490-4759-1-ND"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GCM155R71C104KA55D"/>
 </part>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="A1" library="headers" deviceset="NHD-0216KZW" device="SERIAL"/>
@@ -2837,11 +2855,14 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <attribute name="MPN" value="B3U-1000P"/>
 </part>
 <part name="+3V11" library="regulators" deviceset="+3V3" device=""/>
-<part name="J1" library="headers" deviceset="DB25_5747846" device=""/>
+<part name="J1" library="headers" deviceset="DB25_5747846" device="">
+<attribute name="DESCRIPTION" value="CONN D-SUB RCPT 25POS R/A SOLDER"/>
+<attribute name="MANUFACTURER" value="TE Connectivity AMP Connectors"/>
+<attribute name="MPN" value="5747846-4"/>
+</part>
 <part name="GND8" library="regulators" deviceset="GND" device=""/>
 <part name="GND9" library="regulators" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
-<part name="D1" library="passives" deviceset="DIODE_SCHOTTKY" device="NSR0620P2T5G"/>
 <part name="J9" library="headers" deviceset="NRF52840DK_SHIELD" device=""/>
 <part name="GND11" library="regulators" deviceset="GND" device=""/>
 <part name="+3V12" library="regulators" deviceset="+3V3" device=""/>
@@ -2860,7 +2881,10 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 </part>
 <part name="+3V13" library="regulators" deviceset="+3V3" device=""/>
 <part name="D2" library="leds" deviceset="LED" device="0603" value="RED">
+<attribute name="DESCRIPTION" value="LED RED CLEAR CHIP SMD"/>
 <attribute name="DIGIKEY" value="160-1436-1-ND"/>
+<attribute name="MANUFACTURER" value="Lite-On Inc."/>
+<attribute name="MPN" value="LTST-C190KRKT"/>
 </part>
 <part name="R1" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
 <attribute name="DESCRIPTION" value="RES SMD 1K OHM 1% 1/16W 0402"/>
@@ -2870,7 +2894,10 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 </part>
 <part name="+3V14" library="regulators" deviceset="+3V3" device=""/>
 <part name="D5" library="leds" deviceset="LED" device="0603" value="GREEN">
+<attribute name="DESCRIPTION" value="LED GREEN CLEAR CHIP SMD"/>
 <attribute name="DIGIKEY" value="160-1435-1-ND"/>
+<attribute name="MANUFACTURER" value="Lite-On Inc."/>
+<attribute name="MPN" value="LTST-C190KGKT"/>
 </part>
 <part name="R2" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
 <attribute name="DESCRIPTION" value="RES SMD 1K OHM 1% 1/16W 0402"/>
@@ -2880,7 +2907,10 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 </part>
 <part name="+3V15" library="regulators" deviceset="+3V3" device=""/>
 <part name="D4" library="leds" deviceset="LED" device="0603" value="BLUE">
+<attribute name="DESCRIPTION" value="LED BLUE CLEAR SMD"/>
 <attribute name="DIGIKEY" value="160-1837-1-ND"/>
+<attribute name="MANUFACTURER" value="Lite-On Inc."/>
+<attribute name="MPN" value="LTST-C194TBKT"/>
 </part>
 <part name="R3" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
 <attribute name="DESCRIPTION" value="RES SMD 1K OHM 1% 1/16W 0402"/>
@@ -2890,7 +2920,10 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 </part>
 <part name="+3V16" library="regulators" deviceset="+3V3" device=""/>
 <part name="D3" library="leds" deviceset="LED" device="0603" value="YELLOW">
+<attribute name="DESCRIPTION" value="LED YELLOW CLEAR CHIP SMD"/>
 <attribute name="DIGIKEY" value="160-1437-1-ND"/>
+<attribute name="MANUFACTURER" value="Lite-On Inc."/>
+<attribute name="MPN" value="LTST-C190KSKT"/>
 </part>
 <part name="R4" library="passives" deviceset="RESISTOR" device="0402_RES" value="1k">
 <attribute name="DESCRIPTION" value="RES SMD 1K OHM 1% 1/16W 0402"/>
@@ -2921,22 +2954,52 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <part name="+3V21" library="regulators" deviceset="+3V3" device=""/>
 <part name="GND19" library="regulators" deviceset="GND" device=""/>
 <part name="+3V22" library="regulators" deviceset="+3V3" device=""/>
-<part name="J3" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0"/>
+<part name="J3" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0">
+<attribute name="DESCRIPTION" value="Grove - Universal 4 pin connector"/>
+<attribute name="MANUFACTURER" value="Seeed Studio"/>
+<attribute name="MOUSER" value="713-110990030"/>
+<attribute name="MPN" value="110990030"/>
+</part>
 <part name="GND20" library="regulators" deviceset="GND" device=""/>
 <part name="+3V23" library="regulators" deviceset="+3V3" device=""/>
-<part name="J4" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0"/>
+<part name="J4" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0">
+<attribute name="DESCRIPTION" value="Grove - Universal 4 pin connector"/>
+<attribute name="MANUFACTURER" value="Seeed Studio"/>
+<attribute name="MOUSER" value="713-110990030"/>
+<attribute name="MPN" value="110990030"/>
+</part>
 <part name="GND21" library="regulators" deviceset="GND" device=""/>
 <part name="+3V24" library="regulators" deviceset="+3V3" device=""/>
-<part name="J5" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0"/>
+<part name="J5" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0">
+<attribute name="DESCRIPTION" value="Grove - Universal 4 pin connector"/>
+<attribute name="MANUFACTURER" value="Seeed Studio"/>
+<attribute name="MOUSER" value="713-110990030"/>
+<attribute name="MPN" value="110990030"/>
+</part>
 <part name="GND22" library="regulators" deviceset="GND" device=""/>
 <part name="+3V25" library="regulators" deviceset="+3V3" device=""/>
-<part name="J6" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0"/>
+<part name="J6" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0">
+<attribute name="DESCRIPTION" value="Grove - Universal 4 pin connector"/>
+<attribute name="MANUFACTURER" value="Seeed Studio"/>
+<attribute name="MOUSER" value="713-110990030"/>
+<attribute name="MPN" value="110990030"/>
+</part>
 <part name="GND23" library="regulators" deviceset="GND" device=""/>
 <part name="+3V26" library="regulators" deviceset="+3V3" device=""/>
-<part name="J7" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0"/>
+<part name="J7" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0">
+<attribute name="DESCRIPTION" value="Grove - Universal 4 pin connector"/>
+<attribute name="MANUFACTURER" value="Seeed Studio"/>
+<attribute name="MOUSER" value="713-110990030"/>
+<attribute name="MPN" value="110990030"/>
+</part>
 <part name="GND24" library="regulators" deviceset="GND" device=""/>
 <part name="+3V27" library="regulators" deviceset="+3V3" device=""/>
-<part name="J8" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0"/>
+<part name="J8" library="headers" deviceset="GROVE-CONNECTOR-DIP(4P-2.0)" device="" value="4P-2.0">
+<attribute name="DESCRIPTION" value="Grove - Universal 4 pin connector"/>
+<attribute name="MANUFACTURER" value="Seeed Studio"/>
+<attribute name="MOUSER" value="713-110990030"/>
+<attribute name="MPN" value="110990030"/>
+</part>
 <part name="TP1" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP2" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP3" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
@@ -2977,19 +3040,28 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <part name="TP38" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="TP39" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
 <part name="C1" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="10nF">
-<attribute name="DESCRIPTION" value="CAP CER 10000PF 50V X7R 0402"/>
-<attribute name="DIGIKEY" value="490-7763-1-ND"/>
-<attribute name="MANUFACTURER" value="Murata"/>
-<attribute name="MPN" value="GRM155R71H103JA88D"/>
+<attribute name="DESCRIPTION" value="CAP CER 10000PF 25V X7R 0402"/>
+<attribute name="DIGIKEY" value="399-1279-1-ND"/>
+<attribute name="MANUFACTURER" value="KEMET"/>
+<attribute name="MPN" value="C0402C103J3RACTU"/>
 </part>
 <part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DESCRIPTION" value="CAP CER 0.1UF 10V X7R 0402"/>
-<attribute name="DIGIKEY" value="490-10777-1-ND"/>
+<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
+<attribute name="DIGIKEY" value="490-4759-1-ND"/>
 <attribute name="MANUFACTURER" value="Murata"/>
-<attribute name="MPN" value="GRM155R71A104JA01D"/>
+<attribute name="MPN" value="GCM155R71C104KA55D"/>
 </part>
 <part name="GND25" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GND26" library="umich" deviceset="GND" device=""/>
+<part name="TP40" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP41" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="TP42" library="headers" deviceset="TEST_POINT_0.040IN" device=""/>
+<part name="D1" library="passives" deviceset="DIODE_SCHOTTKY" device="SOD323">
+<attribute name="DESCRIPTION" value="DIODE SCHOTTKY 30V 500MA SOD323"/>
+<attribute name="DIGIKEY" value="B0530WS-FDICT-ND"/>
+<attribute name="MANUFACTURER" value="Diodes Incorporated"/>
+<attribute name="MPN" value="B0530WS-7-F"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -3008,11 +3080,14 @@ with Kobuki</text>
 <instance part="+3V1" gate="P1" x="68.58" y="175.26"/>
 <instance part="GND1" gate="G1" x="73.66" y="86.36"/>
 <instance part="P+1" gate="1" x="78.74" y="175.26" rot="MR0"/>
-<instance part="J1" gate="J1" x="71.12" y="45.72"/>
+<instance part="J1" gate="J1" x="71.12" y="45.72">
+<attribute name="DESCRIPTION" x="71.12" y="45.72" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="71.12" y="45.72" size="1.778" layer="96" display="off"/>
+<attribute name="MPN" x="71.12" y="45.72" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND8" gate="G1" x="81.28" y="20.32"/>
 <instance part="GND9" gate="G1" x="60.96" y="20.32"/>
 <instance part="P+2" gate="1" x="45.72" y="66.04"/>
-<instance part="D1" gate="G$1" x="45.72" y="55.88" rot="R90"/>
 <instance part="J9" gate="J1" x="73.66" y="129.54"/>
 <instance part="GND11" gate="G1" x="20.32" y="144.78"/>
 <instance part="+3V12" gate="P1" x="40.64" y="167.64"/>
@@ -3023,22 +3098,52 @@ with Kobuki</text>
 <instance part="S2" gate="G$1" x="30.48" y="149.86" rot="MR0"/>
 <instance part="GND19" gate="G1" x="172.72" y="124.46"/>
 <instance part="+3V22" gate="P1" x="172.72" y="144.78"/>
-<instance part="J3" gate="G$1" x="187.96" y="139.7"/>
+<instance part="J3" gate="G$1" x="187.96" y="139.7">
+<attribute name="DESCRIPTION" x="187.96" y="139.7" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="187.96" y="139.7" size="1.778" layer="96" display="off"/>
+<attribute name="MOUSER" x="187.96" y="139.7" size="1.778" layer="96" display="off"/>
+<attribute name="MPN" x="187.96" y="139.7" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND20" gate="G1" x="213.36" y="124.46"/>
 <instance part="+3V23" gate="P1" x="213.36" y="144.78"/>
-<instance part="J4" gate="G$1" x="228.6" y="139.7"/>
+<instance part="J4" gate="G$1" x="228.6" y="139.7">
+<attribute name="DESCRIPTION" x="228.6" y="139.7" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="228.6" y="139.7" size="1.778" layer="96" display="off"/>
+<attribute name="MOUSER" x="228.6" y="139.7" size="1.778" layer="96" display="off"/>
+<attribute name="MPN" x="228.6" y="139.7" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND21" gate="G1" x="172.72" y="50.8"/>
 <instance part="+3V24" gate="P1" x="172.72" y="71.12"/>
-<instance part="J5" gate="G$1" x="187.96" y="66.04"/>
+<instance part="J5" gate="G$1" x="187.96" y="66.04">
+<attribute name="DESCRIPTION" x="187.96" y="66.04" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="187.96" y="66.04" size="1.778" layer="96" display="off"/>
+<attribute name="MOUSER" x="187.96" y="66.04" size="1.778" layer="96" display="off"/>
+<attribute name="MPN" x="187.96" y="66.04" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND22" gate="G1" x="213.36" y="50.8"/>
 <instance part="+3V25" gate="P1" x="213.36" y="71.12"/>
-<instance part="J6" gate="G$1" x="228.6" y="66.04"/>
+<instance part="J6" gate="G$1" x="228.6" y="66.04">
+<attribute name="DESCRIPTION" x="228.6" y="66.04" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="228.6" y="66.04" size="1.778" layer="96" display="off"/>
+<attribute name="MOUSER" x="228.6" y="66.04" size="1.778" layer="96" display="off"/>
+<attribute name="MPN" x="228.6" y="66.04" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND23" gate="G1" x="172.72" y="88.9"/>
 <instance part="+3V26" gate="P1" x="172.72" y="109.22"/>
-<instance part="J7" gate="G$1" x="187.96" y="104.14"/>
+<instance part="J7" gate="G$1" x="187.96" y="104.14">
+<attribute name="DESCRIPTION" x="187.96" y="104.14" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="187.96" y="104.14" size="1.778" layer="96" display="off"/>
+<attribute name="MOUSER" x="187.96" y="104.14" size="1.778" layer="96" display="off"/>
+<attribute name="MPN" x="187.96" y="104.14" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND24" gate="G1" x="213.36" y="88.9"/>
 <instance part="+3V27" gate="P1" x="213.36" y="109.22"/>
-<instance part="J8" gate="G$1" x="228.6" y="104.14"/>
+<instance part="J8" gate="G$1" x="228.6" y="104.14">
+<attribute name="DESCRIPTION" x="228.6" y="104.14" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="228.6" y="104.14" size="1.778" layer="96" display="off"/>
+<attribute name="MOUSER" x="228.6" y="104.14" size="1.778" layer="96" display="off"/>
+<attribute name="MPN" x="228.6" y="104.14" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="TP1" gate="G$1" x="106.68" y="154.94" rot="R180"/>
 <instance part="TP2" gate="G$1" x="106.68" y="152.4" rot="R180"/>
 <instance part="TP3" gate="G$1" x="106.68" y="149.86" rot="R180"/>
@@ -3078,6 +3183,15 @@ with Kobuki</text>
 <instance part="TP37" gate="G$1" x="76.2" y="96.52" rot="R180"/>
 <instance part="TP38" gate="G$1" x="76.2" y="93.98" rot="R180"/>
 <instance part="TP39" gate="G$1" x="76.2" y="91.44" rot="R180"/>
+<instance part="TP40" gate="G$1" x="71.12" y="96.52"/>
+<instance part="TP41" gate="G$1" x="71.12" y="93.98"/>
+<instance part="TP42" gate="G$1" x="71.12" y="91.44"/>
+<instance part="D1" gate="G$1" x="45.72" y="55.88" rot="R90">
+<attribute name="DESCRIPTION" x="45.72" y="55.88" size="1.778" layer="96" rot="R90" display="off"/>
+<attribute name="DIGIKEY" x="45.72" y="55.88" size="1.778" layer="96" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" x="45.72" y="55.88" size="1.778" layer="96" rot="R90" display="off"/>
+<attribute name="MPN" x="45.72" y="55.88" size="1.778" layer="96" rot="R90" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -3096,6 +3210,9 @@ with Kobuki</text>
 <pinref part="TP39" gate="G$1" pin="TESTPOINT"/>
 <wire x1="73.66" y1="91.44" x2="73.66" y2="88.9" width="0.1524" layer="91"/>
 <junction x="73.66" y="91.44"/>
+<pinref part="TP40" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP41" gate="G$1" pin="TESTPOINT"/>
+<pinref part="TP42" gate="G$1" pin="TESTPOINT"/>
 </segment>
 <segment>
 <pinref part="J1" gate="J1" pin="16"/>
@@ -3236,8 +3353,8 @@ with Kobuki</text>
 </segment>
 <segment>
 <pinref part="P+2" gate="1" pin="+5V"/>
-<pinref part="D1" gate="G$1" pin="CATHODE"/>
 <wire x1="45.72" y1="63.5" x2="45.72" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="D1" gate="G$1" pin="CATHODE"/>
 </segment>
 </net>
 <net name="SENSORS_SDA" class="0">
@@ -3428,9 +3545,9 @@ with Kobuki</text>
 <wire x1="63.5" y1="40.64" x2="58.42" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="58.42" y1="40.64" x2="45.72" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="40.64" x2="45.72" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="D1" gate="G$1" pin="ANODE"/>
 <wire x1="58.42" y1="43.18" x2="58.42" y2="40.64" width="0.1524" layer="91"/>
 <junction x="58.42" y="40.64"/>
+<pinref part="D1" gate="G$1" pin="ANODE"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -3677,24 +3794,32 @@ Button</text>
 <instance part="+3V3" gate="P1" x="60.96" y="93.98"/>
 <instance part="U2" gate="G$1" x="220.98" y="142.24" rot="MR0"/>
 <instance part="C3" gate="G$1" x="231.14" y="149.86" rot="MR0">
+<attribute name="DESCRIPTION" x="231.14" y="149.86" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="DIGIKEY" x="231.14" y="149.86" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MANUFACTURER" x="231.14" y="149.86" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="MPN" x="231.14" y="149.86" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="GND2" gate="1" x="226.06" y="137.16" rot="MR0"/>
 <instance part="R5" gate="G$1" x="200.66" y="157.48" rot="MR90">
 <attribute name="DIGIKEY" x="200.66" y="157.48" size="1.778" layer="96" rot="MR90" display="off"/>
 <attribute name="MPN" x="200.66" y="157.48" size="1.778" layer="96" rot="MR90" display="off"/>
+<attribute name="DESCRIPTION" x="200.66" y="157.48" size="1.778" layer="96" rot="MR90" display="off"/>
+<attribute name="MANUFACTURER" x="200.66" y="157.48" size="1.778" layer="96" rot="MR90" display="off"/>
 </instance>
 <instance part="U5" gate="G$1" x="213.36" y="71.12" rot="MR0">
 <attribute name="MPN" x="213.36" y="71.12" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="C4" gate="G$1" x="231.14" y="73.66" rot="MR0">
+<attribute name="DESCRIPTION" x="231.14" y="73.66" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="DIGIKEY" x="231.14" y="73.66" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MANUFACTURER" x="231.14" y="73.66" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="MPN" x="231.14" y="73.66" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="GND16" gate="1" x="226.06" y="60.96" rot="MR0"/>
 <instance part="R6" gate="G$1" x="86.36" y="83.82" rot="R90">
+<attribute name="DESCRIPTION" x="86.36" y="83.82" size="1.778" layer="96" rot="R90" display="off"/>
 <attribute name="DIGIKEY" x="86.36" y="83.82" size="1.778" layer="96" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" x="86.36" y="83.82" size="1.778" layer="96" rot="R90" display="off"/>
 <attribute name="MPN" x="86.36" y="83.82" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="+3V2" gate="P1" x="81.28" y="93.98"/>
@@ -3703,7 +3828,9 @@ Button</text>
 <instance part="+3V6" gate="P1" x="226.06" y="86.36" rot="MR0"/>
 <instance part="U4" gate="G$1" x="220.98" y="104.14" rot="MR0"/>
 <instance part="C5" gate="G$1" x="231.14" y="111.76" rot="MR0">
+<attribute name="DESCRIPTION" x="231.14" y="111.76" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="DIGIKEY" x="231.14" y="111.76" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MANUFACTURER" x="231.14" y="111.76" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="MPN" x="231.14" y="111.76" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="GND15" gate="1" x="226.06" y="99.06" rot="MR0"/>
@@ -3712,19 +3839,27 @@ Button</text>
 <instance part="C6" gate="G$1" x="27.94" y="142.24">
 <attribute name="DIGIKEY" x="27.94" y="142.24" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="27.94" y="142.24" size="1.778" layer="96" display="off"/>
+<attribute name="DESCRIPTION" x="27.94" y="142.24" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="27.94" y="142.24" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND4" gate="1" x="33.02" y="119.38"/>
 <instance part="+3V9" gate="P1" x="33.02" y="167.64"/>
 <instance part="C7" gate="G$1" x="66.04" y="132.08">
+<attribute name="DESCRIPTION" x="66.04" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="DIGIKEY" x="66.04" y="132.08" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="66.04" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="66.04" y="132.08" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="C8" gate="G$1" x="76.2" y="132.08">
+<attribute name="DESCRIPTION" x="76.2" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="DIGIKEY" x="76.2" y="132.08" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="76.2" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="76.2" y="132.08" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="C9" gate="G$1" x="86.36" y="132.08">
+<attribute name="DESCRIPTION" x="86.36" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="DIGIKEY" x="86.36" y="132.08" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="86.36" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="86.36" y="132.08" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND5" gate="1" x="66.04" y="119.38"/>
@@ -3745,7 +3880,10 @@ Button</text>
 <attribute name="DIGIKEY" x="12.7" y="68.58" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="C10" gate="G$1" x="20.32" y="68.58" rot="MR0">
+<attribute name="DESCRIPTION" x="20.32" y="68.58" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="DIGIKEY" x="20.32" y="68.58" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MANUFACTURER" x="20.32" y="68.58" size="1.778" layer="96" rot="MR0" display="off"/>
+<attribute name="MPN" x="20.32" y="68.58" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="GND25" gate="1" x="20.32" y="45.72"/>
 </instances>
@@ -4103,10 +4241,16 @@ Button</text>
 <instance part="GND3" gate="1" x="91.44" y="129.54"/>
 <instance part="J2" gate="G$1" x="170.18" y="152.4" rot="MR0"/>
 <instance part="R7" gate="G$1" x="124.46" y="165.1" rot="R90">
-<attribute name="DIGIKEY" x="124.46" y="165.1" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+<attribute name="DESCRIPTION" x="124.46" y="165.1" size="1.778" layer="96" rot="R90" display="off"/>
+<attribute name="DIGIKEY" x="124.46" y="165.1" size="1.778" layer="96" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" x="124.46" y="165.1" size="1.778" layer="96" rot="R90" display="off"/>
+<attribute name="MPN" x="124.46" y="165.1" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="R8" gate="G$1" x="134.62" y="165.1" rot="R90">
-<attribute name="DIGIKEY" x="134.62" y="165.1" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
+<attribute name="DESCRIPTION" x="134.62" y="165.1" size="1.778" layer="96" rot="R90" display="off"/>
+<attribute name="DIGIKEY" x="134.62" y="165.1" size="1.778" layer="96" rot="R90" display="off"/>
+<attribute name="MANUFACTURER" x="134.62" y="165.1" size="1.778" layer="96" rot="R90" display="off"/>
+<attribute name="MPN" x="134.62" y="165.1" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="R9" gate="G$1" x="147.32" y="165.1" rot="R90">
 <attribute name="DIGIKEY" x="147.32" y="165.1" size="1.27" layer="96" font="vector" rot="R90" display="off"/>
@@ -4124,6 +4268,9 @@ Button</text>
 <instance part="GND6" gate="1" x="172.72" y="86.36"/>
 <instance part="D2" gate="G$1" x="165.1" y="43.18" rot="R270">
 <attribute name="DIGIKEY" x="165.1" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="DESCRIPTION" x="165.1" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="MANUFACTURER" x="165.1" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="MPN" x="165.1" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R1" gate="G$1" x="165.1" y="50.8" rot="R270">
 <attribute name="DIGIKEY" x="165.1" y="50.8" size="1.27" layer="96" rot="R270" display="off"/>
@@ -4131,6 +4278,9 @@ Button</text>
 <instance part="+3V14" gate="P1" x="165.1" y="60.96"/>
 <instance part="D5" gate="G$1" x="231.14" y="43.18" rot="R270">
 <attribute name="DIGIKEY" x="231.14" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="DESCRIPTION" x="231.14" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="MANUFACTURER" x="231.14" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="MPN" x="231.14" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R2" gate="G$1" x="182.88" y="50.8" rot="R270">
 <attribute name="DIGIKEY" x="182.88" y="50.8" size="1.27" layer="96" rot="R270" display="off"/>
@@ -4138,6 +4288,9 @@ Button</text>
 <instance part="+3V15" gate="P1" x="182.88" y="60.96"/>
 <instance part="D4" gate="G$1" x="200.66" y="43.18" rot="R270">
 <attribute name="DIGIKEY" x="200.66" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="DESCRIPTION" x="200.66" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="MANUFACTURER" x="200.66" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="MPN" x="200.66" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R3" gate="G$1" x="200.66" y="50.8" rot="R270">
 <attribute name="DIGIKEY" x="200.66" y="50.8" size="1.27" layer="96" rot="R270" display="off"/>
@@ -4145,6 +4298,9 @@ Button</text>
 <instance part="+3V16" gate="P1" x="200.66" y="60.96"/>
 <instance part="D3" gate="G$1" x="182.88" y="43.18" rot="R270">
 <attribute name="DIGIKEY" x="182.88" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="DESCRIPTION" x="182.88" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="MANUFACTURER" x="182.88" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="MPN" x="182.88" y="43.18" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R4" gate="G$1" x="231.14" y="50.8" rot="R270">
 <attribute name="DIGIKEY" x="231.14" y="50.8" size="1.27" layer="96" rot="R270" display="off"/>
