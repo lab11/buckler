@@ -654,8 +654,6 @@ Copied from https://github.com/sparkfun/SparkFun-Eagle-Libraries</description>
 <pad name="2" x="-1" y="0" drill="0.8" diameter="1.27"/>
 <pad name="3" x="1" y="0" drill="0.8" diameter="1.27"/>
 <pad name="4" x="3" y="0" drill="0.8" diameter="1.27"/>
-<text x="3" y="-3.556" size="1.27" layer="22" rot="SR270" align="center-left">GND</text>
-<text x="1" y="-3.556" size="1.27" layer="22" rot="SR270" align="center-left">VCC</text>
 </package>
 <package name="TESTPOINT_0.078IN">
 <pad name="1" x="0" y="0" drill="2.0828"/>
