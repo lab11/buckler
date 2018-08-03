@@ -2765,11 +2765,11 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <attribute name="DESCRIPTION" value="SENSOR AMBIENT LIGHT 6UTDFN"/>
 <attribute name="MANUFACTURER" value="Maxim Integrated"/>
 </part>
-<part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
-<attribute name="DIGIKEY" value="490-4759-1-ND"/>
-<attribute name="MANUFACTURER" value="Murata"/>
-<attribute name="MPN" value="GCM155R71C104KA55D"/>
+<part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="1uF">
+<attribute name="DESCRIPTION" value="CAP CER 1UF 10V X6S 0402"/>
+<attribute name="DIGIKEY" value="1276-6805-1-ND"/>
+<attribute name="MANUFACTURER" value="Samsung Electro-Mechanics"/>
+<attribute name="MPN" value="CL05X105KP5NNNC"/>
 </part>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R5" library="passives" deviceset="RESISTOR" device="0402_RES" value="10k">
@@ -2783,7 +2783,7 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <attribute name="MANUFACTURER" value="Silicon Labs"/>
 <attribute name="MPN" value="SI7021-A20-GM1 "/>
 </part>
-<part name="C4" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
+<part name="C3" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
 <attribute name="DIGIKEY" value="490-4759-1-ND"/>
 <attribute name="MANUFACTURER" value="Murata"/>
@@ -2803,7 +2803,7 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <part name="U4" library="chips" deviceset="MS5637-02BA03" device="">
 <attribute name="DESCRIPTION" value="SENSOR 17.4PSIA I2C 24B 4-QFN"/>
 </part>
-<part name="C5" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
+<part name="C4" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
 <attribute name="DIGIKEY" value="490-4759-1-ND"/>
 <attribute name="MANUFACTURER" value="Murata"/>
@@ -2858,7 +2858,7 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <attribute name="MANUFACTURER" value="Analog Devices Inc."/>
 <attribute name="MPN" value="ADXL327BCPZ"/>
 </part>
-<part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
+<part name="C5" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
 <attribute name="DIGIKEY" value="490-4759-1-ND"/>
 <attribute name="MANUFACTURER" value="Murata"/>
@@ -2866,6 +2866,12 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 </part>
 <part name="GND4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="+3V9" library="regulators" deviceset="+3V3" device=""/>
+<part name="C6" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
+<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
+<attribute name="DIGIKEY" value="490-4759-1-ND"/>
+<attribute name="MANUFACTURER" value="Murata"/>
+<attribute name="MPN" value="GCM155R71C104KA55D"/>
+</part>
 <part name="C7" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
 <attribute name="DIGIKEY" value="490-4759-1-ND"/>
@@ -2873,12 +2879,6 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <attribute name="MPN" value="GCM155R71C104KA55D"/>
 </part>
 <part name="C8" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
-<attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
-<attribute name="DIGIKEY" value="490-4759-1-ND"/>
-<attribute name="MANUFACTURER" value="Murata"/>
-<attribute name="MPN" value="GCM155R71C104KA55D"/>
-</part>
-<part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
 <attribute name="DIGIKEY" value="490-4759-1-ND"/>
 <attribute name="MANUFACTURER" value="Murata"/>
@@ -3124,7 +3124,7 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <attribute name="MANUFACTURER" value="KEMET"/>
 <attribute name="MPN" value="C0402C103J3RACTU"/>
 </part>
-<part name="C10" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
+<part name="C9" library="passives" deviceset="CAPACITOR" device="0402_CAP" value="100nF">
 <attribute name="DESCRIPTION" value="CAP CER 0.1UF 16V X7R 0402"/>
 <attribute name="DIGIKEY" value="490-4759-1-ND"/>
 <attribute name="MANUFACTURER" value="Murata"/>
@@ -3196,8 +3196,8 @@ Ground Pins</text>
 <instance part="R10" gate="G$1" x="40.64" y="160.02" rot="R90">
 <attribute name="DIGIKEY" x="40.64" y="160.02" size="1.778" layer="96" rot="R90" display="off"/>
 <attribute name="MPN" x="40.64" y="160.02" size="1.778" layer="96" rot="R90" display="off"/>
-<attribute name="MANUFACTURER" x="40.64" y="160.02" size="1.778" layer="96"/>
-<attribute name="DESCRIPTION" x="40.64" y="160.02" size="1.778" layer="96"/>
+<attribute name="MANUFACTURER" x="40.64" y="160.02" size="1.778" layer="96" display="off"/>
+<attribute name="DESCRIPTION" x="40.64" y="160.02" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="S2" gate="G$1" x="30.48" y="149.86" rot="MR0">
 <attribute name="DESCRIPTION" x="30.48" y="149.86" size="1.778" layer="96" rot="MR0" display="off"/>
@@ -3930,7 +3930,7 @@ Button</text>
 <instance part="U2" gate="G$1" x="220.98" y="142.24" rot="MR0">
 <attribute name="DESCRIPTION" x="220.98" y="142.24" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
-<instance part="C3" gate="G$1" x="231.14" y="149.86" rot="MR0">
+<instance part="C10" gate="G$1" x="231.14" y="149.86" rot="MR0">
 <attribute name="DESCRIPTION" x="231.14" y="149.86" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="DIGIKEY" x="231.14" y="149.86" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="MANUFACTURER" x="231.14" y="149.86" size="1.778" layer="96" rot="MR0" display="off"/>
@@ -3948,7 +3948,7 @@ Button</text>
 <attribute name="DESCRIPTION" x="213.36" y="71.12" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="MANUFACTURER" x="213.36" y="71.12" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
-<instance part="C4" gate="G$1" x="231.14" y="73.66" rot="MR0">
+<instance part="C3" gate="G$1" x="231.14" y="73.66" rot="MR0">
 <attribute name="DESCRIPTION" x="231.14" y="73.66" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="DIGIKEY" x="231.14" y="73.66" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="MANUFACTURER" x="231.14" y="73.66" size="1.778" layer="96" rot="MR0" display="off"/>
@@ -3968,7 +3968,7 @@ Button</text>
 <instance part="U4" gate="G$1" x="220.98" y="104.14" rot="MR0">
 <attribute name="DESCRIPTION" x="220.98" y="104.14" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
-<instance part="C5" gate="G$1" x="231.14" y="111.76" rot="MR0">
+<instance part="C4" gate="G$1" x="231.14" y="111.76" rot="MR0">
 <attribute name="DESCRIPTION" x="231.14" y="111.76" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="DIGIKEY" x="231.14" y="111.76" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="MANUFACTURER" x="231.14" y="111.76" size="1.778" layer="96" rot="MR0" display="off"/>
@@ -3981,7 +3981,7 @@ Button</text>
 <attribute name="MANUFACTURER" x="48.26" y="139.7" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="48.26" y="139.7" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="C6" gate="G$1" x="27.94" y="142.24">
+<instance part="C5" gate="G$1" x="27.94" y="142.24">
 <attribute name="DIGIKEY" x="27.94" y="142.24" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="27.94" y="142.24" size="1.778" layer="96" display="off"/>
 <attribute name="DESCRIPTION" x="27.94" y="142.24" size="1.778" layer="96" display="off"/>
@@ -3989,19 +3989,19 @@ Button</text>
 </instance>
 <instance part="GND4" gate="1" x="33.02" y="119.38"/>
 <instance part="+3V9" gate="P1" x="33.02" y="167.64"/>
-<instance part="C7" gate="G$1" x="66.04" y="132.08">
+<instance part="C6" gate="G$1" x="66.04" y="132.08">
 <attribute name="DESCRIPTION" x="66.04" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="DIGIKEY" x="66.04" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="MANUFACTURER" x="66.04" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="66.04" y="132.08" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="C8" gate="G$1" x="76.2" y="132.08">
+<instance part="C7" gate="G$1" x="76.2" y="132.08">
 <attribute name="DESCRIPTION" x="76.2" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="DIGIKEY" x="76.2" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="MANUFACTURER" x="76.2" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="76.2" y="132.08" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="C9" gate="G$1" x="86.36" y="132.08">
+<instance part="C8" gate="G$1" x="86.36" y="132.08">
 <attribute name="DESCRIPTION" x="86.36" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="DIGIKEY" x="86.36" y="132.08" size="1.778" layer="96" display="off"/>
 <attribute name="MANUFACTURER" x="86.36" y="132.08" size="1.778" layer="96" display="off"/>
@@ -4029,7 +4029,7 @@ Button</text>
 <instance part="C1" gate="G$1" x="12.7" y="68.58" rot="MR0">
 <attribute name="DIGIKEY" x="12.7" y="68.58" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
-<instance part="C10" gate="G$1" x="20.32" y="68.58" rot="MR0">
+<instance part="C9" gate="G$1" x="20.32" y="68.58" rot="MR0">
 <attribute name="DESCRIPTION" x="20.32" y="68.58" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="DIGIKEY" x="20.32" y="68.58" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="MANUFACTURER" x="20.32" y="68.58" size="1.778" layer="96" rot="MR0" display="off"/>
@@ -4083,7 +4083,7 @@ Button</text>
 <junction x="226.06" y="144.78"/>
 <pinref part="GND2" gate="1" pin="GND"/>
 <wire x1="226.06" y1="144.78" x2="226.06" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="C3" gate="G$1" pin="2"/>
+<pinref part="C10" gate="G$1" pin="2"/>
 <wire x1="226.06" y1="142.24" x2="226.06" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="226.06" y1="142.24" x2="231.14" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="142.24" x2="231.14" y2="144.78" width="0.1524" layer="91"/>
@@ -4094,7 +4094,7 @@ Button</text>
 <wire x1="226.06" y1="68.58" x2="226.06" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="GND16" gate="1" pin="GND"/>
 <pinref part="U5" gate="G$1" pin="GND"/>
-<pinref part="C4" gate="G$1" pin="2"/>
+<pinref part="C3" gate="G$1" pin="2"/>
 <wire x1="226.06" y1="66.04" x2="226.06" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="68.58" x2="231.14" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="66.04" x2="226.06" y2="66.04" width="0.1524" layer="91"/>
@@ -4105,7 +4105,7 @@ Button</text>
 <wire x1="223.52" y1="106.68" x2="226.06" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="226.06" y1="101.6" x2="226.06" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="GND15" gate="1" pin="GND"/>
-<pinref part="C5" gate="G$1" pin="2"/>
+<pinref part="C4" gate="G$1" pin="2"/>
 <wire x1="226.06" y1="104.14" x2="226.06" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="106.68" x2="231.14" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="104.14" x2="226.06" y2="104.14" width="0.1524" layer="91"/>
@@ -4116,7 +4116,7 @@ Button</text>
 <pinref part="GND4" gate="1" pin="GND"/>
 <wire x1="35.56" y1="134.62" x2="33.02" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="134.62" x2="33.02" y2="132.08" width="0.1524" layer="91"/>
-<pinref part="C6" gate="G$1" pin="2"/>
+<pinref part="C5" gate="G$1" pin="2"/>
 <wire x1="33.02" y1="132.08" x2="33.02" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="137.16" x2="27.94" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="132.08" x2="33.02" y2="132.08" width="0.1524" layer="91"/>
@@ -4124,14 +4124,14 @@ Button</text>
 </segment>
 <segment>
 <pinref part="GND5" gate="1" pin="GND"/>
-<pinref part="C7" gate="G$1" pin="2"/>
+<pinref part="C6" gate="G$1" pin="2"/>
 <wire x1="66.04" y1="121.92" x2="66.04" y2="124.46" width="0.1524" layer="91"/>
-<pinref part="C8" gate="G$1" pin="2"/>
+<pinref part="C7" gate="G$1" pin="2"/>
 <wire x1="66.04" y1="124.46" x2="66.04" y2="127" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="127" x2="76.2" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="124.46" x2="66.04" y2="124.46" width="0.1524" layer="91"/>
 <junction x="66.04" y="124.46"/>
-<pinref part="C9" gate="G$1" pin="2"/>
+<pinref part="C8" gate="G$1" pin="2"/>
 <wire x1="86.36" y1="127" x2="86.36" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="124.46" x2="81.28" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="124.46" x2="76.2" y2="124.46" width="0.1524" layer="91"/>
@@ -4139,7 +4139,7 @@ Button</text>
 </segment>
 <segment>
 <pinref part="C1" gate="G$1" pin="2"/>
-<pinref part="C10" gate="G$1" pin="2"/>
+<pinref part="C9" gate="G$1" pin="2"/>
 <pinref part="GND25" gate="1" pin="GND"/>
 <wire x1="20.32" y1="48.26" x2="20.32" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="12.7" y1="63.5" x2="12.7" y2="58.42" width="0.1524" layer="91"/>
@@ -4202,7 +4202,7 @@ Button</text>
 <pinref part="+3V3" gate="P1" pin="+3V3"/>
 <wire x1="60.96" y1="86.36" x2="60.96" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="1"/>
-<pinref part="C10" gate="G$1" pin="1"/>
+<pinref part="C9" gate="G$1" pin="1"/>
 <wire x1="20.32" y1="76.2" x2="20.32" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="20.32" y1="76.2" x2="12.7" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="12.7" y1="76.2" x2="12.7" y2="71.12" width="0.1524" layer="91"/>
@@ -4228,7 +4228,7 @@ Button</text>
 <pinref part="U2" gate="G$1" pin="VCC"/>
 <wire x1="226.06" y1="154.94" x2="226.06" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="226.06" y1="149.86" x2="223.52" y2="149.86" width="0.1524" layer="91"/>
-<pinref part="C3" gate="G$1" pin="1"/>
+<pinref part="C10" gate="G$1" pin="1"/>
 <wire x1="231.14" y1="152.4" x2="231.14" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="154.94" x2="226.06" y2="154.94" width="0.1524" layer="91"/>
 <junction x="226.06" y="154.94"/>
@@ -4243,7 +4243,7 @@ Button</text>
 <pinref part="U5" gate="G$1" pin="VCC"/>
 <wire x1="226.06" y1="83.82" x2="226.06" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="+3V6" gate="P1" pin="+3V3"/>
-<pinref part="C4" gate="G$1" pin="1"/>
+<pinref part="C3" gate="G$1" pin="1"/>
 <wire x1="226.06" y1="78.74" x2="226.06" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="76.2" x2="231.14" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="78.74" x2="226.06" y2="78.74" width="0.1524" layer="91"/>
@@ -4252,7 +4252,7 @@ Button</text>
 <segment>
 <pinref part="U4" gate="G$1" pin="VDD"/>
 <wire x1="223.52" y1="111.76" x2="226.06" y2="111.76" width="0.1524" layer="91"/>
-<pinref part="C5" gate="G$1" pin="1"/>
+<pinref part="C4" gate="G$1" pin="1"/>
 <wire x1="231.14" y1="114.3" x2="231.14" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="231.14" y1="116.84" x2="226.06" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="226.06" y1="116.84" x2="226.06" y2="111.76" width="0.1524" layer="91"/>
@@ -4265,7 +4265,7 @@ Button</text>
 <pinref part="+3V9" gate="P1" pin="+3V3"/>
 <wire x1="35.56" y1="144.78" x2="33.02" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="144.78" x2="33.02" y2="149.86" width="0.1524" layer="91"/>
-<pinref part="C6" gate="G$1" pin="1"/>
+<pinref part="C5" gate="G$1" pin="1"/>
 <wire x1="33.02" y1="149.86" x2="33.02" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="144.78" x2="27.94" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="149.86" x2="33.02" y2="149.86" width="0.1524" layer="91"/>
@@ -4302,7 +4302,7 @@ Button</text>
 <segment>
 <pinref part="U1" gate="G$1" pin="ZOUT"/>
 <wire x1="60.96" y1="139.7" x2="66.04" y2="139.7" width="0.1524" layer="91"/>
-<pinref part="C7" gate="G$1" pin="1"/>
+<pinref part="C6" gate="G$1" pin="1"/>
 <wire x1="66.04" y1="139.7" x2="66.04" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="139.7" x2="88.9" y2="139.7" width="0.1524" layer="91"/>
 <junction x="66.04" y="139.7"/>
@@ -4312,7 +4312,7 @@ Button</text>
 <net name="ANALOG_ACCEL_Y" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="YOUT"/>
-<pinref part="C8" gate="G$1" pin="1"/>
+<pinref part="C7" gate="G$1" pin="1"/>
 <wire x1="60.96" y1="142.24" x2="76.2" y2="142.24" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="142.24" x2="76.2" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="142.24" x2="88.9" y2="142.24" width="0.1524" layer="91"/>
@@ -4323,7 +4323,7 @@ Button</text>
 <net name="ANALOG_ACCEL_X" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="XOUT"/>
-<pinref part="C9" gate="G$1" pin="1"/>
+<pinref part="C8" gate="G$1" pin="1"/>
 <wire x1="60.96" y1="144.78" x2="86.36" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="144.78" x2="86.36" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="144.78" x2="88.9" y2="144.78" width="0.1524" layer="91"/>
@@ -4381,6 +4381,8 @@ Button</text>
 <text x="182.88" y="66.04" size="2.54" layer="98">LEDs (Various Colors)</text>
 <text x="45.72" y="104.14" size="2.54" layer="98">Push Buttons (Momentary)</text>
 <text x="58.42" y="55.88" size="2.54" layer="98">Switches</text>
+<text x="238.76" y="55.88" size="2.54" layer="98">Power
+Indicator</text>
 </plain>
 <instances>
 <instance part="U$3" gate="G$1" x="0" y="0"/>
