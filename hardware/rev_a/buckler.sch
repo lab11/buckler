@@ -1203,6 +1203,11 @@ Copied from https://github.com/sparkfun/SparkFun-Eagle-Libraries</description>
 <text x="3" y="-3.556" size="1.27" layer="22" rot="SR270" align="center-left">GND</text>
 <text x="1" y="-3.556" size="1.27" layer="22" rot="SR270" align="center-left">VCC</text>
 </package>
+<package name="TESTPOINT_0.078IN">
+<pad name="1" x="0" y="0" drill="2.0828"/>
+<circle x="0" y="0" radius="1.778" width="0.127" layer="21"/>
+<text x="0" y="2.54" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
 <symbol name="NHD-0216KZW-SERIAL">
@@ -1511,6 +1516,21 @@ Copied from https://github.com/sparkfun/SparkFun-Eagle-Libraries</description>
 <technology name="">
 <attribute name="VALUE" value="4P-2.0" constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TEST_POINT_0.078IN" prefix="TP">
+<gates>
+<gate name="G$1" symbol="TEST_POINT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TESTPOINT_0.078IN">
+<connects>
+<connect gate="G$1" pin="TESTPOINT" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -3121,6 +3141,19 @@ Basic schematic elements and footprints for 0201, 0402, 0603, 1206, and PTH resi
 <attribute name="MANUFACTURER" value="Diodes Incorporated"/>
 <attribute name="MPN" value="B0530WS-7-F"/>
 </part>
+<part name="TP43" library="headers" deviceset="TEST_POINT_0.078IN" device="">
+<attribute name="DESCRIPTION" value="TERM TURRET SINGLE L=4.75MM TIN"/>
+<attribute name="DIGIKEY" value="36-1520-2-ND"/>
+<attribute name="MANUFACTURER" value="Keystone Electronics"/>
+<attribute name="MPN" value="1520-2"/>
+</part>
+<part name="TP44" library="headers" deviceset="TEST_POINT_0.078IN" device="">
+<attribute name="DESCRIPTION" value="TERM TURRET SINGLE L=4.75MM TIN"/>
+<attribute name="DIGIKEY" value="36-1520-2-ND"/>
+<attribute name="MANUFACTURER" value="Keystone Electronics"/>
+<attribute name="MPN" value="1520-2"/>
+</part>
+<part name="GND27" library="regulators" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3132,6 +3165,8 @@ for Kobuki</text>
 <text x="55.88" y="177.8" size="2.54" layer="98">nRF52840DK Interface</text>
 <text x="231.14" y="132.08" size="2.032" layer="98">UART shared
 with Kobuki</text>
+<text x="111.76" y="66.04" size="2.54" layer="98">Clippable
+Ground Pins</text>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="0" y="0"/>
@@ -3265,6 +3300,19 @@ with Kobuki</text>
 <attribute name="MANUFACTURER" x="45.72" y="55.88" size="1.778" layer="96" rot="R90" display="off"/>
 <attribute name="MPN" x="45.72" y="55.88" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
+<instance part="TP43" gate="G$1" x="116.84" y="63.5">
+<attribute name="DESCRIPTION" x="116.84" y="63.5" size="1.778" layer="96" display="off"/>
+<attribute name="DIGIKEY" x="116.84" y="63.5" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="116.84" y="63.5" size="1.778" layer="96" display="off"/>
+<attribute name="MPN" x="116.84" y="63.5" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="TP44" gate="G$1" x="116.84" y="60.96">
+<attribute name="DESCRIPTION" x="116.84" y="60.96" size="1.778" layer="96" display="off"/>
+<attribute name="DIGIKEY" x="116.84" y="60.96" size="1.778" layer="96" display="off"/>
+<attribute name="MANUFACTURER" x="116.84" y="60.96" size="1.778" layer="96" display="off"/>
+<attribute name="MPN" x="116.84" y="60.96" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="GND27" gate="G1" x="121.92" y="55.88"/>
 </instances>
 <busses>
 </busses>
@@ -3356,6 +3404,16 @@ with Kobuki</text>
 <pinref part="GND24" gate="G1" pin="GND"/>
 <wire x1="215.9" y1="93.98" x2="213.36" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="213.36" y1="93.98" x2="213.36" y2="91.44" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="TP43" gate="G$1" pin="TESTPOINT"/>
+<wire x1="119.38" y1="63.5" x2="121.92" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="63.5" x2="121.92" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="TP44" gate="G$1" pin="TESTPOINT"/>
+<wire x1="121.92" y1="60.96" x2="119.38" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="GND27" gate="G1" pin="GND"/>
+<wire x1="121.92" y1="58.42" x2="121.92" y2="60.96" width="0.1524" layer="91"/>
+<junction x="121.92" y="60.96"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
