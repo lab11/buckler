@@ -3089,8 +3089,8 @@ Ground Pins</text>
 <instance part="TP6" gate="G$1" x="45.72" y="129.54"/>
 <instance part="TP7" gate="G$1" x="45.72" y="132.08"/>
 <instance part="TP8" gate="G$1" x="45.72" y="134.62"/>
-<instance part="TP9" gate="G$1" x="111.76" y="152.4" rot="R180"/>
-<instance part="TP10" gate="G$1" x="111.76" y="149.86" rot="R180"/>
+<instance part="TP9" gate="G$1" x="111.76" y="149.86" rot="R180"/>
+<instance part="TP10" gate="G$1" x="111.76" y="152.4" rot="R180"/>
 <instance part="TP12" gate="G$1" x="45.72" y="119.38" rot="MR180"/>
 <instance part="TP13" gate="G$1" x="45.72" y="116.84" rot="MR180"/>
 <instance part="TP14" gate="G$1" x="45.72" y="114.3" rot="MR180"/>
@@ -3441,19 +3441,7 @@ Ground Pins</text>
 <label x="93.98" y="63.5" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="EXTERN_RX" class="0">
-<segment>
-<pinref part="J1" gate="J1" pin="1"/>
-<wire x1="203.2" y1="139.7" x2="200.66" y2="139.7" width="0.1524" layer="91"/>
-<label x="200.66" y="139.7" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
-</segment>
-<segment>
-<pinref part="J4" gate="G$1" pin="2"/>
-<wire x1="99.06" y1="60.96" x2="93.98" y2="60.96" width="0.1524" layer="91"/>
-<label x="93.98" y="60.96" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="N$2" class="0">
+<net name="5V_IN" class="0">
 <segment>
 <pinref part="J1" gate="J1" pin="8"/>
 <wire x1="203.2" y1="121.92" x2="198.12" y2="121.92" width="0.1524" layer="91"/>
@@ -3466,7 +3454,7 @@ Ground Pins</text>
 <pinref part="D1" gate="G$1" pin="ANODE"/>
 </segment>
 </net>
-<net name="N$1" class="0">
+<net name="!RESET" class="0">
 <segment>
 <wire x1="38.1" y1="152.4" x2="48.26" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="R10" gate="G$1" pin="1"/>
@@ -3555,11 +3543,10 @@ Ground Pins</text>
 <wire x1="50.8" y1="137.16" x2="48.26" y2="137.16" width="0.1524" layer="91"/>
 <label x="38.1" y="137.16" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 <pinref part="TP31" gate="G$1" pin="TESTPOINT"/>
-<wire x1="48.26" y1="137.16" x2="45.72" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="137.16" x2="38.1" y2="137.16" width="0.1524" layer="91"/>
 <junction x="48.26" y="137.16"/>
 <pinref part="J6" gate="J1" pin="P0.22"/>
-<wire x1="45.72" y1="137.16" x2="38.1" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="137.16" x2="45.72" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="137.16" x2="38.1" y2="137.16" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GROVE_D0" class="0">
@@ -3599,12 +3586,12 @@ Ground Pins</text>
 <label x="93.98" y="27.94" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="106.68" y1="152.4" x2="109.22" y2="152.4" width="0.1524" layer="91"/>
-<label x="119.38" y="152.4" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="106.68" y1="149.86" x2="109.22" y2="149.86" width="0.1524" layer="91"/>
+<label x="119.38" y="149.86" size="1.27" layer="95" font="vector" xref="yes"/>
 <pinref part="TP9" gate="G$1" pin="TESTPOINT"/>
-<wire x1="109.22" y1="152.4" x2="119.38" y2="152.4" width="0.1524" layer="91"/>
-<junction x="109.22" y="152.4"/>
-<pinref part="J6" gate="J1" pin="P0.03/AIN1"/>
+<wire x1="109.22" y1="149.86" x2="119.38" y2="149.86" width="0.1524" layer="91"/>
+<junction x="109.22" y="149.86"/>
+<pinref part="J6" gate="J1" pin="P0.04/AIN2"/>
 </segment>
 </net>
 <net name="GROVE_A1" class="0">
@@ -3614,12 +3601,12 @@ Ground Pins</text>
 <label x="93.98" y="25.4" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="106.68" y1="149.86" x2="109.22" y2="149.86" width="0.1524" layer="91"/>
-<label x="119.38" y="149.86" size="1.27" layer="95" font="vector" xref="yes"/>
+<wire x1="106.68" y1="152.4" x2="109.22" y2="152.4" width="0.1524" layer="91"/>
+<label x="119.38" y="152.4" size="1.27" layer="95" font="vector" xref="yes"/>
 <pinref part="TP10" gate="G$1" pin="TESTPOINT"/>
-<wire x1="109.22" y1="149.86" x2="119.38" y2="149.86" width="0.1524" layer="91"/>
-<junction x="109.22" y="149.86"/>
-<pinref part="J6" gate="J1" pin="P0.04/AIN2"/>
+<wire x1="109.22" y1="152.4" x2="119.38" y2="152.4" width="0.1524" layer="91"/>
+<junction x="109.22" y="152.4"/>
+<pinref part="J6" gate="J1" pin="P0.03/AIN1"/>
 </segment>
 </net>
 <net name="SD_ENABLE" class="0">
@@ -3640,6 +3627,16 @@ Ground Pins</text>
 <wire x1="109.22" y1="139.7" x2="119.38" y2="139.7" width="0.1524" layer="91"/>
 <junction x="109.22" y="139.7"/>
 <pinref part="J6" gate="J1" pin="P0.08"/>
+</segment>
+<segment>
+<pinref part="J1" gate="J1" pin="1"/>
+<wire x1="203.2" y1="139.7" x2="200.66" y2="139.7" width="0.1524" layer="91"/>
+<label x="200.66" y="139.7" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="J4" gate="G$1" pin="2"/>
+<wire x1="99.06" y1="60.96" x2="93.98" y2="60.96" width="0.1524" layer="91"/>
+<label x="93.98" y="60.96" size="1.27" layer="95" font="vector" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
@@ -4525,7 +4522,7 @@ Indicator</text>
 </sheet>
 </sheets>
 <errors>
-<approved hash="113,1,44.7573,55.88,D1,,,,,"/>
+<approved hash="113,1,184.457,134.62,D1,,,,,"/>
 </errors>
 </schematic>
 </drawing>
