@@ -17,7 +17,7 @@ BOARD_SOURCES = $(notdir $(wildcard $(BOARD_DIR)/./*.c))
 BOARD_AS = $(notdir $(wildcard $(BOARD_DIR)/./*.s))
 
 # Board-specific configurations
-BOARD = Buckler_revA
+BOARD = Buckler_revB
 USE_BLE = 1
 
 # Additional #define's to be added to code by the compiler
