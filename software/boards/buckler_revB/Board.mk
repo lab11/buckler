@@ -15,7 +15,7 @@ BOARD_SOURCES = $(notdir $(wildcard $(BOARD_DIR)/./*.c))
 BOARD_AS = $(notdir $(wildcard $(BOARD_DIR)/./*.s))
 
 # Board-specific configurations
-BOARD = Buckler
+BOARD = Buckler_revB
 USE_BLE = 1
 
 # Additional #define's to be added to code by the compiler
@@ -50,6 +50,7 @@ BOARD_SOURCES += \
 	nrf_queue.c\
 	nrfx_gpiote.c\
 	nrfx_prs.c\
+	nrfx_saadc.c\
 	nrfx_timer.c\
 	nrfx_twi.c\
 	nrfx_twim.c\

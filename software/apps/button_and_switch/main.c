@@ -51,6 +51,10 @@ void pin_change_handler(nrfx_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
 int main(void) {
   ret_code_t error_code = NRF_SUCCESS;
 
+  // initialize power management
+  error_code = nrf_pwr_mgmt_init();
+  APP_ERROR_CHECK(error_code);
+
   // initialize GPIO driver
   if (!nrfx_gpiote_is_init()) {
     error_code = nrfx_gpiote_init();

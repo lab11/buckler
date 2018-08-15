@@ -1,13 +1,15 @@
 // Pin definitions for the Berkeley Buckler revision A
-// Originally designed for nRF52840DK, so several pins are missing
+// Originally designed for nRF52840DK, so several signals are missing
 
 #pragma once
 
+#include "nrf_gpio.h"
+#include "nrf_saadc.h"
 
 // Analog accelerometer
-#define BUCKLER_ANALOG_ACCEL_X NRF_GPIO_PIN_MAP(0,29)
-#define BUCKLER_ANALOG_ACCEL_Y NRF_GPIO_PIN_MAP(0,30)
-#define BUCKLER_ANALOG_ACCEL_Z NRF_GPIO_PIN_MAP(0,31)
+#define BUCKLER_ANALOG_ACCEL_X NRF_SAADC_INPUT_AIN5 // P0.29
+#define BUCKLER_ANALOG_ACCEL_Y NRF_SAADC_INPUT_AIN6 // P0.30
+#define BUCKLER_ANALOG_ACCEL_Z NRF_SAADC_INPUT_AIN7 // P0.31
 
 // Buttons and Switches
 #define BUCKLER_BUTTON0 NRF_GPIO_PIN_MAP(0,22)
