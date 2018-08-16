@@ -1,4 +1,4 @@
-/*	
+/*
 
 	Original Author:		Jeff C. Jensen
     Rewritten by: Joshua Adkins
@@ -18,11 +18,16 @@ int32_t kobukiSensorPoll(KobukiSensors_t* const	sensors){
 
 	int32_t status = 0;
 
-	// initialize communications buffer 
+	// initialize communications buffer
     // We know that the maximum size of the packet is less than 140 based on documentation
-	uint8_t packet[140];
+	uint8_t packet[140] = {0};
 
 	status = kobukiReadFeedbackPacket(packet);
+
+    for(uint8_t i = 0; i < 140; i++) {
+        printf("%02X",packet[i]);
+    }
+    printf("\n");
 
     if (status < NRF_SUCCESS) {
         return status;

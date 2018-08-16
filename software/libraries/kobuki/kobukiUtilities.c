@@ -1,30 +1,45 @@
-
+#include "kobukiUtilities.h"
 #include <stdint.h>
 #include <stdio.h>
 
-#include "nrf_serial.h"
-
-#include "kobukiUtilities.h"
-
+#include "app_uart.h"
+#include "nrf_uarte.h"
 #include "buckler.h"
 
-// Serial configuration
-// create a uart instance for UARTE0
-NRF_SERIAL_UART_DEF(serial_uart_instance, 0);
-// configuration for uart, RX & TX pin, empty RTS and CTS pins,
-//  flow control disabled, no parity bit, 115200 baud, default priority
-NRF_SERIAL_DRV_UART_CONFIG_DEF(serial_uart_config, BUCKLER_UART_RX, BUCKLER_UART_TX, 0, 0,
-      NRF_UART_HWFC_DISABLED, NRF_UART_PARITY_EXCLUDED, NRF_UART_BAUDRATE_115200, UART_DEFAULT_CONFIG_IRQ_PRIORITY);
-// create serial queues for commands, tx length 32, rx length 32
-NRF_SERIAL_QUEUES_DEF(serial_queues, 32, 32);
-// create serial buffers for data, tx size 100 bytes, rx size 100 bytes
-NRF_SERIAL_BUFFERS_DEF(serial_buffers, 100, 100);
-// create a configuration using DMA with queues for commands and buffers for data storage
-// both handlers are set to NULL as we do not need to support them
-NRF_SERIAL_CONFIG_DEF(serial_config, NRF_SERIAL_MODE_DMA, &serial_queues, &serial_buffers, NULL, NULL);
+static void uart_error_handle (app_uart_evt_t * p_event) {
+    if (p_event->evt_type == APP_UART_COMMUNICATION_ERROR) {
+        //APP_ERROR_HANDLER(p_event->data.error_communication);
+        app_uart_flush();
+    } else if (p_event->evt_type == APP_UART_FIFO_ERROR) {
+        //APP_ERROR_HANDLER(p_event->data.error_code);
+        app_uart_flush();
+    }
+}
 
 int kobukiInit() {
-  return nrf_serial_init(&serial_uart_instance, &serial_uart_config, &serial_config);
+  uint32_t err_code;
+
+  const app_uart_comm_params_t comm_params =
+  {
+    BUCKLER_UART_RX,
+    BUCKLER_UART_TX,
+    0,
+    0,
+    APP_UART_FLOW_CONTROL_DISABLED,
+    false,
+    NRF_UARTE_BAUDRATE_115200
+  };
+
+  APP_UART_FIFO_INIT(&comm_params,
+                     1024,
+                     1024,
+                     uart_error_handle,
+                     APP_IRQ_PRIORITY_LOW,
+                     err_code);
+
+  APP_ERROR_CHECK(err_code);
+
+  return err_code;
 }
 
 uint8_t checkSumRead(uint8_t * buffer, int length){

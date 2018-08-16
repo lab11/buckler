@@ -8,14 +8,13 @@
 #include "kobukiUtilities.h"
 
 #include "app_error.h"
-#include "nrf_serial.h"
+#include "app_uart.h"
+#include "nrf_delay.h"
 
 #include <stdlib.h>
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
-
-extern nrf_serial_t serial_uart_instance;
 
 static int32_t kobukiSendPayload(uint8_t* payload, uint8_t len) {
     uint8_t writeData[256] = {0};
@@ -27,9 +26,14 @@ static int32_t kobukiSendPayload(uint8_t* payload, uint8_t len) {
     memcpy(writeData + 3, payload, len);
 	writeData[3+len] = checkSum(writeData, 3 + len);
 
-    int status = nrf_serial_write(&serial_uart_instance, writeData, len, NULL, 0);
-    if(status != NRF_SUCCESS) {
-        return status;
+
+    for(uint8_t i = 0; i < 3+len+1; i++) {
+        int status = app_uart_put(writeData[i]);
+        if(status == NRF_ERROR_NO_MEM || status == NRF_ERROR_INTERNAL) {
+            i--;
+        } else if(status != NRF_SUCCESS) {
+            return status;
+        }
     }
 
     return NRF_SUCCESS;

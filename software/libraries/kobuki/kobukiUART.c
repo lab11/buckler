@@ -8,12 +8,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "nrf_serial.h"
+#include <app_uart.h>
 
 #include "kobukiUART.h"
 #include "kobukiUtilities.h"
 
-extern nrf_serial_t serial_uart_instance;
 
 int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer){
 
@@ -32,24 +31,29 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer){
 	uint8_t payloadSize = 0;
 	uint8_t calcuatedCS;
 
-	status = nrf_serial_rx_drain(&serial_uart_instance);
+	status = app_uart_flush();
 
 	int num_checksum_failures = 0;
+    uint8_t p_index = 0;
 
 	while(1){
-
 		switch(state){
 			case wait_until_AA:
-                for(uint8_t i = 0; i < 2; i++) {
-                    status = nrf_serial_read(&serial_uart_instance, (&packetBuffer[i]), 1, 0, 10);
-                }
-
-				if (status < NRF_SUCCESS) {
+                status = app_uart_get(&packetBuffer[p_index]);
+                if(status == NRF_ERROR_NOT_FOUND) {
+                    //there is no byte so just wait until there is
+                    break;
+                } else if(status != NRF_SUCCESS) {
                     return status;
+                } else {
+                    p_index++;
                 }
 
-				if (packetBuffer[0]==0xAA && packetBuffer[1]==0x55) {
-					state=read_length;
+				if (p_index == 2 && packetBuffer[0]==0xAA && packetBuffer[1]==0x55) {
+					state = read_length;
+                } else if (p_index == 2) {
+                    p_index = 0;
+					state = wait_until_AA;
                 } else {
 					state = wait_until_AA;
                 }
@@ -57,30 +61,36 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer){
 				break;
 
 			case read_length:
-				byteBuffer = 0;
-                status = nrf_serial_read(&serial_uart_instance, &byteBuffer, 1, 0, 10);
-                if(status < NRF_SUCCESS) {
+                status = app_uart_get(&packetBuffer[p_index]);
+                if(status == NRF_ERROR_NOT_FOUND) {
+                    //there is no byte so just wait until there is
+                    break;
+                } else if(status != NRF_SUCCESS) {
                     return status;
                 }
 
-				payloadSize = byteBuffer;
-                packetBuffer[2] = payloadSize;
+                payloadSize = packetBuffer[p_index];
+                byteBuffer = payloadSize;
+
+                p_index++;
 				state = read_payload;
 				break;
 
 			case read_payload:
-                for(uint8_t i = 0; i < payloadSize+1; i++) {
-                    status = nrf_serial_read(&serial_uart_instance, &packetBuffer[3+i], 1, 0, 10);
-                    if(status < NRF_SUCCESS) {
-                        return status;
-                    }
+                status = app_uart_get(&packetBuffer[p_index]);
+                if(status == NRF_ERROR_NOT_FOUND) {
+                    //there is no byte so just wait until there is
+                    break;
+                } else if(status != NRF_SUCCESS) {
+                    return status;
+                } else {
+                    p_index++;
                 }
 
-				if (status < NRF_SUCCESS) {
-                    return status;
-				}
+                if(p_index > payloadSize+3) {
+				    state = read_checksum;
+                }
 
-				state = read_checksum;
 				break;
 
 			case read_checksum:
@@ -88,7 +98,7 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer){
 				byteBuffer=(packetBuffer)[payloadSize+3];
 				if (calcuatedCS == byteBuffer) {
 					num_checksum_failures = 0;
-					return status;
+					return NRF_SUCCESS;
 				} else{
 					state = wait_until_AA;
 					if (num_checksum_failures == 3) {

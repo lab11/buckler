@@ -29,6 +29,7 @@ BOARD_SOURCES += \
 	app_error_handler_gcc.c\
 	app_scheduler.c\
 	app_timer.c\
+	app_uart.c\
 	app_util_platform.c\
 	nrf_assert.c\
 	nrf_atomic.c\
