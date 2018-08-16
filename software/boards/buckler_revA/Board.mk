@@ -9,11 +9,12 @@ BOARD_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 # Include any files in this directory in the build process
 BOARD_SOURCE_PATHS = $(BOARD_DIR)/.
-BOARD_SOURCE_PATHS += $(BOARD_DIR)/../../libraries/kobuki/.
+BOARD_SOURCE_PATHS += $(wildcard $(BOARD_DIR)/../../libraries/*/)
 BOARD_HEADER_PATHS = $(BOARD_DIR)/.
-BOARD_HEADER_PATHS += $(BOARD_DIR)/../../libraries/kobuki/.
+BOARD_HEADER_PATHS += $(wildcard $(BOARD_DIR)/../../libraries/*/)
 BOARD_LINKER_PATHS = $(BOARD_DIR)/.
 BOARD_SOURCES = $(notdir $(wildcard $(BOARD_DIR)/./*.c))
+BOARD_SOURCES += $(notdir $(wildcard $(BOARD_DIR)/../../libraries/*/*.c))
 BOARD_AS = $(notdir $(wildcard $(BOARD_DIR)/./*.s))
 
 # Board-specific configurations
@@ -62,11 +63,6 @@ BOARD_SOURCES += \
 	SEGGER_RTT.c\
 	SEGGER_RTT_Syscalls_GCC.c\
 	SEGGER_RTT_printf.c\
-	kobukiActuator.c\
-	kobukiUtilities.c\
-	kobukiUART.c\
-	kobukiSensor.c\
-	kobukiSensorPoll.c\
 
 endif
 
