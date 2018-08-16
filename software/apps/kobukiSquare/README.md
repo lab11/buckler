@@ -1,4 +1,4 @@
 Kobuki Square
 =====
 
-Makes the kobuki drive in a square
+Makes the kobuki drive in a square using the internal gyroscope
