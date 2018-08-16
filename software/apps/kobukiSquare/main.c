@@ -33,8 +33,6 @@ typedef enum {
 KobukiState_t state;
 KobukiSensors_t initial_sensors;
 KobukiSensors_t sensors;
-int16_t high_target;
-int16_t low_target;
 static uint8_t i = 0;
 
 int main(void) {
@@ -55,16 +53,6 @@ int main(void) {
                 printf("Polling sensors\n");
                 kobukiSensorPoll(&initial_sensors);
                 printf("P: %d\n",initial_sensors.angle);
-                high_target = initial_sensors.angle + 8500;
-
-                if(high_target > 36000) {
-                    high_target = high_taget - 36000;
-                }
-
-                low_target = initial_sensors.angle - 8500;
-                if(low_target < 0) {
-                    low_target = 36000 + low_target;
-                }
             } else {
                 i++;
             }
@@ -74,7 +62,7 @@ int main(void) {
             kobukiDriveRadius(150,100);
             kobukiSensorPoll(&sensors);
 
-            if(abs(sensors.angle - initial_sensors.angle) >= 7000) {
+            if(abs(sensors.angle - initial_sensors.angle) >= 8500) {
                 state = DRIVING;
                 printf("Driving!\n");
                 i = 0;
