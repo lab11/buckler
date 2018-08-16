@@ -1,6 +1,6 @@
-// Blink app
+// Kobuki square app
 //
-// Blinks the LEDs on Buckler
+// Drive the Kobuki robot in a square using the internal gyroscope
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -19,58 +19,74 @@
 #include "nrf_serial.h"
 
 #include "buckler.h"
-
 #include "kobukiActuator.h"
 #include "kobukiSensorTypes.h"
 #include "kobukiSensorPoll.h"
 #include "kobukiUtilities.h"
 
 typedef enum {
-    DRIVING,
-    TURNING
+  DRIVING,
+  TURNING
 } KobukiState_t;
 
-KobukiState_t state;
-KobukiSensors_t initial_sensors;
-KobukiSensors_t sensors;
-static uint8_t i = 0;
-
 int main(void) {
-    kobukiInit();
 
-    // initialize RTT library
-    NRF_LOG_INIT(NULL);
-    NRF_LOG_DEFAULT_BACKENDS_INIT();
-    printf("Initialized RTT!\n");
+  // initialize Kobuki library
+  kobukiInit();
 
-    while(1) {
-        switch(state) {
-        case DRIVING:
-            kobukiDriveDirect(100,100);
+  // initialize RTT library
+  NRF_LOG_INIT(NULL);
+  NRF_LOG_DEFAULT_BACKENDS_INIT();
+  printf("Initialized RTT!\n");
 
-            if(i >= 200) {
-                state = TURNING;
-                printf("Polling sensors\n");
-                kobukiSensorPoll(&initial_sensors);
-                printf("P: %d\n",initial_sensors.angle);
-            } else {
-                i++;
-            }
+  // initialize state
+  KobukiState_t state = DRIVING;
+  KobukiSensors_t initial_sensors;
+  kobukiSensorPoll(&initial_sensors);
 
-            break;
-        case TURNING:
-            kobukiDriveRadius(150,100);
-            kobukiSensorPoll(&sensors);
+  // loop forever
+  uint8_t i = 0;
+  while(1) {
 
-            if(abs(sensors.angle - initial_sensors.angle) >= 8500) {
-                state = DRIVING;
-                printf("Driving!\n");
-                i = 0;
-            }
+    // test current state
+    switch(state) {
+      case DRIVING: {
+        kobukiDriveDirect(100,100);
 
-            break;
-        };
-        nrf_delay_ms(10);
-    }
+        // continue driving until 200*10 = 2000 ms have passed
+        if (i >= 200) {
+          // transition to turning state
+          state = TURNING;
+          printf("Beginning turn. Polling sensors\n");
+          kobukiSensorPoll(&initial_sensors);
+          printf("Starting Angle: %d\n",initial_sensors.angle);
+        } else {
+          // continue driving
+          i++;
+        }
+
+        break;
+      }
+
+      case TURNING: {
+        kobukiDriveRadius(150,100);
+
+        // check angle to see if we've reached more than 85 degrees
+        KobukiSensors_t sensors;
+        kobukiSensorPoll(&sensors);
+        if (abs(sensors.angle - initial_sensors.angle) >= 8500) {
+          // transition to driving state
+          state = DRIVING;
+          printf("Driving!\n");
+          i = 0;
+        }
+
+        break;
+      }
+    };
+
+    // continue for 10 ms before checking state again
+    nrf_delay_ms(10);
+  }
 }
 
