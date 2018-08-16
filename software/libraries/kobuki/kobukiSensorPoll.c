@@ -24,11 +24,6 @@ int32_t kobukiSensorPoll(KobukiSensors_t* const	sensors){
 
 	status = kobukiReadFeedbackPacket(packet);
 
-    for(uint8_t i = 0; i < 140; i++) {
-        printf("%02X",packet[i]);
-    }
-    printf("\n");
-
     if (status < NRF_SUCCESS) {
         return status;
     }
