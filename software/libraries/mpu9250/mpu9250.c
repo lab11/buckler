@@ -12,6 +12,7 @@
 #include "nrf.h"
 #include "nrf_delay.h"
 #include "nrfx_twim.h"
+#include "nrf_drv_timer.h"
 
 #include "mpu9250.h"
 
@@ -19,6 +20,31 @@ static uint8_t MPU_ADDRESS = 0x68;
 static uint8_t MAG_ADDRESS = 0x0C;
 
 static nrfx_twim_t* i2c_instance = NULL;
+static mpu9250_measurement_t integrated_angle;
+
+const nrf_drv_timer_t gyro_timer = NRFX_TIMER_INSTANCE(1);
+void gyro_timer_event_handler(nrf_timer_event_t event_type, void* p_context) {
+  switch (event_type)
+  {
+    case NRF_TIMER_EVENT_COMPARE0: {
+      mpu9250_measurement_t measure = mpu9250_read_gyro();
+      if(measure.z_axis > 0.5 || measure.z_axis < -0.5) {
+        integrated_angle.z_axis += measure.z_axis*0.010;
+      }
+      if(measure.x_axis > 0.5 || measure.x_axis < -0.5) {
+        integrated_angle.x_axis += measure.x_axis*0.010;
+      }
+      if(measure.y_axis > 0.5 || measure.y_axis < -0.5) {
+        integrated_angle.y_axis += measure.y_axis*0.010;
+      }
+      break;
+    }
+    default: {
+      //Do nothing.
+      break;
+    }
+  }
+}
 
 static uint8_t i2c_reg_read(uint8_t i2c_addr, uint8_t reg_addr) {
   uint8_t rx_buf = 0;
@@ -39,6 +65,11 @@ static void i2c_reg_write(uint8_t i2c_addr, uint8_t reg_addr, uint8_t data) {
 // initialization and configuration
 void mpu9250_init(nrfx_twim_t* i2c) {
   i2c_instance = i2c;
+
+  // initialize a timer - the default frequency is 16MHz
+  nrf_drv_timer_config_t timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;
+  ret_code_t error_code = nrf_drv_timer_init(&gyro_timer, &timer_cfg, gyro_timer_event_handler);
+  APP_ERROR_CHECK(error_code);
 
   // reset mpu
   i2c_reg_write(MPU_ADDRESS, MPU9250_PWR_MGMT_1, 0x80);
@@ -121,4 +152,34 @@ mpu9250_measurement_t mpu9250_read_magnetometer() {
 
   return measurement;
 }
+
+ret_code_t mpu9250_start_gyro_integration() {
+  if(nrfx_timer_is_enabled(&gyro_timer)) {
+    return NRF_ERROR_INVALID_STATE;
+  }
+
+  // zero the angle
+  integrated_angle.z_axis = 0;
+  integrated_angle.y_axis = 0;
+  integrated_angle.x_axis = 0;
+
+  uint32_t time_ticks = nrf_drv_timer_ms_to_ticks(&gyro_timer, 10);
+  nrf_drv_timer_extended_compare(&gyro_timer, NRF_TIMER_CC_CHANNEL0, time_ticks,
+                                  NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, true);
+
+  nrfx_timer_enable(&gyro_timer);
+
+  return NRF_SUCCESS;
+}
+
+ret_code_t mpu9250_stop_gyro_integration() {
+  nrfx_timer_disable(&gyro_timer);
+  return NRF_SUCCESS;
+}
+
+mpu9250_measurement_t mpu9250_read_gyro_integration() {
+  return integrated_angle;
+}
+
+
 

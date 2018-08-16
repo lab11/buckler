@@ -5,6 +5,7 @@
 #pragma once
 
 #include "nrfx_twim.h"
+#include "app_error.h"
 
 // Types
 
@@ -37,6 +38,21 @@ mpu9250_measurement_t mpu9250_read_gyro();
 // Return measurements as floating point values in uT
 mpu9250_measurement_t mpu9250_read_magnetometer();
 
+// Start integration on the gyro
+//
+// Return an NRF error code
+//  - must be stopped before starting
+ret_code_t mpu9250_start_gyro_integration();
+
+// Stop integration on the gyro
+//
+// Return an NRF error cord
+ret_code_t mpu9250_stop_gyro_integration();
+
+// Read the value of the integrated gyro
+//
+// Return the integrated value as floating point in degrees
+mpu9250_measurement_t mpu9250_read_gyro_integration();
 
 // Definitions
 
