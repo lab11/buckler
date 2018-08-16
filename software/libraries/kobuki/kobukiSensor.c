@@ -78,8 +78,10 @@ void kobukiParseSensorPacket(const uint8_t * packet, KobukiSensors_t * sensors) 
 							break;
 					}
 
-					sensors->leftWheelOverCurrent = packet[i+15] & 0x01;
-					sensors->rightWheelOverCurrent = packet[i+15] & 0x02;
+					sensors->batteryVoltage = packet[i+15];
+
+					sensors->leftWheelOverCurrent = packet[i+16] & 0x01;
+					sensors->rightWheelOverCurrent = packet[i+16] & 0x02;
 
 					i += subPayloadLength + 2; // + 2 for header and length
 				} else {
