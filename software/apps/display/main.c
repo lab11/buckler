@@ -33,9 +33,12 @@ int main(void) {
   // initialize i2c master (two wire interface)
   nrf_drv_spi_t spi_instance = NRF_DRV_SPI_INSTANCE(1);
   nrf_drv_spi_config_t spi_config = {
-    .sck_pin = BUCKLER_LCD_SCLK,
-    .mosi_pin = BUCKLER_LCD_MOSI,
-    .miso_pin = BUCKLER_LCD_MISO,
+//    .sck_pin = BUCKLER_LCD_SCLK,
+//    .mosi_pin = BUCKLER_LCD_MOSI,
+//    .miso_pin = BUCKLER_LCD_MISO,
+    .sck_pin = 12,
+    .mosi_pin = 14,
+    .miso_pin = 16,
     .ss_pin = BUCKLER_LCD_CS,
     .irq_priority = NRFX_SPI_DEFAULT_CONFIG_IRQ_PRIORITY,
     .orc = 0,
