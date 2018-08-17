@@ -46,10 +46,10 @@ int main(void) {
 
   // loop forever
   uint8_t i = 0;
-  while(1) {
+  while (1) {
 
     // test current state
-    switch(state) {
+    switch (state) {
       case DRIVING: {
         kobukiDriveDirect(100,100);
 
@@ -59,7 +59,7 @@ int main(void) {
           state = TURNING;
           printf("Beginning turn. Polling sensors\n");
           kobukiSensorPoll(&initial_sensors);
-          printf("Starting Angle: %d\n",initial_sensors.angle);
+          printf("Starting Angle: %d\n", initial_sensors.angle);
         } else {
           // continue driving
           i++;

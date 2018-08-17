@@ -72,7 +72,7 @@ int main(void) {
         kobukiDriveDirect(100,100);
 
         // continue driving until 200*10 = 2000 ms have passed
-        if(i >= 200) {
+        if (i >= 200) {
           state = TURNING;
           printf("Beginning turn. Reading sensors\n");
           mpu9250_start_gyro_integration();
@@ -88,7 +88,7 @@ int main(void) {
 
         // check angle to see if we've reached more than 85 degrees
         mpu9250_measurement_t angle = mpu9250_read_gyro_integration();
-        if(abs(angle.z_axis) >= 85) {
+        if (abs(angle.z_axis) >= 85) {
           // transition to driving state
           mpu9250_stop_gyro_integration();
           state = DRIVING;
@@ -104,3 +104,4 @@ int main(void) {
     nrf_delay_ms(10);
   }
 }
+

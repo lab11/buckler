@@ -35,7 +35,7 @@ int main(void) {
   printf("Initialized RTT!\n");
 
   // loop forever
-  while(1) {
+  while (1) {
 
     // read kobuki sensor values
     KobukiSensors_t sensors;

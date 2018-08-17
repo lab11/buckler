@@ -20,21 +20,22 @@ static uint8_t MPU_ADDRESS = 0x68;
 static uint8_t MAG_ADDRESS = 0x0C;
 
 static nrfx_twim_t* i2c_instance = NULL;
+
+// rotation tracking variables
+static const nrf_drv_timer_t gyro_timer = NRFX_TIMER_INSTANCE(1);
 static mpu9250_measurement_t integrated_angle;
 
-const nrf_drv_timer_t gyro_timer = NRFX_TIMER_INSTANCE(1);
-void gyro_timer_event_handler(nrf_timer_event_t event_type, void* p_context) {
-  switch (event_type)
-  {
+static void gyro_timer_event_handler(nrf_timer_event_t event_type, void* p_context) {
+  switch (event_type) {
     case NRF_TIMER_EVENT_COMPARE0: {
       mpu9250_measurement_t measure = mpu9250_read_gyro();
-      if(measure.z_axis > 0.5 || measure.z_axis < -0.5) {
+      if (measure.z_axis > 0.5 || measure.z_axis < -0.5) {
         integrated_angle.z_axis += measure.z_axis*0.010;
       }
-      if(measure.x_axis > 0.5 || measure.x_axis < -0.5) {
+      if (measure.x_axis > 0.5 || measure.x_axis < -0.5) {
         integrated_angle.x_axis += measure.x_axis*0.010;
       }
-      if(measure.y_axis > 0.5 || measure.y_axis < -0.5) {
+      if (measure.y_axis > 0.5 || measure.y_axis < -0.5) {
         integrated_angle.y_axis += measure.y_axis*0.010;
       }
       break;
@@ -154,7 +155,7 @@ mpu9250_measurement_t mpu9250_read_magnetometer() {
 }
 
 ret_code_t mpu9250_start_gyro_integration() {
-  if(nrfx_timer_is_enabled(&gyro_timer)) {
+  if (nrfx_timer_is_enabled(&gyro_timer)) {
     return NRF_ERROR_INVALID_STATE;
   }
 
@@ -172,14 +173,11 @@ ret_code_t mpu9250_start_gyro_integration() {
   return NRF_SUCCESS;
 }
 
-ret_code_t mpu9250_stop_gyro_integration() {
+void mpu9250_stop_gyro_integration() {
   nrfx_timer_disable(&gyro_timer);
-  return NRF_SUCCESS;
 }
 
 mpu9250_measurement_t mpu9250_read_gyro_integration() {
   return integrated_angle;
 }
-
-
 

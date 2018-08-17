@@ -45,9 +45,7 @@ mpu9250_measurement_t mpu9250_read_magnetometer();
 ret_code_t mpu9250_start_gyro_integration();
 
 // Stop integration on the gyro
-//
-// Return an NRF error cord
-ret_code_t mpu9250_stop_gyro_integration();
+void mpu9250_stop_gyro_integration();
 
 // Read the value of the integrated gyro
 //
