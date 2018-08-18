@@ -1,6 +1,6 @@
-// Button and Switch app
+// Display app
 //
-// Uses a button and a switch to control LEDs
+// Write messages to a Newhaven OLED display over SPI
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -30,7 +30,7 @@ int main(void) {
   NRF_LOG_DEFAULT_BACKENDS_INIT();
   printf("Log initialized\n");
 
-  // initialize i2c master (two wire interface)
+  // initialize spi master
   nrf_drv_spi_t spi_instance = NRF_DRV_SPI_INSTANCE(1);
   nrf_drv_spi_config_t spi_config = {
 //    .sck_pin = BUCKLER_LCD_SCLK,
@@ -49,7 +49,7 @@ int main(void) {
   error_code = nrf_drv_spi_init(&spi_instance, &spi_config, NULL, NULL);
   APP_ERROR_CHECK(error_code);
 
-  // initialize MPU-9250 driver
+  // initialize display driver
   display_init(&spi_instance);
   printf("Display initialized\n");
   nrf_delay_ms(1000);
@@ -63,6 +63,5 @@ int main(void) {
     i += 7;
     nrf_delay_ms(10);
   }
-
 }
 

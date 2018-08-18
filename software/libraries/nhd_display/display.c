@@ -2,13 +2,13 @@
 //
 // Write to the display
 
-#include "string.h"
-
-#include "display.h"
+#include <string.h>
 
 #include "nrf_delay.h"
 #include "nrf_drv_spi.h"
 #include "app_error.h"
+
+#include "display.h"
 
 static nrf_drv_spi_t* spi_instance;
 
@@ -22,7 +22,9 @@ ret_code_t display_init(nrf_drv_spi_t* spi) {
   write[1] = 0b00000000;
   ret_code_t err_code = nrf_drv_spi_transfer(spi_instance, write, 2, NULL, 0);
   APP_ERROR_CHECK(err_code);
-  if(err_code != NRF_SUCCESS) return err_code;
+  if (err_code != NRF_SUCCESS) {
+    return err_code;
+  }
   nrf_delay_ms(10);
 
   // Turn display off
@@ -30,7 +32,9 @@ ret_code_t display_init(nrf_drv_spi_t* spi) {
   write[1] = 0b00000000;
   err_code = nrf_drv_spi_transfer(spi_instance, write, 2, NULL, 0);
   APP_ERROR_CHECK(err_code);
-  if(err_code != NRF_SUCCESS) return err_code;
+  if (err_code != NRF_SUCCESS) {
+    return err_code;
+  }
   nrf_delay_ms(10);
 
   // Clear display
@@ -38,7 +42,9 @@ ret_code_t display_init(nrf_drv_spi_t* spi) {
   write[1] = 0b01000000;
   err_code = nrf_drv_spi_transfer(spi_instance, write, 2, NULL, 0);
   APP_ERROR_CHECK(err_code);
-  if(err_code != NRF_SUCCESS) return err_code;
+  if (err_code != NRF_SUCCESS) {
+    return err_code;
+  }
   nrf_delay_ms(10);
 
   // Set entry mode to increment right no shift
@@ -46,7 +52,9 @@ ret_code_t display_init(nrf_drv_spi_t* spi) {
   write[1] = 0b10000000;
   err_code = nrf_drv_spi_transfer(spi_instance, write, 2, NULL, 0);
   APP_ERROR_CHECK(err_code);
-  if(err_code != NRF_SUCCESS) return err_code;
+  if (err_code != NRF_SUCCESS) {
+    return err_code;
+  }
   nrf_delay_ms(10);
 
   // Move cursor home
@@ -54,7 +62,9 @@ ret_code_t display_init(nrf_drv_spi_t* spi) {
   write[1] = 0b10000000;
   err_code = nrf_drv_spi_transfer(spi_instance, write, 2, NULL, 0);
   APP_ERROR_CHECK(err_code);
-  if(err_code != NRF_SUCCESS) return err_code;
+  if (err_code != NRF_SUCCESS) {
+    return err_code;
+  }
   nrf_delay_ms(10);
 
   // Move cursor home
@@ -62,7 +72,9 @@ ret_code_t display_init(nrf_drv_spi_t* spi) {
   write[1] = 0b01000000;
   err_code = nrf_drv_spi_transfer(spi_instance, write, 2, NULL, 0);
   APP_ERROR_CHECK(err_code);
-  if(err_code != NRF_SUCCESS) return err_code;
+  if (err_code != NRF_SUCCESS) {
+    return err_code;
+  }
   nrf_delay_ms(10);
 
   // Read the status bit
@@ -70,7 +82,9 @@ ret_code_t display_init(nrf_drv_spi_t* spi) {
   write[1] = 0b00000000;
   err_code = nrf_drv_spi_transfer(spi_instance, write, 2, NULL, 0);
   APP_ERROR_CHECK(err_code);
-  if(err_code != NRF_SUCCESS) return err_code;
+  if (err_code != NRF_SUCCESS) {
+    return err_code;
+  }
   nrf_delay_ms(10);
 
   return NRF_SUCCESS;
@@ -79,7 +93,7 @@ ret_code_t display_init(nrf_drv_spi_t* spi) {
 ret_code_t display_write(char* string, uint8_t row) {
 
   uint32_t len = strlen(string);
-  if(len > 16) {
+  if (len > 16) {
     return NRF_ERROR_INVALID_LENGTH;
   }
 
@@ -87,7 +101,7 @@ ret_code_t display_write(char* string, uint8_t row) {
   uint8_t write[2];
 
   ret_code_t err_code;
-  if(row == 0) {
+  if (row == 0) {
     // Set the screen to the correct character (0)
     write[0] = 0b00100000;
     write[1] = 0b00000000;
@@ -110,10 +124,10 @@ ret_code_t display_write(char* string, uint8_t row) {
   uint8_t base_char[2];
   base_char[0] = 0b10000000;
   base_char[1] = 0b00000000;
-  for(uint8_t i = 0; i < 16; i++) {
+  for (uint8_t i = 0; i < 16; i++) {
     char to_write;
 
-    if(i >= len) {
+    if (i >= len) {
       //write spaces as padding to clear that row
       to_write = ' ';
     } else {
@@ -126,7 +140,9 @@ ret_code_t display_write(char* string, uint8_t row) {
     write[1] = base_char[1] | (to_write << 6);
     err_code = nrf_drv_spi_transfer(spi_instance, write, 2, NULL, 0);
     APP_ERROR_CHECK(err_code);
-    if(err_code != NRF_SUCCESS) return err_code;
+    if (err_code != NRF_SUCCESS) {
+      return err_code;
+    }
   }
 
   return NRF_SUCCESS;

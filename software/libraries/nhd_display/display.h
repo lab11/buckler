@@ -4,8 +4,8 @@
 
 #pragma once
 
-#include "nrf_drv_spi.h"
 #include "app_error.h"
+#include "nrf_drv_spi.h"
 
 // Initialize the display
 //
@@ -17,3 +17,4 @@ ret_code_t display_init(nrf_drv_spi_t* spi);
 // Row may either be set to 0 or 1
 // Returns success or an error code
 ret_code_t display_write(char* string, uint8_t row);
+
