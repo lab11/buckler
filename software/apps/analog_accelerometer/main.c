@@ -58,14 +58,17 @@ int main (void) {
   channel_config.reference = NRF_SAADC_REFERENCE_INTERNAL; // 0.6 Volt reference
   channel_config.gain = NRF_SAADC_GAIN1_6; // multiply incoming signal by (1/6)
 
+  // specify input pin and initialize that ADC channel
   channel_config.pin_p = BUCKLER_ANALOG_ACCEL_X;
   error_code = nrfx_saadc_channel_init(X_CHANNEL, &channel_config);
   APP_ERROR_CHECK(error_code);
 
+  // specify input pin and initialize that ADC channel
   channel_config.pin_p = BUCKLER_ANALOG_ACCEL_Y;
   error_code = nrfx_saadc_channel_init(Y_CHANNEL, &channel_config);
   APP_ERROR_CHECK(error_code);
 
+  // specify input pin and initialize that ADC channel
   channel_config.pin_p = BUCKLER_ANALOG_ACCEL_Z;
   error_code = nrfx_saadc_channel_init(Z_CHANNEL, &channel_config);
   APP_ERROR_CHECK(error_code);
@@ -80,22 +83,9 @@ int main (void) {
     nrf_saadc_value_t y_val = sample_value(Y_CHANNEL);
     nrf_saadc_value_t z_val = sample_value(Z_CHANNEL);
 
-    // convert to voltage
-    // (2^12) * ((0.6) / (signal * (1/6))) = ADC counts
-    // (0.6) / (1/6) * (ADC_counts) / (2^12) = signal
-    float x_volts = (3.6/4096)*x_val;
-    float y_volts = (3.6/4096)*y_val;
-    float z_volts = (3.6/4096)*z_val;
-
-    // convert to g
-    // value is centered at 2.9/2 = 1.45 volts
-    // 420 mV/g at 3 volts -> 406 mV/g at 2.9 volts
-    float x_g = (x_volts - 1.450) / 0.406;
-    float y_g = (y_volts - 1.450) / 0.406;
-    float z_g = (z_volts - 1.450) / 0.406;
-
     // display results
-    printf("x (g): %f\ty (g): %f\tz (g):%f\n", x_g, y_g, z_g);
+    printf("x: %d\ty: %d\tz:%d\n", x_val, y_val, z_val);
   }
 }
+
 
