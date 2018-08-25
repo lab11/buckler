@@ -21,8 +21,8 @@ int kobukiInit() {
 
   const app_uart_comm_params_t comm_params =
   {
-    BUCKLER_UART_TX,
     BUCKLER_UART_RX,
+    BUCKLER_UART_TX,
     0,
     0,
     APP_UART_FLOW_CONTROL_DISABLED,
