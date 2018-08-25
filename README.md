@@ -4,3 +4,99 @@ Berkeley Buckler
 [![Build Status](https://travis-ci.org/lab11/buckler.svg?branch=master)](https://travis-ci.org/lab11/buckler)
 
 A development board for teaching embedded systems.
+
+![Buckler PCB](media/buckler_revB.png)
+
+### Getting Started
+
+ 1. Clone this repository and update the submodule
+
+```
+  $ git clone https://github.com/lab11/buckler.git --recursive
+  $ git subomdule update --init --recursive
+```
+
+ 2. Build an example application
+
+```
+  $ cd software/apps/blink/
+  $ make
+```
+
+You should see results similar to
+
+```
+BUILD OPTIONS:
+  Chip        nrf52832
+  RAM         64 kB
+  FLASH       512 kB
+  SDK         15
+  SoftDevice  s132 6.0.0
+  Board       Buckler_revB
+
+ DIR        _build
+CC main.c ...
+... (many more CCs) ...
+LD _build/blink_sdk15_s132.elf
+HEX _build/blink_sdk15_s132.hex
+BIN _build/blink_sdk15_s132.hex
+SIZE _build/blink_sdk15_s132.elf
+text data bss dec hex filename
+37672 2548 2624 42844 a75c _build/blink_sdk15_s132.elf
+```
+
+ 3. Load the example application (be sure to connect your Buckler board)
+
+```
+  $ make flash
+```
+
+The three LEDS (Red, Yellow, and Blue) on Buckler should begin a blinking
+sequence.
+
+
+### Build Options
+
+Several make directives exist for convenience of performing common operations.
+
+ * **flash** - Upload code to the attached board over JTAG.
+ * **rtt** - Open two additional terminals, one starting a JTAG connection and
+             the other with an RTT terminal.
+ * **gdb** - Open two additional terminals, one starting a GDB server and the
+		     the other with a GDB session.
+ * **debug** - Build application in unoptimized debug mode (with `-g` and `-O0`).
+ * **flash_debug** - Upload debug version of code to the attached board over JTAG.
+ * **erase** - Erase all code from the attached board over JTAG.
+ * **flash_softdevice** - Upload the appropriate softdevice to the board over JTAG.
+						  This is automatically run when `make flash` is called.
+ * **clean** - Remove all built output.
+ * **size** - Print size of built application text and data segments.
+ * **lst** - Generate an assembly listing of the built code.
+
+
+### Directory Structure
+
+```
+├── hardware
+│   └── <Various hardware revisions>
+│       ├── <PDF version of schematic and layout>
+│       ├── <Eagle schematic and layout files>
+│       └── <Zipped assembly files>
+├── media
+│   └── <Images used in repo>
+└── software
+    ├── apps
+    │   └── <Various applications>
+    │       ├── <Code for application>
+    │       └── <Makefile for application>
+    ├── boards
+    │   └── <Board-specific headers and Makefiles>
+    ├── libraries
+    │   └── <Various libraries>
+    ├── nrf5x-base
+    │   └── <Submodule: build tools and files for nRF projects>
+    └── tools
+        └── <Tools for Travis-CI use>
+```
+
+
