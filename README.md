@@ -35,14 +35,14 @@ BUILD OPTIONS:
   Board       Buckler_revB
 
  DIR        _build
-CC main.c ...
-... (many more CCs) ...
-LD _build/blink_sdk15_s132.elf
-HEX _build/blink_sdk15_s132.hex
-BIN _build/blink_sdk15_s132.hex
-SIZE _build/blink_sdk15_s132.elf
-text data bss dec hex filename
-37672 2548 2624 42844 a75c _build/blink_sdk15_s132.elf
+ CC main.c ...
+ ... (many more CCs) ...
+ LD _build/blink_sdk15_s132.elf
+ HEX _build/blink_sdk15_s132.hex
+ BIN _build/blink_sdk15_s132.hex
+ SIZE _build/blink_sdk15_s132.elf
+ text    data    bss     dec    hex   filename
+ 37672   2548   2624   42844   a75c   _build/blink_sdk15_s132.elf
 ```
 
  3. Load the example application (be sure to connect your Buckler board)
@@ -51,7 +51,7 @@ text data bss dec hex filename
   $ make flash
 ```
 
-The three LEDS (Red, Yellow, and Blue) on Buckler should begin a blinking
+The three LEDS (red, yellow, and blue) on Buckler should begin a blinking
 sequence.
 
 
@@ -59,16 +59,18 @@ sequence.
 
 Several make directives exist for convenience of performing common operations.
 
- * **flash** - Upload code to the attached board over JTAG.
+ * **flash** - Upload code to the attached board over JTAG. Also builds code if
+               necessary.
  * **rtt** - Open two additional terminals, one starting a JTAG connection and
              the other with an RTT terminal.
  * **gdb** - Open two additional terminals, one starting a GDB server and the
 		     the other with a GDB session.
  * **debug** - Build application in unoptimized debug mode (with `-g` and `-O0`).
  * **flash_debug** - Upload debug version of code to the attached board over JTAG.
+				     Also builds the debug version of code if necessary.
  * **erase** - Erase all code from the attached board over JTAG.
  * **flash_softdevice** - Upload the appropriate softdevice to the board over JTAG.
-						  This is automatically run when `make flash` is called.
+						  `make flash` automatically runs this command.
  * **clean** - Remove all built output.
  * **size** - Print size of built application text and data segments.
  * **lst** - Generate an assembly listing of the built code.
