@@ -81,3 +81,4 @@ BOARD_SOURCES += \
 	mmc_nrf.c\
 
 endif
+
