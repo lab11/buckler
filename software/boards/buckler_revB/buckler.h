@@ -44,6 +44,16 @@
 #define BUCKLER_SD_MOSI   NRF_GPIO_PIN_MAP(0,11)
 #define BUCKLER_SD_CS     NRF_GPIO_PIN_MAP(0,14)
 
+// Re-define GPIOs for compatibility with simple_logger
+#define SD_CARD_ENABLE      BUCKLER_SD_ENABLE
+#define SD_CARD_SPI_CS      BUCKLER_SD_CS
+#define SD_CARD_SPI_MISO    BUCKLER_SD_MISO
+#define SD_CARD_SPI_MOSI    BUCKLER_SD_MOSI
+#define SD_CARD_SPI_SCLK    BUCKLER_SD_SCLK
+
+// Define which SPI to use
+#define SD_CARD_SPI_INSTANCE    NRF_SPI1
+
 // UART serial connection (to Kobuki)
 #define BUCKLER_UART_RX NRF_GPIO_PIN_MAP(0,8)
 #define BUCKLER_UART_TX NRF_GPIO_PIN_MAP(0,6)

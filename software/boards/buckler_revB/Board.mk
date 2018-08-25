@@ -4,6 +4,10 @@
 ifndef BOARD_MAKEFILE
 BOARD_MAKEFILE = 1
 
+# Board-specific configurations
+BOARD = Buckler_revB
+USE_BLE = 1
+
 # Get directory of this makefile
 BOARD_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
@@ -11,18 +15,19 @@ BOARD_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BOARD_SOURCE_PATHS = $(BOARD_DIR)/.
 BOARD_SOURCE_PATHS += $(wildcard $(BOARD_DIR)/../../libraries/*/)
 BOARD_HEADER_PATHS = $(BOARD_DIR)/.
+BOARD_HEADER_PATHS += $(BOARD_DIR)/../.
 BOARD_HEADER_PATHS += $(wildcard $(BOARD_DIR)/../../libraries/*/)
 BOARD_LINKER_PATHS = $(BOARD_DIR)/.
 BOARD_SOURCES = $(notdir $(wildcard $(BOARD_DIR)/./*.c))
 BOARD_SOURCES += $(notdir $(wildcard $(BOARD_DIR)/../../libraries/*/*.c))
 BOARD_AS = $(notdir $(wildcard $(BOARD_DIR)/./*.s))
 
-# Board-specific configurations
-BOARD = Buckler_revB
-USE_BLE = 1
+# Convert board to upper case
+BOARD_UPPER = $(shell echo $(BOARD) | tr a-z A-Z)
 
 # Additional #define's to be added to code by the compiler
 BOARD_VARS = \
+	BOARD_$(BOARD_UPPER)\
 	USE_APP_CONFIG\
 	DEBUG\
 	DEBUG_NRF\
@@ -71,6 +76,8 @@ BOARD_SOURCES += \
 	SEGGER_RTT.c\
 	SEGGER_RTT_Syscalls_GCC.c\
 	SEGGER_RTT_printf.c\
+	simple_logger.c\
+	ff.c\
+	mmc_nrf.c\
 
 endif
-
