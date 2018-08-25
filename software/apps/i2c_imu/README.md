@@ -16,3 +16,5 @@ Angle  (degrees):     -3.116	   -27.238	     0.000
 Magnetism   (uT):      0.000	    33.000	   -13.800
 ```
 
+nRF TWIM (Two Wire Interface Master) [API documentation](https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v15.1.0%2Fgroup__nrfx__twim.html)
+
