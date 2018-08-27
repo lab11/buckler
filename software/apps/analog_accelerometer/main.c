@@ -85,6 +85,7 @@ int main (void) {
 
     // display results
     printf("x: %d\ty: %d\tz:%d\n", x_val, y_val, z_val);
+    nrf_delay_ms(1);
   }
 }
 
