@@ -59,7 +59,6 @@ BOARD_SOURCES += \
 	nrf_pwr_mgmt.c\
 	nrf_memobj.c\
 	nrf_section_iter.c\
-	nrf_sdh.c\
 	nrf_serial.c\
 	nrf_strerror.c\
 	nrf_queue.c\
@@ -79,6 +78,10 @@ BOARD_SOURCES += \
 	simple_logger.c\
 	ff.c\
 	mmc_nrf.c\
+
+ifneq ($(SOFTDEVICE_MODEL),blank)
+BOARD_SOURCES += nrf_sdh.c
+endif
 
 endif
 
