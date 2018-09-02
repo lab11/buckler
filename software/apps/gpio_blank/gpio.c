@@ -1,0 +1,28 @@
+#include "gpio.h"
+
+// Inputs: 
+//  gpio_num - gpio number 0-31
+//  dir - gpio direction (INPUT, OUTPUT)
+void gpio_config(uint8_t gpio_num, gpio_direction_t dir) {
+
+}
+
+// Inputs: 
+//  gpio_num - gpio number 0-31
+void gpio_set(uint8_t gpio_num) {
+
+}
+
+// Inputs: 
+//  gpio_num - gpio number 0-31
+void gpio_clear(uint8_t gpio_num) {
+
+}
+
+// Inputs: 
+//  gpio_num - gpio number 0-31
+uint8_t gpio_read(uint8_t gpio_num) {
+
+    //should return state of gpio pin instead of 0
+    return 0;
+}
