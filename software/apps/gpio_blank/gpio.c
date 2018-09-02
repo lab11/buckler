@@ -21,8 +21,7 @@ void gpio_clear(uint8_t gpio_num) {
 
 // Inputs: 
 //  gpio_num - gpio number 0-31
-uint8_t gpio_read(uint8_t gpio_num) {
-
-    //should return state of gpio pin instead of 0
+bool gpio_read(uint8_t gpio_num) {
+    // should return pin state
     return 0;
 }

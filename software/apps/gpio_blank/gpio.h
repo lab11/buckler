@@ -1,6 +1,7 @@
 #pragma once
 
 #include "nrf.h"
+#include "stdbool.h"
 
 typedef enum {
     INPUT = 0,
@@ -24,4 +25,4 @@ void gpio_clear(uint8_t gpio_num);
 //  gpio_num - gpio number 0-31
 // Returns:
 //  current state of the specified gpio pin
-uint8_t gpio_read(uint8_t gpio_num);
+bool gpio_read(uint8_t gpio_num);
