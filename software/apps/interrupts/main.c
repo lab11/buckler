@@ -11,6 +11,7 @@
 #include "nrf.h"
 #include "nrf_delay.h"
 #include "nrf_log.h"
+#include "nrf_gpio.h"
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 #include "nrf_pwr_mgmt.h"
@@ -18,6 +19,10 @@
 #include "math.h"
 
 #include "buckler.h"
+
+void GPIOTE_IRQHandler(void) {
+    NRF_GPIOTE->EVENTS_IN[0] = 0;
+}
 
 int main(void) {
   ret_code_t error_code = NRF_SUCCESS;
@@ -30,7 +35,8 @@ int main(void) {
 
   // loop forever
   while (1) {
-    printf("Looping again\n");
+    printf("Looping\n");
+    nrf_delay_ms(1000);
   }
 }
 
