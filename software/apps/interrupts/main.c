@@ -16,9 +16,13 @@
 #include "nrf_log_default_backends.h"
 #include "nrf_pwr_mgmt.h"
 #include "nrf_serial.h"
-#include "math.h"
+#include "software_interrupt.h"
 
 #include "buckler.h"
+
+void SWI1_EGU1_IRQHandler(void) {
+    NRF_EGU1->EVENTS_TRIGGERED[0] = 0;
+}
 
 void GPIOTE_IRQHandler(void) {
     NRF_GPIOTE->EVENTS_IN[0] = 0;
