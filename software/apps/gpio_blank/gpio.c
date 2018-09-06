@@ -7,12 +7,14 @@ void gpio_config(uint8_t gpio_num, gpio_direction_t dir) {
 
 }
 
+// Set gpio_num high
 // Inputs: 
 //  gpio_num - gpio number 0-31
 void gpio_set(uint8_t gpio_num) {
 
 }
 
+// Set gpio_num low
 // Inputs: 
 //  gpio_num - gpio number 0-31
 void gpio_clear(uint8_t gpio_num) {
