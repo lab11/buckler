@@ -40,7 +40,6 @@ int main(void) {
   error_code = NRF_LOG_INIT(NULL);
   APP_ERROR_CHECK(error_code);
   NRF_LOG_DEFAULT_BACKENDS_INIT();
-  nrf_delay_ms(3000);
   printf("Board initialized!\n");
 
   // You can use the NRF GPIO library to test your timers
@@ -50,6 +49,7 @@ int main(void) {
 
   // Don't forget to initialize your timer library
   virtual_timer_init();
+  nrf_delay_ms(3000);
 
   // Setup some timers and see what happens
   //virtual_timer_start_repeated(1000000, led0_toggle);
