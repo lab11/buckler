@@ -46,7 +46,7 @@ void virtual_timer_init(void) {
 // 4) Setup the compare register so that the timer fires at the right time
 // 5) Return a timer ID
 //
-// You're implementation will also have to take special precautions to make sure that
+// Your implementation will also have to take special precautions to make sure that
 //  - You do not miss any timers
 //  - You do not cause consistency issues in the linked list (hint: you may need the `__disable_irq()` and `__enable_irq()` functions).
 //
