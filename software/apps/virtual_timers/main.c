@@ -1,6 +1,7 @@
-// Blink app
+// Virtual timers
 //
-// Blinks the LEDs on Buckler
+// Uses a single hardware timer to create an unlimited supply of virtual
+//  software timers
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -10,13 +11,12 @@
 #include "app_timer.h"
 #include "nrf.h"
 #include "nrf_delay.h"
-#include "nrf_log.h"
 #include "nrf_gpio.h"
+#include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 #include "nrf_pwr_mgmt.h"
 #include "nrf_serial.h"
-#include "math.h"
 
 #include "buckler.h"
 #include "virtual_timer.h"
@@ -40,6 +40,7 @@ int main(void) {
   error_code = NRF_LOG_INIT(NULL);
   APP_ERROR_CHECK(error_code);
   NRF_LOG_DEFAULT_BACKENDS_INIT();
+  printf("Board initialized!\n");
 
   // You can use the NRF GPIO library to test your timers
   nrf_gpio_pin_dir_set(BUCKLER_LED0, NRF_GPIO_PIN_DIR_OUTPUT);
@@ -53,8 +54,9 @@ int main(void) {
   //virtual_timer_start_repeated(1000000, led0_toggle);
   //virtual_timer_start_repeated(2000000, led1_toggle);
 
-  // You shouldn't need to do anything in your while loop.
-  // Use your timers instead.
-  while (1);
+  // loop forever
+  while (1) {
+    nrf_delay_ms(1000);
+  }
 }
 
