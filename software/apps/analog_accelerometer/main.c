@@ -55,8 +55,8 @@ int main (void) {
   // initialize analog inputs
   // configure with 0 as input pin for now
   nrf_saadc_channel_config_t channel_config = NRFX_SAADC_DEFAULT_CHANNEL_CONFIG_SE(0);
-  channel_config.reference = NRF_SAADC_REFERENCE_INTERNAL; // 0.6 Volt reference
-  channel_config.gain = NRF_SAADC_GAIN1_6; // multiply incoming signal by (1/6)
+  channel_config.gain = NRF_SAADC_GAIN1_6; // input gain of 1/6 Volts/Volt, multiply incoming signal by (1/6)
+  channel_config.reference = NRF_SAADC_REFERENCE_INTERNAL; // 0.6 Volt reference, input after gain can be 0 to 0.6 Volts
 
   // specify input pin and initialize that ADC channel
   channel_config.pin_p = BUCKLER_ANALOG_ACCEL_X;
