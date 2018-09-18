@@ -6,6 +6,8 @@
 #include "nrf_uarte.h"
 #include "buckler.h"
 
+#include "kobukiSensorTypes.h"
+
 static void uart_error_handle (app_uart_evt_t * p_event) {
     if (p_event->evt_type == APP_UART_COMMUNICATION_ERROR) {
         //APP_ERROR_HANDLER(p_event->data.error_communication);
@@ -64,3 +66,37 @@ uint8_t checkSum(uint8_t * buffer, int length){
     //printf("\n last[%d]=%d cs=%d",i,buffer[i],cs);
     return cs;
 }
+
+// checks for the state change of a button press on any of the Kobuki buttons
+bool is_button_pressed(KobukiSensors_t* sensors) {
+  // save previous states of buttons
+  static bool previous_B0 = false;
+  static bool previous_B1 = false;
+  static bool previous_B2 = false;
+
+  bool result = false;
+
+  // check B0
+  bool current_B0 = sensors->buttons.B0;
+  if (current_B0 && previous_B0 != current_B0) {
+    result = true;
+  }
+  previous_B0 = current_B0;
+
+  // check B1
+  bool current_B1 = sensors->buttons.B1;
+  if (current_B1 && previous_B1 != current_B1) {
+    result = true;
+  }
+  previous_B1 = current_B1;
+
+  // check B2
+  bool current_B2 = sensors->buttons.B2;
+  if (current_B2 && previous_B2 != current_B2) {
+    result = true;
+  }
+  previous_B2 = current_B2;
+
+  return result;
+}
+
