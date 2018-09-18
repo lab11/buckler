@@ -90,7 +90,7 @@ ret_code_t display_init(nrf_drv_spi_t* spi) {
   return NRF_SUCCESS;
 }
 
-ret_code_t display_write(char* string, uint8_t row) {
+ret_code_t display_write(const char* string, uint8_t row) {
 
   uint32_t len = strlen(string);
   if (len > 16) {
