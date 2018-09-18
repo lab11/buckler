@@ -4,8 +4,8 @@
 
 #pragma once
 
-#include "nrfx_twim.h"
 #include "app_error.h"
+#include "nrf_twi_mngr.h"
 
 // Types
 
@@ -21,7 +21,7 @@ typedef struct {
 // Initialize and configure the MPU-9250
 //
 // i2c - pointer to already initialized and enabled twim instance
-void mpu9250_init(nrfx_twim_t* i2c);
+void mpu9250_init(const nrf_twi_mngr_t* i2c);
 
 // Read all three axes on the accelerometer
 //

@@ -61,6 +61,7 @@ BOARD_SOURCES += \
 	nrf_section_iter.c\
 	nrf_serial.c\
 	nrf_strerror.c\
+	nrf_twi_mngr.c\
 	nrf_queue.c\
 	nrfx_gpiote.c\
 	nrfx_prs.c\

@@ -30,6 +30,9 @@ static uint8_t LEDS[3] = {BUCKLER_LED0, BUCKLER_LED1, BUCKLER_LED2};
 #define Y_CHANNEL 1
 #define Z_CHANNEL 2
 
+// I2C manager
+NRF_TWI_MNGR_DEF(twi_mngr_instance, 5, 0);
+
 // handler called whenever an input pin changes
 void pin_change_handler(nrfx_gpiote_pin_t _pin, nrf_gpiote_polarity_t _action) {
   if (nrfx_gpiote_in_is_set(BUCKLER_SWITCH0)) {
@@ -118,20 +121,15 @@ int main(void) {
   APP_ERROR_CHECK(error_code);
 
   // initialize i2c master (two wire interface)
-  nrfx_twim_t i2c_instance = NRFX_TWIM_INSTANCE(0);
-  nrfx_twim_config_t i2c_config = {
-    .scl = BUCKLER_SENSORS_SCL,
-    .sda = BUCKLER_SENSORS_SDA,
-    .frequency = NRF_TWIM_FREQ_100K,
-    .interrupt_priority = NRFX_TWIM_DEFAULT_CONFIG_IRQ_PRIORITY,
-    .hold_bus_uninit = false,
-  };
-  error_code = nrfx_twim_init(&i2c_instance, &i2c_config, NULL, NULL);
+  nrf_drv_twi_config_t i2c_config = NRF_DRV_TWI_DEFAULT_CONFIG;
+  i2c_config.scl = BUCKLER_SENSORS_SCL;
+  i2c_config.sda = BUCKLER_SENSORS_SDA;
+  i2c_config.frequency = NRF_TWIM_FREQ_100K;
+  error_code = nrf_twi_mngr_init(&twi_mngr_instance, &i2c_config);
   APP_ERROR_CHECK(error_code);
-  nrfx_twim_enable(&i2c_instance);
 
   // initialize MPU-9250 driver
-  mpu9250_init(&i2c_instance);
+  mpu9250_init(&twi_mngr_instance);
   printf("MPU-9250 initialized\n");
 
 

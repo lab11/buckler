@@ -11,65 +11,59 @@
 #include "app_error.h"
 #include "nrf.h"
 #include "nrf_delay.h"
-#include "nrfx_twim.h"
 #include "nrf_drv_timer.h"
+#include "nrf_twi_mngr.h"
 
 #include "mpu9250.h"
 
 static uint8_t MPU_ADDRESS = 0x68;
 static uint8_t MAG_ADDRESS = 0x0C;
 
-static nrfx_twim_t* i2c_instance = NULL;
+static const nrf_twi_mngr_t* i2c_manager = NULL;
 
 // rotation tracking variables
 static const nrf_drv_timer_t gyro_timer = NRFX_TIMER_INSTANCE(1);
 static mpu9250_measurement_t integrated_angle;
+static uint32_t prev_timer_val;
 
 static void gyro_timer_event_handler(nrf_timer_event_t event_type, void* p_context) {
-  switch (event_type) {
-    case NRF_TIMER_EVENT_COMPARE0: {
-      mpu9250_measurement_t measure = mpu9250_read_gyro();
-      if (measure.z_axis > 0.5 || measure.z_axis < -0.5) {
-        integrated_angle.z_axis += measure.z_axis*0.010;
-      }
-      if (measure.x_axis > 0.5 || measure.x_axis < -0.5) {
-        integrated_angle.x_axis += measure.x_axis*0.010;
-      }
-      if (measure.y_axis > 0.5 || measure.y_axis < -0.5) {
-        integrated_angle.y_axis += measure.y_axis*0.010;
-      }
-      break;
-    }
-    default: {
-      //Do nothing.
-      break;
-    }
-  }
+  // don't care about events
 }
 
 static uint8_t i2c_reg_read(uint8_t i2c_addr, uint8_t reg_addr) {
   uint8_t rx_buf = 0;
-  nrfx_twim_xfer_desc_t xfer = NRFX_TWIM_XFER_DESC_TXRX(i2c_addr,
-      &reg_addr, 1, &rx_buf, 1);
-  ret_code_t error_code = nrfx_twim_xfer(i2c_instance, &xfer, 0);
+  nrf_twi_mngr_transfer_t const read_transfer[] = {
+    NRF_TWI_MNGR_WRITE(i2c_addr, &reg_addr, 1, NRF_TWI_MNGR_NO_STOP),
+    NRF_TWI_MNGR_READ(i2c_addr, &rx_buf, 1, 0),
+  };
+  ret_code_t error_code = nrf_twi_mngr_perform(i2c_manager, NULL, read_transfer, 2, NULL);
   APP_ERROR_CHECK(error_code);
   return rx_buf;
 }
 
 static void i2c_reg_write(uint8_t i2c_addr, uint8_t reg_addr, uint8_t data) {
   uint8_t buf[2] = {reg_addr, data};
-  nrfx_twim_xfer_desc_t xfer = NRFX_TWIM_XFER_DESC_TX(i2c_addr, buf, 2);
-  ret_code_t error_code = nrfx_twim_xfer(i2c_instance, &xfer, 0);
+  nrf_twi_mngr_transfer_t const write_transfer[] = {
+    NRF_TWI_MNGR_WRITE(i2c_addr, buf, 2, 0),
+  };
+  ret_code_t error_code = nrf_twi_mngr_perform(i2c_manager, NULL, write_transfer, 1, NULL);
   APP_ERROR_CHECK(error_code);
 }
 
 // initialization and configuration
-void mpu9250_init(nrfx_twim_t* i2c) {
-  i2c_instance = i2c;
+void mpu9250_init(const nrf_twi_mngr_t* i2c) {
+  i2c_manager = i2c;
 
   // initialize a timer - the default frequency is 16MHz
-  nrf_drv_timer_config_t timer_cfg = NRF_DRV_TIMER_DEFAULT_CONFIG;
-  ret_code_t error_code = nrf_drv_timer_init(&gyro_timer, &timer_cfg, gyro_timer_event_handler);
+  nrf_drv_timer_config_t timer_cfg = {
+    .frequency          = NRF_TIMER_FREQ_1MHz,
+    .mode               = NRF_TIMER_MODE_TIMER,
+    .bit_width          = NRF_TIMER_BIT_WIDTH_32,
+    .interrupt_priority = NRFX_TIMER_DEFAULT_CONFIG_IRQ_PRIORITY,
+    .p_context          = NULL,
+  };
+  //ret_code_t error_code = nrf_drv_timer_init(&gyro_timer, &timer_cfg, gyro_timer_event_handler);
+  ret_code_t error_code = nrfx_timer_init(&gyro_timer, &timer_cfg, gyro_timer_event_handler);
   APP_ERROR_CHECK(error_code);
 
   // reset mpu
@@ -134,9 +128,11 @@ mpu9250_measurement_t mpu9250_read_magnetometer() {
   // must read 8 bytes starting at the first status register
   uint8_t reg_addr = AK8963_ST1;
   uint8_t rx_buf[8] = {0};
-  nrfx_twim_xfer_desc_t xfer = NRFX_TWIM_XFER_DESC_TXRX(MAG_ADDRESS,
-      &reg_addr, 1, rx_buf, 8);
-  ret_code_t error_code = nrfx_twim_xfer(i2c_instance, &xfer, 0);
+  nrf_twi_mngr_transfer_t const read_transfer[] = {
+    NRF_TWI_MNGR_WRITE(MAG_ADDRESS, &reg_addr, 1, NRF_TWI_MNGR_NO_STOP),
+    NRF_TWI_MNGR_READ(MAG_ADDRESS, rx_buf, 8, 0),
+  };
+  ret_code_t error_code = nrf_twi_mngr_perform(i2c_manager, NULL, read_transfer, 2, NULL);
   APP_ERROR_CHECK(error_code);
 
   // determine values
@@ -164,11 +160,9 @@ ret_code_t mpu9250_start_gyro_integration() {
   integrated_angle.y_axis = 0;
   integrated_angle.x_axis = 0;
 
-  uint32_t time_ticks = nrf_drv_timer_ms_to_ticks(&gyro_timer, 10);
-  nrf_drv_timer_extended_compare(&gyro_timer, NRF_TIMER_CC_CHANNEL0, time_ticks,
-                                  NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, true);
-
+  nrfx_timer_clear(&gyro_timer);
   nrfx_timer_enable(&gyro_timer);
+  prev_timer_val = 0;
 
   return NRF_SUCCESS;
 }
@@ -178,6 +172,20 @@ void mpu9250_stop_gyro_integration() {
 }
 
 mpu9250_measurement_t mpu9250_read_gyro_integration() {
+  uint32_t curr_timer_val = nrfx_timer_capture(&gyro_timer, NRF_TIMER_CC_CHANNEL0);
+  float time_diff = ((float)(curr_timer_val - prev_timer_val))/1000000.0;
+  //printf("curr %lu prev %lu diff %f\n", curr_timer_val, prev_timer_val, time_diff);
+  prev_timer_val = curr_timer_val;
+  mpu9250_measurement_t measure = mpu9250_read_gyro();
+  if (measure.z_axis > 0.5 || measure.z_axis < -0.5) {
+    integrated_angle.z_axis += measure.z_axis*time_diff;
+  }
+  if (measure.x_axis > 0.5 || measure.x_axis < -0.5) {
+    integrated_angle.x_axis += measure.x_axis*time_diff;
+  }
+  if (measure.y_axis > 0.5 || measure.y_axis < -0.5) {
+    integrated_angle.y_axis += measure.y_axis*time_diff;
+  }
   return integrated_angle;
 }
 

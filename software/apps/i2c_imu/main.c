@@ -15,11 +15,14 @@
 #include "nrf_log_default_backends.h"
 #include "nrf_pwr_mgmt.h"
 #include "nrf_serial.h"
+#include "nrf_twi_mngr.h"
 #include "nrfx_gpiote.h"
-#include "nrfx_twim.h"
 
 #include "buckler.h"
 #include "mpu9250.h"
+
+// I2C manager
+NRF_TWI_MNGR_DEF(twi_mngr_instance, 5, 0);
 
 int main(void) {
   ret_code_t error_code = NRF_SUCCESS;
@@ -31,20 +34,15 @@ int main(void) {
   printf("Log initialized\n");
 
   // initialize i2c master (two wire interface)
-  nrfx_twim_t i2c_instance = NRFX_TWIM_INSTANCE(0);
-  nrfx_twim_config_t i2c_config = {
-    .scl = BUCKLER_SENSORS_SCL,
-    .sda = BUCKLER_SENSORS_SDA,
-    .frequency = NRF_TWIM_FREQ_100K,
-    .interrupt_priority = NRFX_TWIM_DEFAULT_CONFIG_IRQ_PRIORITY,
-    .hold_bus_uninit = false,
-  };
-  error_code = nrfx_twim_init(&i2c_instance, &i2c_config, NULL, NULL);
+  nrf_drv_twi_config_t i2c_config = NRF_DRV_TWI_DEFAULT_CONFIG;
+  i2c_config.scl = BUCKLER_SENSORS_SCL;
+  i2c_config.sda = BUCKLER_SENSORS_SDA;
+  i2c_config.frequency = NRF_TWIM_FREQ_100K;
+  error_code = nrf_twi_mngr_init(&twi_mngr_instance, &i2c_config);
   APP_ERROR_CHECK(error_code);
-  nrfx_twim_enable(&i2c_instance);
 
   // initialize MPU-9250 driver
-  mpu9250_init(&i2c_instance);
+  mpu9250_init(&twi_mngr_instance);
   printf("MPU-9250 initialized\n");
 
   // loop forever
