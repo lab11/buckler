@@ -99,27 +99,27 @@ int main(void) {
     // handle states
     switch(state) {
       case OFF: {
-        display_write("OFF", DISPLAY_LINE_0);
-
         // transition logic
         if (is_button_pressed(&sensors)) {
           state = DRIVING;
         } else {
-          state = OFF;
           // perform state-specific actions here
+          display_write("OFF", DISPLAY_LINE_0);
+
+          state = OFF;
         }
         break; // each case needs to end with break!
       }
 
       case DRIVING: {
-        display_write("DRIVING", DISPLAY_LINE_0);
-
         // transition logic
         if (is_button_pressed(&sensors)) {
           state = OFF;
         } else {
-          state = DRIVING;
           // perform state-specific actions here
+          display_write("DRIVING", DISPLAY_LINE_0);
+
+          state = DRIVING;
         }
         break; // each case needs to end with break!
       }
