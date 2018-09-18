@@ -2,6 +2,7 @@
 //
 // Framework for creating applications that control the Kobuki robot
 
+#include <math.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
