@@ -49,6 +49,9 @@ void mpu9250_stop_gyro_integration();
 
 // Read the value of the integrated gyro
 //
+// Note: this function also performs the integration and needs to be called
+// periodically
+//
 // Return the integrated value as floating point in degrees
 mpu9250_measurement_t mpu9250_read_gyro_integration();
 
