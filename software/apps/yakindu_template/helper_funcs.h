@@ -35,4 +35,6 @@ extern void start_gyro();
 extern float read_gyro();
 extern void stop_gyro();
 
+extern float get_abs(float var);
+
 #endif /* HELPER_FUNCS_H_ */

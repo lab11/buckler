@@ -8,6 +8,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <math.h>
 
 #include "helper_funcs.h"
 #include "states.h"
@@ -64,15 +65,15 @@ float update_dist(float dist, uint16_t prev_encoder, bool is_forward){
 }
 
 void drive_kobuki(bool is_forward){
-    // Your code here
+	// Your code here
 }
 
 void stop_kobuki(){
-    // Your code here
+	// Your code here
 }
 
 void turn_kobuki(bool is_clockwise){
-    // Your code here
+	// Your code here
 }
 
 bool is_left_bumper(){
@@ -136,7 +137,6 @@ void print_state(states current_state){
 			display_write("REORIENT", DISPLAY_LINE_0);
 			break;
 	}
-    // Add more cases if you need to print more states
 }
 
 void print_turn(turns current_turn){
@@ -152,3 +152,11 @@ void print_turn(turns current_turn){
 			break;
 	}
 }
+
+float get_abs(float var){
+	return abs(var);
+}
+
+
+
+
