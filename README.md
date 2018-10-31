@@ -101,4 +101,23 @@ Several make directives exist for convenience of performing common operations.
         └── <Tools for Travis-CI use>
 ```
 
+### Software Requirements
 
+In order to get code compiling and loading over JTAG, you'll need at least two tools.
+
+**JLinkExe** should be installed from [here](https://www.segger.com/downloads/jlink).
+You want to the "J-Link Software and Documentation Pack". There are various packages
+available depending on operating system.
+ 
+ 
+**arm-none-eabi-gcc** is the cross-compiler version of GCC for building embedded ARM code.
+
+  MacOS:
+  ```
+  $ brew tap ARMmbed/homebrew-formulae && brew update && brew install arm-none-eabi-gcc
+  ```
+
+  Ubuntu:
+  ```
+  $ sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa && sudo apt update && sudo apt install gcc-arm-embedded
+  ```
