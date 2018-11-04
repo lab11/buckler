@@ -101,6 +101,12 @@ Several make directives exist for convenience of performing common operations.
         └── <Tools for Travis-CI use>
 ```
 
+### Project Repositories
+
+If you are using Buckler for a project, we recommend you include it as a
+submodule in your own repository. An example of how to do so can be found in:
+[buckler-external-repo](https://github.com/brghena/buckler-external-repo)
+
 ### Software Requirements
 
 In order to get code compiling and loading over JTAG, you'll need at least two tools.
