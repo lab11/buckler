@@ -34,35 +34,51 @@ BOARD_VARS = \
 
 # Default SDK source files to be included
 BOARD_SOURCES += \
+	SEGGER_RTT.c\
+	SEGGER_RTT_Syscalls_GCC.c\
+	SEGGER_RTT_printf.c\
+	app_error.c\
 	app_error_handler_gcc.c\
 	app_scheduler.c\
 	app_timer.c\
 	app_uart.c\
 	app_util_platform.c\
 	before_startup.c\
+	ble_advdata.c\
+	ble_advertising.c\
+	ble_conn_params.c\
+	ble_srv_common.c\
+	ff.c\
 	hardfault_handler_gcc.c\
 	hardfault_implementation.c\
+	mmc_nrf.c\
 	nrf_assert.c\
 	nrf_atomic.c\
 	nrf_balloc.c\
+	nrf_ble_gatt.c\
+	nrf_drv_clock.c\
 	nrf_drv_spi.c\
 	nrf_drv_twi.c\
 	nrf_drv_uart.c\
 	nrf_fprintf.c\
 	nrf_fprintf_format.c\
+	nrf_fstorage.c\
 	nrf_log_backend_rtt.c\
 	nrf_log_backend_serial.c\
 	nrf_log_backend_uart.c\
 	nrf_log_default_backends.c\
 	nrf_log_frontend.c\
 	nrf_log_str_formatter.c\
-	nrf_pwr_mgmt.c\
 	nrf_memobj.c\
+	nrf_pwr_mgmt.c\
+	nrf_queue.c\
+	nrf_sdh.c\
+	nrf_sdh_ble.c\
 	nrf_section_iter.c\
 	nrf_serial.c\
 	nrf_strerror.c\
 	nrf_twi_mngr.c\
-	nrf_queue.c\
+	nrfx_clock.c\
 	nrfx_gpiote.c\
 	nrfx_prs.c\
 	nrfx_saadc.c\
@@ -73,12 +89,8 @@ BOARD_SOURCES += \
 	nrfx_twim.c\
 	nrfx_uart.c\
 	nrfx_uarte.c\
-	SEGGER_RTT.c\
-	SEGGER_RTT_Syscalls_GCC.c\
-	SEGGER_RTT_printf.c\
+	simple_ble.c\
 	simple_logger.c\
-	ff.c\
-	mmc_nrf.c\
 
 ifneq ($(SOFTDEVICE_MODEL),blank)
 BOARD_SOURCES += nrf_sdh.c
