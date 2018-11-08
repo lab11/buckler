@@ -39,6 +39,7 @@ BOARD_SOURCES += \
 	SEGGER_RTT_printf.c\
 	app_error.c\
 	app_error_handler_gcc.c\
+	app_pwm.c\
 	app_scheduler.c\
 	app_timer.c\
 	app_uart.c\
@@ -52,6 +53,7 @@ BOARD_SOURCES += \
 	nrf_atomic.c\
 	nrf_balloc.c\
 	nrf_drv_clock.c\
+	nrf_drv_ppi.c\
 	nrf_drv_spi.c\
 	nrf_drv_twi.c\
 	nrf_drv_uart.c\
@@ -73,7 +75,9 @@ BOARD_SOURCES += \
 	nrf_twi_mngr.c\
 	nrfx_clock.c\
 	nrfx_gpiote.c\
+	nrfx_ppi.c\
 	nrfx_prs.c\
+	nrfx_pwm.c\
 	nrfx_saadc.c\
 	nrfx_spi.c\
 	nrfx_spim.c\
