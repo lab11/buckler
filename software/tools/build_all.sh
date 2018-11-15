@@ -25,6 +25,7 @@ for mkfile in `find ../apps -maxdepth 3 -name Makefile`; do
 	if [ $dir == "." ]; then continue; fi
 	# Skip directories with leading _'s, useful for leaving test apps around
 	if [[ $(basename $dir) == _* ]]; then continue; fi
+	if [[ $dir == "../apps/ble_service_example" ]]; then continue; fi
 
 	pushd $dir > /dev/null
 	echo ""

@@ -76,11 +76,21 @@
 #include "nrf_ble_gatt.h"
 #include "nrf_ble_qwr.h"
 #include "nrf_pwr_mgmt.h"
+#include "nrf_twi_mngr.h"
+#include "nrf_drv_twi.h"
+#include "nrfx_timer.h"
 
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 #include "ble_cus.h"
+#include "mpu9250.h"
+
+
+#define BUCKLER_SENSORS_SCL     NRF_GPIO_PIN_MAP(0,19)
+#define BUCKLER_SENSORS_SDA     NRF_GPIO_PIN_MAP(0,20)
+#define BUCKLER_IMU_INTERUPT    NRF_GPIO_PIN_MAP(0,7)
+#define BUCKLER_LIGHT_INTERRUPT NRF_GPIO_PIN_MAP(0,27)
 
 
 #define DEVICE_NAME                     "Service Example"                       /**< Name of device. Will be included in the advertising data. */
@@ -120,6 +130,9 @@ BLE_CUS_DEF(m_cus);
 BLE_ADVERTISING_DEF(m_advertising);                                             /**< Advertising module instance. */
 
 APP_TIMER_DEF(m_notification_timer_id);
+
+// I2C manager
+NRF_TWI_MNGR_DEF(twi_mngr_instance, 5, 0);
 
 static uint8_t m_custom_value = 0;
 
@@ -882,6 +895,19 @@ int main(void)
     advertising_start(erase_bonds);
 
     printf("Started!\n");
+
+    // initialize i2c master (two wire interface)
+    nrf_drv_twi_config_t i2c_config = NRF_DRV_TWI_DEFAULT_CONFIG;
+    i2c_config.scl = BUCKLER_SENSORS_SCL;
+    i2c_config.sda = BUCKLER_SENSORS_SDA;
+    i2c_config.frequency = NRF_TWIM_FREQ_100K;
+    ret_code_t error_code = nrf_twi_mngr_init(&twi_mngr_instance, &i2c_config);
+    APP_ERROR_CHECK(error_code);
+
+    // initialize MPU-9250 driver
+    mpu9250_init(&twi_mngr_instance);
+    printf("MPU-9250 initialized\n");
+
 
     // Enter main loop.
     for (;;)
