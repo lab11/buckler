@@ -28,6 +28,7 @@ BOARD_UPPER = $(shell echo $(BOARD) | tr a-z A-Z)
 # Additional #define's to be added to code by the compiler
 BOARD_VARS = \
 	BOARD_$(BOARD_UPPER)\
+	CUSTOM_BOARD_INC=buckler\
 	USE_APP_CONFIG\
 	DEBUG\
 	DEBUG_NRF\
@@ -68,6 +69,7 @@ BOARD_SOURCES += \
 	nrf_log_str_formatter.c\
 	nrf_memobj.c\
 	nrf_pwr_mgmt.c\
+	nrf_ringbuf.c\
 	nrf_queue.c\
 	nrf_section_iter.c\
 	nrf_serial.c\
@@ -95,6 +97,7 @@ BOARD_SOURCES += \
 	ble_conn_params.c\
 	ble_srv_common.c\
 	nrf_ble_gatt.c\
+	nrf_ble_qwr.c\
 	nrf_sdh.c\
 	nrf_sdh_ble.c\
 	simple_ble.c\

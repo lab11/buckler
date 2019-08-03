@@ -12,7 +12,7 @@ APP_SOURCE_PATHS += . src-gen/
 APP_SOURCES = $(notdir $(wildcard ./*.c)) $(notdir $(wildcard src-gen/*.c))
 
 # Path to base of nRF52-base repo
-NRF_BASE_DIR = ../../nrf5x-base/
+NRF_BASE_DIR = ../../nrf52x-base/
 
 # Include board Makefile (if any)
 include ../../boards/buckler_revB/Board.mk
