@@ -125,7 +125,6 @@ void max44009_config(max44009_config_t config) {
 
   int error = nrf_twi_mngr_perform(twi_mngr_instance, NULL, config_write_transfer, sizeof(config_write_transfer)/sizeof(config_write_transfer[0]), NULL);
   APP_ERROR_CHECK(error);
-  printf("No app error\n");
 }
 
 void  max44009_set_read_lux_callback(max44009_read_lux_callback* callback) {
