@@ -1,7 +1,7 @@
 /*
 
 	Original Author:		Jeff C. Jensen
-    Rewritten by: Joshua Adkins
+    Rewritten by: Joshua Adkins, Neal Jackson
 	Revised:	2018-08-06
 */
 
@@ -22,9 +22,9 @@ int32_t kobukiSensorPoll(KobukiSensors_t* const	sensors){
     // We know that the maximum size of the packet is less than 140 based on documentation
 	uint8_t packet[140] = {0};
 
-	status = kobukiReadFeedbackPacket(packet);
+	status = kobukiReadFeedbackPacket(packet, 140);
 
-    if (status < NRF_SUCCESS) {
+    if (status != NRF_SUCCESS) {
         return status;
     }
 

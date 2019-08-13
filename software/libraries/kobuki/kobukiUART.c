@@ -1,20 +1,21 @@
 /*
 	Original Author:		Jeff C. Jensen
-    Rewritten By: Joshua Adkins
-	Revised:	2018-08-06
+    Rewritten By: Joshua Adkins, Neal Jackson
+	Revised:	2019-08-12
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include <app_uart.h>
+#include <nrf_serial.h>
 
 #include "kobukiUART.h"
 #include "kobukiUtilities.h"
 
+extern const nrf_serial_t * serial_ref;
 
-int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer){
+int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
 
 	typedef enum {
         wait_until_AA,
@@ -26,34 +27,29 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer){
 
 	state_type state = wait_until_AA;
 
-	uint8_t byteBuffer;
+    uint8_t header_buf[2];
+    uint8_t byteBuffer;
 	int status = 0;
 	uint8_t payloadSize = 0;
 	uint8_t calcuatedCS;
 
-	status = app_uart_flush();
+    status = nrf_serial_flush(serial_ref, NRF_SERIAL_MAX_TIMEOUT);
 
 	int num_checksum_failures = 0;
-    uint8_t p_index = 0;
+
+    if (len <= 4) return NRF_ERROR_NO_MEM;
 
 	while(1){
 		switch(state){
 			case wait_until_AA:
-                status = app_uart_get(&packetBuffer[p_index]);
-                if(status == NRF_ERROR_NOT_FOUND) {
-                    //there is no byte so just wait until there is
-                    break;
-                } else if(status != NRF_SUCCESS) {
+                status = nrf_serial_read(serial_ref, header_buf, sizeof(header_buf), NULL, 1000);
+                if(status != NRF_SUCCESS) {
+                    printf("error: %d\n", status);
                     return status;
-                } else {
-                    p_index++;
                 }
 
-				if (p_index == 2 && packetBuffer[0]==0xAA && packetBuffer[1]==0x55) {
-					state = read_length;
-                } else if (p_index == 2) {
-                    p_index = 0;
-					state = wait_until_AA;
+                if (header_buf[0]==0xAA && header_buf[1]==0x55) {
+                    state = read_length;
                 } else {
 					state = wait_until_AA;
                 }
@@ -61,40 +57,31 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer){
 				break;
 
 			case read_length:
-                status = app_uart_get(&packetBuffer[p_index]);
-                if(status == NRF_ERROR_NOT_FOUND) {
-                    //there is no byte so just wait until there is
-                    break;
-                } else if(status != NRF_SUCCESS) {
+                status = nrf_serial_read(serial_ref, &payloadSize, sizeof(payloadSize), NULL, 1000);
+                if(status != NRF_SUCCESS) {
                     return status;
                 }
 
-                payloadSize = packetBuffer[p_index];
-                byteBuffer = payloadSize;
+                if(len < payloadSize+3) return NRF_ERROR_NO_MEM;
 
-                p_index++;
 				state = read_payload;
 				break;
 
 			case read_payload:
-                status = app_uart_get(&packetBuffer[p_index]);
-                if(status == NRF_ERROR_NOT_FOUND) {
-                    //there is no byte so just wait until there is
-                    break;
-                } else if(status != NRF_SUCCESS) {
+                status = nrf_serial_read(serial_ref, packetBuffer+3, payloadSize+3, NULL, 1000);
+                if(status != NRF_SUCCESS) {
                     return status;
-                } else {
-                    p_index++;
                 }
 
-                if(p_index > payloadSize+3) {
-				    state = read_checksum;
-                }
+                state = read_checksum;
 
 				break;
 
 			case read_checksum:
-				calcuatedCS = checkSumRead(packetBuffer, payloadSize + 3);
+				memcpy(packetBuffer, header_buf, 2);
+                packetBuffer[2] = payloadSize;
+
+                calcuatedCS = checkSumRead(packetBuffer, payloadSize + 3);
 				byteBuffer=(packetBuffer)[payloadSize+3];
 				if (calcuatedCS == byteBuffer) {
 					num_checksum_failures = 0;
@@ -106,7 +93,7 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer){
 					}
 					num_checksum_failures++;
 				}
-
+                printf("check fails: %d\n", num_checksum_failures);
 				break;
 
             default:
