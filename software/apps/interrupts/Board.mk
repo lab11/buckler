@@ -28,12 +28,14 @@ BOARD_UPPER = $(shell echo $(BOARD) | tr a-z A-Z)
 # Additional #define's to be added to code by the compiler
 BOARD_VARS = \
 	BOARD_$(BOARD_UPPER)\
+	CUSTOM_BOARD_INC=buckler\
 	USE_APP_CONFIG\
 	DEBUG\
 	DEBUG_NRF\
 
 # Default SDK source files to be included
 BOARD_SOURCES += \
+	app_error.c\
 	app_error_handler_gcc.c\
 	app_scheduler.c\
 	app_timer.c\
@@ -57,6 +59,7 @@ BOARD_SOURCES += \
 	nrf_log_frontend.c\
 	nrf_log_str_formatter.c\
 	nrf_pwr_mgmt.c\
+	nrf_ringbuf.c\
 	nrf_memobj.c\
 	nrf_section_iter.c\
 	nrf_serial.c\
