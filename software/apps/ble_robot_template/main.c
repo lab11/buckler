@@ -125,7 +125,7 @@ int main(void) {
   // loop forever, running state machine
   while (1) {
     // read sensors from robot
-    int status = kobukiSensorPoll(&sensors);
+    //int status = kobukiSensorPoll(&sensors);
 
     // TODO: complete state machine
     switch(state) {
