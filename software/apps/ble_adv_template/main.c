@@ -24,8 +24,8 @@ NRF_TWI_MNGR_DEF(twi_mngr_instance, 5, 0);
 
 // Intervals for advertising and connections
 static simple_ble_config_t ble_config = {
-        // c0:98:e5:42:xx:xx
-        .platform_id       = 0x42,    // used as 4th octect in device BLE address
+        // c0:98:e5:49:xx:xx
+        .platform_id       = 0x49,    // used as 4th octect in device BLE address
         .device_id         = 0x0000,  // TODO: replace with your lab bench number
         .adv_name          = "EE149", // Note that this name is not displayed to save room in the advertisement for data.
         .adv_interval      = MSEC_TO_UNITS(1000, UNIT_0_625_MS),
