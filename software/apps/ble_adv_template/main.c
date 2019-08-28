@@ -33,12 +33,11 @@ static simple_ble_config_t ble_config = {
         .max_conn_interval = MSEC_TO_UNITS(1000, UNIT_1_25_MS),
 };
 
-void set_ble_payload(uint8_t* buffer, uint8_t length) {
-    // TODO: implement this function!
-}
-
 void light_timer_callback() {
+    printf("Light timer fired!\n");
     // TODO: implement this function!
+    // Use Simple BLE function to read light sensor and put data in
+    // advertisement, but be careful about doing it in the callback itself!
 }
 
 /*******************************************************************************
@@ -80,32 +79,10 @@ int main(void) {
   // Setup BLE
   simple_ble_app = simple_ble_init(&ble_config);
 
-  // Set up an advertisement
-  uint8_t message[24];
-  // Send very recognizable data
-  for (uint8_t i = 0; i < 24; i ++) {
-    message[i] = i;
-  }
-  static uint8_t payload[24] = {0}; // 24 bytes are available for arbitrary data
-  memcpy(payload, message, sizeof(message));
+  // TODO replace this with advertisement sending light data
+  simple_ble_adv_only_name();
 
-  static ble_advdata_manuf_data_t adv_payload = {
-    .company_identifier = 0x02E0, // Lab11 company ID (University of Michigan)
-    .data.p_data = payload,
-    .data.size = sizeof(payload),
-  };
-
-  // create an advertisement with a manufacturer-specific data payload
-  // https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v15.0.0%2Fstructble__advdata__t.html
-  ble_advdata_t advdata = {0};
-  advdata.name_type = BLE_ADVDATA_NO_NAME; // do not include device name (adv_name) in advertisement
-  advdata.flags = BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE; // BLE Low energy advertisement
-  advdata.p_manuf_specific_data = &adv_payload;
-
-  // update advertisement data and start advertising
-  simple_ble_set_adv(&advdata, NULL);
-
-  // Set a timer to read the light sensor and update advertisement data.
+  // Set a timer to read the light sensor and update advertisement data every second.
   app_timer_init();
   app_timer_create(&adv_timer, APP_TIMER_MODE_REPEATED, (app_timer_timeout_handler_t) light_timer_callback);
   app_timer_start(adv_timer, APP_TIMER_TICKS(1000), NULL); // 1000 milliseconds

@@ -3,7 +3,7 @@
 import struct
 from bluepy.btle import ScanEntry, Scanner, DefaultDelegate
 
-YOUR_ADDRESS = "c0:98:e5:42:00:00" # Replace address with your device address
+YOUR_ADDRESS = "c0:98:e5:49:00:00" # Replace address with your device address
 
 class ScanDelegate(DefaultDelegate):
     def __init__(self):
