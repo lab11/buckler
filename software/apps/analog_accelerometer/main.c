@@ -72,7 +72,7 @@ int main (void) {
   channel_config.pin_p = BUCKLER_ANALOG_ACCEL_Z;
   error_code = nrfx_saadc_channel_init(Z_CHANNEL, &channel_config);
   APP_ERROR_CHECK(error_code);
-  
+
   // initialization complete
   printf("Buckler initialized!\n");
 
@@ -85,7 +85,7 @@ int main (void) {
 
     // display results
     printf("x: %d\ty: %d\tz:%d\n", x_val, y_val, z_val);
-    nrf_delay_ms(1);
+    nrf_delay_ms(100);
   }
 }
 
