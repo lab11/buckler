@@ -1,6 +1,6 @@
-// Blink app
+// BLE advertisement template
 //
-// Blinks an LED
+// Advertises device name: EE149
 
 #include <stdbool.h>
 #include <stdint.h>

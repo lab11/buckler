@@ -1,5 +1,19 @@
+#!/usr/bin/env python3
+
 import struct
 from bluepy.btle import Peripheral, DefaultDelegate
+import argparse
+
+parser = argparse.ArgumentParser(description='Print advertisement data from a BLE device')
+parser.add_argument('addr', metavar='A', type=str, help='Address of the form XX:XX:XX:XX:XX:XX')
+args = parser.parse_args()
+addr = args.addr.lower()
+if len(addr) != 17:
+    raise ValueError("Invalid address supplied")
+
+LIGHT_SERVICE_UUID = "de97aeee-0e7e-4720-8038-4dc47aa9562f"
+LIGHT_CHAR_UUID = "de97aeef-0e7e-4720-8038-4dc47aa9562f"
+
 
 class CharDelegate(DefaultDelegate):
     def __init__(self):
@@ -9,20 +23,17 @@ class CharDelegate(DefaultDelegate):
         [lux] = struct.unpack('<f', data)
         print("Value: " + str(lux) + " lux")
 
-YOUR_ADDRESS = "c0:98:e5:49:00:00" # Replace address with your device address
-YOUR_SERVICE_UUID = "de97aeee-0e7e-4720-8038-4dc47aa9562f"
-YOUR_CHAR_UUID = "de97aeef-0e7e-4720-8038-4dc47aa9562f"
-
 try:
-    buckler = Peripheral(YOUR_ADDRESS)
+    print("connecting")
+    buckler = Peripheral(addr)
     buckler.setDelegate(CharDelegate())
-
     print("connected")
 
-    sv = buckler.getServiceByUUID(YOUR_SERVICE_UUID)
+    sv = buckler.getServiceByUUID(LIGHT_SERVICE_UUID)
 
-    # Enable notifications:
-    ch = sv.getCharacteristics(YOUR_CHAR_UUID)[0]
+    # Get characteristic
+    ch = sv.getCharacteristics(LIGHT_CHAR_UUID)[0]
+    # Enable notifications
     buckler.writeCharacteristic(ch.valHandle+1, b"\x01\x00")
 
     while True:

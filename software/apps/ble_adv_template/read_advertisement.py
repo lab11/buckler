@@ -2,8 +2,14 @@
 
 import struct
 from bluepy.btle import ScanEntry, Scanner, DefaultDelegate
+import argparse
 
-YOUR_ADDRESS = "c0:98:e5:49:00:00" # Replace address with your device address
+parser = argparse.ArgumentParser(description='Print advertisement data from a BLE device')
+parser.add_argument('addr', metavar='A', type=str, help='Address of the form XX:XX:XX:XX:XX:XX')
+args = parser.parse_args()
+addr = args.addr.lower()
+if len(addr) != 17:
+    raise ValueError("Invalid address supplied")
 
 class ScanDelegate(DefaultDelegate):
     def __init__(self):
@@ -12,18 +18,12 @@ class ScanDelegate(DefaultDelegate):
     # when this python script discovers a BLE broadcast packet from a buckler
     # advertising light measurements, print out the data
     def handleDiscovery(self, dev, isNewDev, isNewData):
-        if dev.addr == YOUR_ADDRESS:
-            print("found device", dev.addr)
+        if not isNewData: return
+        if dev.addr == addr:
+            print("Found advertisement from: ", str(dev.addr))
+            print("Name: " + str(dev.getValueText(ScanEntry.COMPLETE_LOCAL_NAME)))
             data = dev.getValue(ScanEntry.MANUFACTURER)
-            try:
-                # here we are unpacking a little-endian (<) halfword (h) and a
-                # float (f), as well as 20 dummy bytes (20x)
-                values = struct.unpack('<hf20x', data)
-                # if the company ID matches that of Lab11
-                if values[0] == 0x02e0:
-                    print("Value: " + str(values[1]) + " lux")
-            except:
-                print("Got bad packet format")
+            print("Data: " + str(data.hex()))
 
 # create a scanner object that sends BLE broadcast packets to the ScanDelegate
 scanner = Scanner().withDelegate(ScanDelegate())
