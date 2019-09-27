@@ -100,7 +100,7 @@ int main(void) {
     // delay before continuing
     // Note: removing this delay will make responses quicker, but will result
     //  in printf's in this loop breaking JTAG
-    nrf_delay_ms(100);
+    nrf_delay_ms(1);
 
     // iterate statechart
     robot_template_runCycle(&sc_handle);

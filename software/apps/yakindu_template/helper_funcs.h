@@ -19,6 +19,10 @@ extern void print_turn(turns current_turn);
 extern void print_dist(float dist);
 extern void print_angle(float angle);
 
+extern bool is_left_cliff();
+extern bool is_center_cliff();
+extern bool is_right_cliff();
+extern bool is_front_bumper();
 extern bool is_left_bumper();
 extern bool is_right_bumper();
 extern bool is_front_bumper();
@@ -34,6 +38,9 @@ extern void turn_kobuki(bool is_clockwise);
 extern void start_gyro();
 extern float read_gyro();
 extern void stop_gyro();
+
+float read_tilt_theta(void);
+float read_tilt_psi(void);
 
 extern float get_abs(float var);
 
