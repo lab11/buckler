@@ -22,18 +22,16 @@ extern void print_angle(float angle);
 extern bool is_left_cliff();
 extern bool is_center_cliff();
 extern bool is_right_cliff();
-extern bool is_front_bumper();
+extern bool is_center_bumper();
 extern bool is_left_bumper();
 extern bool is_right_bumper();
-extern bool is_front_bumper();
 extern bool is_button_press();
 
 extern uint16_t read_encoder();
 extern float update_dist(float dist, uint16_t prev_encoder, bool is_forward);
 
-extern void drive_kobuki(bool is_forward);
+extern void drive_kobuki(uint16_t left_wheel, uint16_t right_wheel);
 extern void stop_kobuki();
-extern void turn_kobuki(bool is_clockwise);
 
 extern void start_gyro();
 extern float read_gyro();

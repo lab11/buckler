@@ -64,7 +64,7 @@ float update_dist(float dist, uint16_t prev_encoder, bool is_forward){
   }
 }
 
-void drive_kobuki(bool is_forward){
+void drive_kobuki(uint16_t left_wheel, uint16_t right_wheel){
   // Your code here
 }
 
@@ -72,9 +72,6 @@ void stop_kobuki(){
   // Your code here
 }
 
-void turn_kobuki(bool is_clockwise){
-  // Your code here
-}
 
 bool is_left_cliff(){
   // Your code here
@@ -99,7 +96,7 @@ bool is_right_bumper(){
   return sensors.bumps_wheelDrops.bumpRight;
 }
 
-bool is_front_bumper(){
+bool is_center_bumper(){
   return sensors.bumps_wheelDrops.bumpCenter;
 }
 
@@ -170,10 +167,12 @@ void print_turn(turns current_turn){
 
 float read_tilt_theta(void){
   // Your code here
+  return 0.0;
 }
 
 float read_tilt_psi(void){
   // Your code here
+  return 0.0;
 }
 
 float get_abs(float var){
