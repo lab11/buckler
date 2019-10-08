@@ -81,7 +81,8 @@ int main(void) {
     .mode = NRF_DRV_SPI_MODE_2,
     .bit_order = NRF_DRV_SPI_BIT_ORDER_MSB_FIRST
   };
-  error_code = nrf_drv_spi_init(&spi_instance, &spi_config, NULL, NULL);
+
+  ret_code_t error_code = nrf_drv_spi_init(&spi_instance, &spi_config, NULL, NULL);
   APP_ERROR_CHECK(error_code);
   display_init(&spi_instance);
   display_write("Hello, Human!", DISPLAY_LINE_0);
