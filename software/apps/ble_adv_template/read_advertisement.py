@@ -18,12 +18,12 @@ class ScanDelegate(DefaultDelegate):
     # when this python script discovers a BLE broadcast packet from a buckler
     # advertising light measurements, print out the data
     def handleDiscovery(self, dev, isNewDev, isNewData):
-        if not isNewData: return
         if dev.addr == addr:
             print("Found advertisement from: ", str(dev.addr))
             print("Name: " + str(dev.getValueText(ScanEntry.COMPLETE_LOCAL_NAME)))
             data = dev.getValue(ScanEntry.MANUFACTURER)
-            print("Data: " + str(data.hex()))
+            if data is not None:
+                print("Data: " + str(data.hex()))
 
 # create a scanner object that sends BLE broadcast packets to the ScanDelegate
 scanner = Scanner().withDelegate(ScanDelegate())

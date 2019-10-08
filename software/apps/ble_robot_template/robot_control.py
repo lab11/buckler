@@ -5,7 +5,13 @@ import keyboard
 from getpass import getpass
 from bluepy.btle import Peripheral, DefaultDelegate
 
-YOUR_ADDRESS = "c0:98:e5:49:00:00" # Replace address with your device address
+parser = argparse.ArgumentParser(description='Print advertisement data from a BLE device')
+parser.add_argument('addr', metavar='A', type=str, help='Address of the form XX:XX:XX:XX:XX:XX')
+args = parser.parse_args()
+addr = args.addr.lower()
+if len(addr) != 17:
+    raise ValueError("Invalid address supplied")
+
 SERVICE_UUID = "4607eda0-f65e-4d59-a9ff-84420d87a4ca"
 CHAR_UUIDS = None # TODO: add your characteristics
 
@@ -13,7 +19,7 @@ class RobotController():
 
     def __init__(self, address):
 
-        self.robot = Peripheral(YOUR_ADDRESS)
+        self.robot = Peripheral(addr)
         print("connected")
 
         # keep state for keypresses
@@ -46,5 +52,5 @@ class RobotController():
     def __exit__(self, exc_type, exc_value, traceback):
         self.robot.disconnect()
 
-with RobotController(YOUR_ADDRESS) as robot:
+with RobotController(addr) as robot:
     getpass('Use arrow keys to control robot')
