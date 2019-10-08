@@ -6,7 +6,7 @@ from getpass import getpass
 from bluepy.btle import Peripheral, DefaultDelegate
 
 YOUR_ADDRESS = "c0:98:e5:49:00:00" # Replace address with your device address
-SERVICE_UUID = # TODO: Choose a UUID for your service
+SERVICE_UUID = "4607eda0-f65e-4d59-a9ff-84420d87a4ca"
 CHAR_UUIDS = None # TODO: add your characteristics
 
 class RobotController():
