@@ -15,12 +15,6 @@
 
 #include "max44009.h"
 
-// Create a timer
-APP_TIMER_DEF(light_timer);
-
-// I2C manager
-NRF_TWI_MNGR_DEF(twi_mngr_instance, 5, 0);
-
 // Intervals for advertising and connections
 static simple_ble_config_t ble_config = {
         // c0:98:e5:49:xx:xx
@@ -40,10 +34,6 @@ static simple_ble_service_t led_service = {{
 
 static simple_ble_char_t led_state_char = {.uuid16 = 0x1090};
 static bool led_state = true;
-
-void light_timer_callback() {
-    //TODO: implement this function to initiate a read of the light sensor
-}
 
 /*******************************************************************************
  *   State for this application
@@ -88,25 +78,6 @@ int main(void) {
   display_write("Hello, Human!", DISPLAY_LINE_0);
   printf("Display initialized!\n");
 
-  // initialize i2c master (two wire interface)
-  nrf_drv_twi_config_t i2c_config = NRF_DRV_TWI_DEFAULT_CONFIG;
-  i2c_config.scl = BUCKLER_SENSORS_SCL;
-  i2c_config.sda = BUCKLER_SENSORS_SDA;
-  i2c_config.frequency = NRF_TWIM_FREQ_100K;
-  error_code = nrf_twi_mngr_init(&twi_mngr_instance, &i2c_config);
-  APP_ERROR_CHECK(error_code);
-
-  // initialize MAX44009 driver
-  const max44009_config_t config = {
-    .continuous = 0,
-    .manual = 0,
-    .cdr = 0,
-    .int_time = 3,
-  };
-  max44009_init(&twi_mngr_instance, BUCKLER_LIGHT_INTERRUPT);
-  max44009_config(config);
-  printf("MAX44009 initialized\n");
-
   // Setup LED GPIO
   nrf_gpio_cfg_output(BUCKLER_LED0);
 
@@ -121,11 +92,6 @@ int main(void) {
 
   // Start Advertising
   simple_ble_adv_only_name();
-
-  // Set a timer to read the light sensor and notify readers
-  app_timer_init();
-  app_timer_create(&light_timer, APP_TIMER_MODE_REPEATED, (app_timer_timeout_handler_t) light_timer_callback);
-  app_timer_start(light_timer, APP_TIMER_TICKS(1000), NULL); // 1000 milliseconds
 
   while(1) {
     power_manage();
