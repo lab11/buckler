@@ -32,7 +32,7 @@ static simple_ble_service_t led_service = {{
                 0xB5,0x4D,0x22,0x2B,0x89,0x10,0xE6,0x32}
 }};
 
-static simple_ble_char_t led_state_char = {.uuid16 = 0x1090};
+static simple_ble_char_t led_state_char = {.uuid16 = 0x108a};
 static bool led_state = true;
 
 /*******************************************************************************

@@ -12,7 +12,7 @@ if len(addr) != 17:
     raise ValueError("Invalid address supplied")
 
 DISPLAY_SERVICE_UUID = "32e61089-2b22-4db5-a914-43ce41986c70"
-DISPLAY_CHAR_UUID    = "32e61090-2b22-4db5-a914-43ce41986c70"
+DISPLAY_CHAR_UUID    = "32e6108a-2b22-4db5-a914-43ce41986c70"
 
 
 try:
