@@ -6,6 +6,10 @@
 #include <stdint.h>
 #include "nrf.h"
 #include "app_util.h"
+#include "nrf_log.h"
+#include "nrf_log_ctrl.h"
+#include "nrf_log_default_backends.h"
+
 #include "simple_ble.h"
 
 // BLE configuration
@@ -39,6 +43,15 @@ void ble_evt_adv_report(ble_evt_t const* p_ble_evt) {
 }
 
 int main(void) {
+  ret_code_t error_code = NRF_SUCCESS;
+
+  // Initialize
+
+  // initialize RTT library
+  error_code = NRF_LOG_INIT(NULL);
+  APP_ERROR_CHECK(error_code);
+  NRF_LOG_DEFAULT_BACKENDS_INIT();
+  printf("Log initialized\n");
 
   // Setup BLE
   // Note: simple BLE is our own library. You can find it in `nrf5x-base/lib/simple_ble/`

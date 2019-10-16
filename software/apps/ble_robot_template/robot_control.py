@@ -26,7 +26,6 @@ class RobotController():
         self.pressed = {"up": False, "down": False, "right": False, "left": False}
         # TODO get service from robot
         # TODO get characteristic handles from service/robot
-        # TODO enable notifications if using notifications
 
         keyboard.hook(self.on_key_event)
 
