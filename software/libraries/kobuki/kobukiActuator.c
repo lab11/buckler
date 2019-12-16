@@ -30,7 +30,7 @@ static int32_t kobukiSendPayload(uint8_t* payload, uint8_t len) {
 
 
     for(uint8_t i = 0; i < 3+len+1; i++) {
-        int status = nrf_serial_write(serial_ref, writeData, len + 4, NULL, NRF_SERIAL_MAX_TIMEOUT);
+        int status = nrf_serial_write(serial_ref, writeData, len + 4, NULL, 10);
         if(status != NRF_SUCCESS) {
             return status;
         }
