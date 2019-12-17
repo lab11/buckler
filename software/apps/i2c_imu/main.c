@@ -75,7 +75,7 @@ int main(void) {
     printf("                      X-Axis\t    Y-Axis\t    Z-Axis\n");
     printf("                  ----------\t----------\t----------\n");
     printf("Acceleration (g): %10.3f\t%10.3f\t%10.3f\n", acc_measurement.x_axis, acc_measurement.y_axis, acc_measurement.z_axis);
-    printf("Angle  (degrees): %10.3f\t%10.3f\t%10.3f\n", x_rot, y_rot, z_rot);
+    printf("Angular Velocity  (deg/s): %10.3f\t%10.3f\t%10.3f\n", x_rot, y_rot, z_rot);
     printf("Magnetism   (uT): %10.3f\t%10.3f\t%10.3f\n", mag_measurement.x_axis, mag_measurement.y_axis, mag_measurement.z_axis);
     printf("\n");
 
