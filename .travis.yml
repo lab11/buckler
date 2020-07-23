@@ -1,25 +1,19 @@
-sudo: false
-language: rust
+sudo: required
+language: c
 
-# The language is a lie, but the C toolchain is available in the rust image. If
-# we go the other way, then we have to slow builds by pulling in the rust
-# toolchain manually.
+os: linux
+dist: bionic
 
-cache:
-  cargo: true
-  directories:
-    - $HOME/gcc-arm-none-eabi-6_2-2016q4
+env:
+  - APPS_DIR=software/apps
 
-os:
-  - linux
+install:
+  - sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa -y
+  - sudo apt update
+  - sudo apt install gcc-arm-embedded -y
 
-rust:
-  - nightly-2018-06-26
-
-before_install:
-  - ./.travis-install-gcc
-  - export PATH="$PATH:$HOME/gcc-arm-none-eabi-6_2-2016q4/bin"
-
-script:
-  - pushd software/tools; ./build_all.sh || exit; popd
-
+jobs:
+  include:
+    - stage: "build"
+      script:
+      - .travis/build_dir.sh
