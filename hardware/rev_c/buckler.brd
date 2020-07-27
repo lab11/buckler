@@ -312,8 +312,8 @@ HUMID</text>
 <circle x="39.37" y="45.72" radius="1.79605" width="0.2032" layer="21"/>
 <text x="37.846" y="45.72" size="3.81" layer="21" font="vector" ratio="15" rot="R270" align="center">.</text>
 <text x="36.576" y="46.736" size="1.778" layer="21" font="vector" ratio="15" rot="R45">+Z</text>
-<text x="10.16" y="12.446" size="1.27" layer="25" font="vector" ratio="15" align="bottom-center">LO</text>
-<text x="5.08" y="12.446" size="1.27" layer="25" font="vector" ratio="15" align="bottom-center">HI</text>
+<text x="5.08" y="12.446" size="1.27" layer="25" font="vector" ratio="15" align="bottom-center">LO</text>
+<text x="10.16" y="12.446" size="1.27" layer="25" font="vector" ratio="15" align="bottom-center">HI</text>
 <text x="30.734" y="102.362" size="1.27" layer="25" font="vector" ratio="15" align="bottom-center">SD_DETECT</text>
 <wire x1="2.032" y1="80.01" x2="7.62" y2="80.01" width="0.2032" layer="21"/>
 <wire x1="2.032" y1="77.47" x2="7.62" y2="77.47" width="0.2032" layer="21"/>
