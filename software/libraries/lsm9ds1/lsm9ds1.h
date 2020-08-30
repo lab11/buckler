@@ -16,9 +16,11 @@ https://github.com/sparkfun/SparkFun_LSM9DS1_Arduino_Library/blob/master/src/Spa
 // Initialize and configure the lsm9ds1
 //
 // i2c - pointer to already initialized and enabled twim instance
-void lsm9ds1_init(const nrf_twi_mngr_t* i2c);
+ret_code_t lsm9ds1_init(uint8_t agAddress, uint8_t mAddress, const nrf_twi_mngr_t* i2c);
+
+lsm9ds1_measurement lsm9ds1_read_accelerometer();
 
 // Read whoami from accelerometer
-uint8_t lsm9ds1_whoami_acc();
+uint8_t lsm9ds1_whoami_ag();
 // Read whoami from magnetometer
-uint8_t lsm9ds1_whoami_mag();
+uint8_t lsm9ds1_whoami_m();

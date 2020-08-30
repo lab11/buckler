@@ -1,7 +1,3 @@
-// Blink app
-//
-// Blinks the LEDs on Buckler
-
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -129,8 +125,8 @@ int main(void) {
   APP_ERROR_CHECK(error_code);
 
   // initialize LSM9DS1 driver
-  lsm9ds1_init(&twi_mngr_instance);
-  printf("LSM9DS1 initialized\n");
+  int ret = lsm9ds1_init(BUCKLER_IMU_ACC_I2C_ADDR, BUCKLER_IMU_MAG_I2C_ADDR, &twi_mngr_instance);
+  printf("LSM9DS1 initialized: %d\n", ret);
 
 
   // loop forever
@@ -145,16 +141,15 @@ int main(void) {
     nrf_saadc_value_t z_val = sample_value(Z_CHANNEL);
 
     // get imu measurements
-    //mpu9250_measurement_t acc_measurement = mpu9250_read_accelerometer();
-    uint8_t whoami = lsm9ds1_whoami_acc();
-    uint8_t whoami_m = lsm9ds1_whoami_mag();
+    lsm9ds1_measurement acc_measurement = lsm9ds1_read_accelerometer();
+    uint8_t whoami = lsm9ds1_whoami_ag();
+    uint8_t whoami_m = lsm9ds1_whoami_m();
 
     // print results
     printf("                        X-Axis\t    Y-Axis\t    Z-Axis\n");
     printf("                    ----------\t----------\t----------\n");
     printf("Analog Accel (raw): %10d\t%10d\t%10d\n", x_val, y_val, z_val);
-    //printf("I2C IMU Accel (g):  %10.3f\t%10.3f\t%10.3f\n", acc_measurement.x_axis, acc_measurement.y_axis, acc_measurement.z_axis);
-    printf("I2C IMU Accel whoami:  %x\t%x\n", whoami, whoami_m);
+    printf("I2C IMU Accel (g):  %10.3f\t%10.3f\t%10.3f\n", acc_measurement.x_axis, acc_measurement.y_axis, acc_measurement.z_axis);
     printf("\n");
 
     // wait before continuing loop
