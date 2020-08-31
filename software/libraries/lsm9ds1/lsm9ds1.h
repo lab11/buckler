@@ -19,6 +19,11 @@ https://github.com/sparkfun/SparkFun_LSM9DS1_Arduino_Library/blob/master/src/Spa
 ret_code_t lsm9ds1_init(uint8_t agAddress, uint8_t mAddress, const nrf_twi_mngr_t* i2c);
 
 lsm9ds1_measurement lsm9ds1_read_accelerometer();
+lsm9ds1_measurement lsm9ds1_read_gyro();
+lsm9ds1_measurement lsm9ds1_read_magnetometer();
+ret_code_t lsm9ds1_start_gyro_integration();
+void lsm9ds1_stop_gyro_integration();
+lsm9ds1_measurement lsm9ds1_read_gyro_integration();
 
 // Read whoami from accelerometer
 uint8_t lsm9ds1_whoami_ag();

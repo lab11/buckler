@@ -142,6 +142,8 @@ int main(void) {
 
     // get imu measurements
     lsm9ds1_measurement acc_measurement = lsm9ds1_read_accelerometer();
+    lsm9ds1_measurement gyro_measurement = lsm9ds1_read_gyro();
+    lsm9ds1_measurement mag_measurement = lsm9ds1_read_magnetometer();
     uint8_t whoami = lsm9ds1_whoami_ag();
     uint8_t whoami_m = lsm9ds1_whoami_m();
 
@@ -150,6 +152,8 @@ int main(void) {
     printf("                    ----------\t----------\t----------\n");
     printf("Analog Accel (raw): %10d\t%10d\t%10d\n", x_val, y_val, z_val);
     printf("I2C IMU Accel (g):  %10.3f\t%10.3f\t%10.3f\n", acc_measurement.x_axis, acc_measurement.y_axis, acc_measurement.z_axis);
+    printf("I2C IMU Gyro (deg/sec):  %10.3f\t%10.3f\t%10.3f\n", gyro_measurement.x_axis, gyro_measurement.y_axis, gyro_measurement.z_axis);
+    printf("I2C IMU Mag (Gauss):  %10.3f\t%10.3f\t%10.3f\n", mag_measurement.x_axis, mag_measurement.y_axis, mag_measurement.z_axis);
     printf("\n");
 
     // wait before continuing loop
