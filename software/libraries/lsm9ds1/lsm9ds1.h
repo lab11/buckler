@@ -10,22 +10,44 @@ https://github.com/sparkfun/SparkFun_LSM9DS1_Arduino_Library/blob/master/src/Spa
 #include "app_error.h"
 #include "nrf_twi_mngr.h"
 
+#include "buckler.h"
 #include "lsm9ds1_registers.h"
 #include "lsm9ds1_types.h"
 
 // Initialize and configure the lsm9ds1
 //
 // i2c - pointer to already initialized and enabled twim instance
-ret_code_t lsm9ds1_init(uint8_t agAddress, uint8_t mAddress, const nrf_twi_mngr_t* i2c);
+ret_code_t lsm9ds1_init(const nrf_twi_mngr_t* i2c);
 
-lsm9ds1_measurement lsm9ds1_read_accelerometer();
-lsm9ds1_measurement lsm9ds1_read_gyro();
-lsm9ds1_measurement lsm9ds1_read_magnetometer();
+// Read all three axes on the accelerometer
+//
+// Return measurements as floating point values in g's
+lsm9ds1_measurement_t lsm9ds1_read_accelerometer();
+
+// Read all three axes on the gyro
+//
+// Return measurements as floating point values in degrees/second
+lsm9ds1_measurement_t lsm9ds1_read_gyro();
+
+// Read all three axes on the magnetometer
+//
+// Return measurements as floating point values in uT
+lsm9ds1_measurement_t lsm9ds1_read_magnetometer();
+
+// Start integration on the gyro
+//
+// Return an NRF error code
+//  - must be stopped before starting
 ret_code_t lsm9ds1_start_gyro_integration();
-void lsm9ds1_stop_gyro_integration();
-lsm9ds1_measurement lsm9ds1_read_gyro_integration();
 
-// Read whoami from accelerometer
-uint8_t lsm9ds1_whoami_ag();
-// Read whoami from magnetometer
-uint8_t lsm9ds1_whoami_m();
+// Stop integration on the gyro
+void lsm9ds1_stop_gyro_integration();
+
+// Read the value of the integrated gyro
+//
+// Note: this function also performs the integration and needs to be called
+// periodically
+//
+// Return the integrated value as floating point in degrees
+lsm9ds1_measurement_t lsm9ds1_read_gyro_integration();
+

@@ -30,7 +30,7 @@ typedef struct {
   float x_axis;
   float y_axis;
   float z_axis;
-} lsm9ds1_measurement;
+} lsm9ds1_measurement_t;
 
 typedef enum {
   X_AXIS,

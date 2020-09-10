@@ -21,7 +21,7 @@ static int16_t gBiasRaw[3], aBiasRaw[3], mBiasRaw[3];
 
 // rotation tracking variables
 static const nrf_drv_timer_t gyro_timer = NRFX_TIMER_INSTANCE(1);
-static lsm9ds1_measurement integrated_angle;
+static lsm9ds1_measurement_t integrated_angle;
 static uint32_t prev_timer_val;
 
 static void gyro_timer_event_handler(nrf_timer_event_t event_type, void* p_context) {
@@ -293,11 +293,11 @@ void initMag() {
 }
 
 // initialization and configuration
-ret_code_t lsm9ds1_init(uint8_t agAddress, uint8_t mAddress, const nrf_twi_mngr_t* i2c) {
+ret_code_t lsm9ds1_init(const nrf_twi_mngr_t* i2c) {
   // Set device settings, they are used in many other places
   settings.device.commInterface = IMU_MODE_I2C;
-  settings.device.agAddress = agAddress;
-  settings.device.mAddress = mAddress;
+  settings.device.agAddress = BUCKLER_IMU_ACC_I2C_ADDR;
+  settings.device.mAddress = BUCKLER_IMU_MAG_I2C_ADDR;
   settings.device.i2c = i2c;
 
   settings.gyro.enabled = true;
@@ -426,9 +426,9 @@ ret_code_t lsm9ds1_init(uint8_t agAddress, uint8_t mAddress, const nrf_twi_mngr_
   return NRF_SUCCESS;
 }
 
-lsm9ds1_measurement lsm9ds1_read_accelerometer() {
+lsm9ds1_measurement_t lsm9ds1_read_accelerometer() {
   uint8_t temp[6];
-  lsm9ds1_measurement meas = {0};
+  lsm9ds1_measurement_t meas = {0};
 
   i2c_read_bytes(settings.device.agAddress, OUT_X_L_XL, temp, 6);
 
@@ -447,9 +447,9 @@ lsm9ds1_measurement lsm9ds1_read_accelerometer() {
   return meas;
 }
 
-lsm9ds1_measurement lsm9ds1_read_gyro() {
+lsm9ds1_measurement_t lsm9ds1_read_gyro() {
   uint8_t temp[6];
-  lsm9ds1_measurement meas = {0};
+  lsm9ds1_measurement_t meas = {0};
 
   i2c_read_bytes(settings.device.agAddress, OUT_X_L_G, temp, 6);
 
@@ -469,9 +469,9 @@ lsm9ds1_measurement lsm9ds1_read_gyro() {
   return meas;
 }
 
-lsm9ds1_measurement lsm9ds1_read_magnetometer()  {
+lsm9ds1_measurement_t lsm9ds1_read_magnetometer()  {
   uint8_t temp[6]; // We'll read six bytes from the mag into temp
-  lsm9ds1_measurement meas = {0};
+  lsm9ds1_measurement_t meas = {0};
 
   i2c_read_bytes(settings.device.agAddress, OUT_X_L_M, temp, 6);
 
@@ -506,12 +506,12 @@ void lsm9ds1_stop_gyro_integration() {
   nrfx_timer_disable(&gyro_timer);
 }
 
-lsm9ds1_measurement lsm9ds1_read_gyro_integration() {
+lsm9ds1_measurement_t lsm9ds1_read_gyro_integration() {
   uint32_t curr_timer_val = nrfx_timer_capture(&gyro_timer, NRF_TIMER_CC_CHANNEL0);
   float time_diff = ((float)(curr_timer_val - prev_timer_val))/1000000.0;
   printf("curr %lu prev %lu diff %f\n", curr_timer_val, prev_timer_val, time_diff);
   prev_timer_val = curr_timer_val;
-  lsm9ds1_measurement measure = lsm9ds1_read_gyro();
+  lsm9ds1_measurement_t measure = lsm9ds1_read_gyro();
   if (measure.z_axis > 0.5 || measure.z_axis < -0.5) {
     integrated_angle.z_axis += measure.z_axis*time_diff;
   }

@@ -20,7 +20,7 @@
 #include "nrfx_twim.h"
 
 #include "buckler.h"
-#include "mpu9250.h"
+#include "lsm9ds1.h"
 
 // LED array
 static uint8_t LEDS[3] = {BUCKLER_LED0, BUCKLER_LED1, BUCKLER_LED2};
@@ -129,7 +129,7 @@ int main(void) {
   APP_ERROR_CHECK(error_code);
 
   // initialize MPU-9250 driver
-  mpu9250_init(&twi_mngr_instance);
+  lsm9ds1_init(&twi_mngr_instance);
   printf("MPU-9250 initialized\n");
 
 
@@ -145,7 +145,7 @@ int main(void) {
     nrf_saadc_value_t z_val = sample_value(Z_CHANNEL);
 
     // get imu measurements
-    mpu9250_measurement_t acc_measurement = mpu9250_read_accelerometer();
+    lsm9ds1_measurement_t acc_measurement = lsm9ds1_read_accelerometer();
 
     // print results
     printf("                        X-Axis\t    Y-Axis\t    Z-Axis\n");

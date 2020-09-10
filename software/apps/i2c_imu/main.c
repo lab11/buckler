@@ -19,7 +19,7 @@
 #include "nrfx_gpiote.h"
 
 #include "buckler.h"
-#include "mpu9250.h"
+#include "lsm9ds1.h"
 
 // I2C manager
 NRF_TWI_MNGR_DEF(twi_mngr_instance, 5, 0);
@@ -42,40 +42,23 @@ int main(void) {
   APP_ERROR_CHECK(error_code);
 
   // initialize MPU-9250 driver
-  mpu9250_init(&twi_mngr_instance);
-  printf("MPU-9250 initialized\n");
+  lsm9ds1_init(&twi_mngr_instance);
+  printf("lsm9ds1 initialized\n");
+
+  lsm9ds1_start_gyro_integration();
 
   // loop forever
-  float x_rot = 0;
-  float y_rot = 0;
-  float z_rot = 0;
   while (1) {
     // get measurements
-    mpu9250_measurement_t acc_measurement = mpu9250_read_accelerometer();
-    mpu9250_measurement_t gyr_measurement = mpu9250_read_gyro();
-    mpu9250_measurement_t mag_measurement = mpu9250_read_magnetometer();
-
-    // determine rotation from gyro
-    // gyros are messy, so only add value if it is of significant magnitude
-    // note that we are dividing by 10 since we are measuring over a tenth of a second
-    float x_rot_amount = gyr_measurement.x_axis/10;
-    if (abs(x_rot_amount) > 0.5) {
-      x_rot += x_rot_amount;
-    }
-    float y_rot_amount = gyr_measurement.y_axis/10;
-    if (abs(y_rot_amount) > 0.5) {
-      y_rot += y_rot_amount;
-    }
-    float z_rot_amount = gyr_measurement.z_axis/10;
-    if (abs(z_rot_amount) > 0.5) {
-      z_rot += z_rot_amount;
-    }
+    lsm9ds1_measurement_t acc_measurement = lsm9ds1_read_accelerometer();
+    lsm9ds1_measurement_t gyr_measurement = lsm9ds1_read_gyro_integration();
+    lsm9ds1_measurement_t mag_measurement = lsm9ds1_read_magnetometer();
 
     // print results
     printf("                      X-Axis\t    Y-Axis\t    Z-Axis\n");
     printf("                  ----------\t----------\t----------\n");
     printf("Acceleration (g): %10.3f\t%10.3f\t%10.3f\n", acc_measurement.x_axis, acc_measurement.y_axis, acc_measurement.z_axis);
-    printf("Angle  (degrees): %10.3f\t%10.3f\t%10.3f\n", x_rot, y_rot, z_rot);
+    printf("Angle  (degrees): %10.3f\t%10.3f\t%10.3f\n", gyr_measurement.x_axis, gyr_measurement.y_axis, gyr_measurement.z_axis);
     printf("Magnetism   (uT): %10.3f\t%10.3f\t%10.3f\n", mag_measurement.x_axis, mag_measurement.y_axis, mag_measurement.z_axis);
     printf("\n");
 
