@@ -19,7 +19,7 @@
 #include "nrfx_gpiote.h"
 
 #include "buckler.h"
-#include "lsm9ds1.h"
+#include "opt3004.h"
 
 // I2C manager
 NRF_TWI_MNGR_DEF(twi_mngr_instance, 5, 0);
@@ -37,30 +37,35 @@ int main(void) {
   nrf_drv_twi_config_t i2c_config = NRF_DRV_TWI_DEFAULT_CONFIG;
   i2c_config.scl = BUCKLER_SENSORS_SCL;
   i2c_config.sda = BUCKLER_SENSORS_SDA;
-  i2c_config.frequency = NRF_TWIM_FREQ_100K;
+  i2c_config.frequency = NRF_TWIM_FREQ_400K;
   error_code = nrf_twi_mngr_init(&twi_mngr_instance, &i2c_config);
   APP_ERROR_CHECK(error_code);
 
-  // initialize LSM9DS1 driver
-  lsm9ds1_init(&twi_mngr_instance);
-  printf("lsm9ds1 initialized\n");
+  opt3004_config_t config = {
+    .range_number = OPT3004_AUTORANGE,
+    .conversion_time = OPT3004_CONVERSION_100MS,
+    .latch_interrupt = 1,
+    .interrupt_polarity = OPT3004_INTERRUPT_ACTIVE_LO,
+    .fault_count = OPT3004_FAULT_COUNT_1,
+  };
 
-  lsm9ds1_start_gyro_integration();
+  // initialize opt3004 driver
+  opt3004_init(&twi_mngr_instance);
+  error_code = opt3004_config(config);
+
+  printf("opt3004 initialized: %ld\n", error_code);
+
+  opt3004_continuous();
+  uint16_t result = opt3004_read_reg(BUCKLER_OPT3004_I2C_ADDR, OPT3004_CONFIG_REG);
+  printf("opt3004 config: %x\n", result);
 
   // loop forever
   while (1) {
     // get measurements
-    lsm9ds1_measurement_t acc_measurement = lsm9ds1_read_accelerometer();
-    lsm9ds1_measurement_t gyr_measurement = lsm9ds1_read_gyro_integration();
-    lsm9ds1_measurement_t mag_measurement = lsm9ds1_read_magnetometer();
+    float lux = opt3004_read_result();
 
     // print results
-    printf("                      X-Axis\t    Y-Axis\t    Z-Axis\n");
-    printf("                  ----------\t----------\t----------\n");
-    printf("Acceleration (g): %10.3f\t%10.3f\t%10.3f\n", acc_measurement.x_axis, acc_measurement.y_axis, acc_measurement.z_axis);
-    printf("Angle  (degrees): %10.3f\t%10.3f\t%10.3f\n", gyr_measurement.x_axis, gyr_measurement.y_axis, gyr_measurement.z_axis);
-    printf("Magnetism   (uT): %10.3f\t%10.3f\t%10.3f\n", mag_measurement.x_axis, mag_measurement.y_axis, mag_measurement.z_axis);
-    printf("\n");
+    printf("Illuminance (Lux): %10.3f\n", lux);
 
     nrf_delay_ms(100);
   }
