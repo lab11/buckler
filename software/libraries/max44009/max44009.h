@@ -1,5 +1,7 @@
 // Datasheet: https://datasheets.maximintegrated.com/en/ds/MAX44009.pdf
 
+#pragma once
+
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
