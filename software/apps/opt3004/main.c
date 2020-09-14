@@ -56,8 +56,6 @@ int main(void) {
   printf("opt3004 initialized: %ld\n", error_code);
 
   opt3004_continuous();
-  uint16_t result = opt3004_read_reg(BUCKLER_OPT3004_I2C_ADDR, OPT3004_CONFIG_REG);
-  printf("opt3004 config: %x\n", result);
 
   // loop forever
   while (1) {
