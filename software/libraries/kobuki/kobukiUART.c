@@ -32,8 +32,13 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
 	int status = 0;
 	uint8_t payloadSize = 0;
 	uint8_t calcuatedCS;
+	size_t paylen;
 
-    status = nrf_serial_flush(serial_ref, NRF_SERIAL_MAX_TIMEOUT);
+	status = nrf_serial_flush(serial_ref, NRF_SERIAL_MAX_TIMEOUT);
+  if(status != NRF_SUCCESS) {
+    printf("error: %d\n", status);
+    return status;
+  }
 
 	int num_checksum_failures = 0;
 
@@ -42,7 +47,12 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
 	while(1){
 		switch(state){
 			case wait_until_AA:
-                status = nrf_serial_read(serial_ref, header_buf, sizeof(header_buf), NULL, 10);
+                status = nrf_serial_read(serial_ref, header_buf, 1, NULL, 10);
+                if(status != NRF_SUCCESS) {
+                    printf("error: %d\n", status);
+                    return status;
+                }
+ 								status = nrf_serial_read(serial_ref, header_buf+1, 1, NULL, 10);
                 if(status != NRF_SUCCESS) {
                     printf("error: %d\n", status);
                     return status;
@@ -51,7 +61,7 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
                 if (header_buf[0]==0xAA && header_buf[1]==0x55) {
                     state = read_length;
                 } else {
-					state = wait_until_AA;
+                	state = wait_until_AA;
                 }
 
 				break;
@@ -67,8 +77,8 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
 				state = read_payload;
 				break;
 
-			case read_payload:
-                status = nrf_serial_read(serial_ref, packetBuffer+3, payloadSize+3, NULL, 10);
+			case read_payload:							  
+                status = nrf_serial_read(serial_ref, packetBuffer+3, payloadSize+1, &paylen, 10);
                 if(status != NRF_SUCCESS) {
                     return status;
                 }

@@ -27,16 +27,13 @@ static int32_t kobukiSendPayload(uint8_t* payload, uint8_t len) {
     writeData[2] = len;
     memcpy(writeData + 3, payload, len);
 	writeData[3+len] = checkSum(writeData, 3 + len);
-
-
-    for(uint8_t i = 0; i < 3+len+1; i++) {
-        int status = nrf_serial_write(serial_ref, writeData, len + 4, NULL, 10);
-        if(status != NRF_SUCCESS) {
-            return status;
-        }
+   
+    int status = nrf_serial_write(serial_ref, writeData, len + 4, NULL, 10);
+    if(status != NRF_SUCCESS) {
+        return status;
     }
-
     return NRF_SUCCESS;
+    
 
 }
 
@@ -73,7 +70,6 @@ int32_t kobukiDriveDirect(int16_t leftWheelSpeed, int16_t rightWheelSpeed){
 
 int32_t kobukiDriveRadius(int16_t radius, int16_t speed){
     uint8_t payload[6];
-
     payload[0] = 0x01;
     payload[1] = 0x04;
     memcpy(payload+2, &speed, 2);
