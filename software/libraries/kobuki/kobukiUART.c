@@ -17,99 +17,99 @@ extern const nrf_serial_t * serial_ref;
 
 int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
 
-	typedef enum {
-        wait_until_AA,
-        wait_until_55,
-        read_length,
-        read_payload,
-        read_checksum
-    } state_type;
+  typedef enum {
+    wait_until_AA,
+    wait_until_55,
+    read_length,
+    read_payload,
+    read_checksum
+  } state_type;
 
-	state_type state = wait_until_AA;
+  state_type state = wait_until_AA;
 
-    uint8_t header_buf[2];
-    uint8_t byteBuffer;
-	int status = 0;
-	uint8_t payloadSize = 0;
-	uint8_t calcuatedCS;
-	size_t paylen;
+  uint8_t header_buf[2];
+  uint8_t byteBuffer;
+  int status = 0;
+  uint8_t payloadSize = 0;
+  uint8_t calcuatedCS;
+  size_t paylen;
 
-	status = nrf_serial_flush(serial_ref, NRF_SERIAL_MAX_TIMEOUT);
+  status = nrf_serial_flush(serial_ref, NRF_SERIAL_MAX_TIMEOUT);
   if(status != NRF_SUCCESS) {
     printf("error: %d\n", status);
     return status;
   }
 
-	int num_checksum_failures = 0;
+  int num_checksum_failures = 0;
 
-    if (len <= 4) return NRF_ERROR_NO_MEM;
+  if (len <= 4) return NRF_ERROR_NO_MEM;
 
-	while(1){
-		switch(state){
-			case wait_until_AA:
-                status = nrf_serial_read(serial_ref, header_buf, 1, NULL, 10);
-                if(status != NRF_SUCCESS) {
-                    printf("error: %d\n", status);
-                    return status;
-                }
- 								status = nrf_serial_read(serial_ref, header_buf+1, 1, NULL, 10);
-                if(status != NRF_SUCCESS) {
-                    printf("error: %d\n", status);
-                    return status;
-                }
+  while(1){
+    switch(state){
+      case wait_until_AA:
+        status = nrf_serial_read(serial_ref, header_buf, 1, NULL, 100);
+        if(status != NRF_SUCCESS) {
+          printf("AA error: %d\n", status);
+          return status;
+        }
+        status = nrf_serial_read(serial_ref, header_buf+1, 1, NULL, 100);
+        if(status != NRF_SUCCESS) {
+          printf("55 error: %d\n", status);
+          return status;
+        }
 
-                if (header_buf[0]==0xAA && header_buf[1]==0x55) {
-                    state = read_length;
-                } else {
-                	state = wait_until_AA;
-                }
+        if (header_buf[0]==0xAA && header_buf[1]==0x55) {
+          state = read_length;
+        } else {
+          state = wait_until_AA;
+        }
 
-				break;
+        break;
 
-			case read_length:
-                status = nrf_serial_read(serial_ref, &payloadSize, sizeof(payloadSize), NULL, 10);
-                if(status != NRF_SUCCESS) {
-                    return status;
-                }
+      case read_length:
+        status = nrf_serial_read(serial_ref, &payloadSize, sizeof(payloadSize), NULL, 100);
+        if(status != NRF_SUCCESS) {
+          return status;
+        }
 
-                if(len < payloadSize+3) return NRF_ERROR_NO_MEM;
+        if(len < payloadSize+3) return NRF_ERROR_NO_MEM;
 
-				state = read_payload;
-				break;
+        state = read_payload;
+        break;
 
-			case read_payload:							  
-                status = nrf_serial_read(serial_ref, packetBuffer+3, payloadSize+1, &paylen, 10);
-                if(status != NRF_SUCCESS) {
-                    return status;
-                }
+      case read_payload:
+        status = nrf_serial_read(serial_ref, packetBuffer+3, payloadSize+1, &paylen, 100);
+        if(status != NRF_SUCCESS) {
+          return status;
+        }
 
-                state = read_checksum;
+        state = read_checksum;
 
-				break;
+        break;
 
-			case read_checksum:
-				memcpy(packetBuffer, header_buf, 2);
-                packetBuffer[2] = payloadSize;
+      case read_checksum:
+        memcpy(packetBuffer, header_buf, 2);
+        packetBuffer[2] = payloadSize;
 
-                calcuatedCS = checkSumRead(packetBuffer, payloadSize + 3);
-				byteBuffer=(packetBuffer)[payloadSize+3];
-				if (calcuatedCS == byteBuffer) {
-					num_checksum_failures = 0;
-					return NRF_SUCCESS;
-				} else{
-					state = wait_until_AA;
-					if (num_checksum_failures == 3) {
-						return -1500;
-					}
-					num_checksum_failures++;
-				}
-                printf("check fails: %d\n", num_checksum_failures);
-				break;
+        calcuatedCS = checkSumRead(packetBuffer, payloadSize + 3);
+        byteBuffer=(packetBuffer)[payloadSize+3];
+        if (calcuatedCS == byteBuffer) {
+          num_checksum_failures = 0;
+          return NRF_SUCCESS;
+        } else{
+          state = wait_until_AA;
+          if (num_checksum_failures == 3) {
+            return -1500;
+          }
+          num_checksum_failures++;
+        }
+        printf("check fails: %d\n", num_checksum_failures);
+        break;
 
-            default:
-                break;
-		}
+      default:
+        break;
+    }
 
-	}
-	return status;
+  }
+  return status;
 }
