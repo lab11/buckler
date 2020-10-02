@@ -37,6 +37,14 @@ NRF_SERIAL_UART_DEF(serial_uart, 0);
 
 const nrf_serial_t * serial_ref = &serial_uart;
 
+int kobukiUARTInit() {
+  return nrf_serial_init(&serial_uart, &m_uart0_drv_config, &serial_config);
+}
+
+int kobukiUARTUnInit() {
+  return nrf_serial_uninit(&serial_uart);
+}
+
 int kobukiInit() {
   uint32_t err_code;
 
@@ -50,8 +58,6 @@ int kobukiInit() {
   if (err_code != NRF_ERROR_MODULE_ALREADY_INITIALIZED){
     APP_ERROR_CHECK(err_code);
   }
-
-  err_code = nrf_serial_init(&serial_uart, &m_uart0_drv_config, &serial_config);
 
   return err_code;
 }

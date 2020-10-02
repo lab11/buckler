@@ -35,6 +35,8 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
   size_t paylen;
   size_t aa_count = 0;
 
+  kobukiUARTInit();
+
   status = nrf_serial_flush(serial_ref, NRF_SERIAL_MAX_TIMEOUT);
   if(status != NRF_SUCCESS) {
     printf("flush error: %d\n", status);
@@ -116,5 +118,6 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
     }
 
   }
+  kobukiUARTUnInit();
   return status;
 }
