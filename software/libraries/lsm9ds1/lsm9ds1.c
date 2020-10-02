@@ -509,7 +509,6 @@ void lsm9ds1_stop_gyro_integration() {
 lsm9ds1_measurement_t lsm9ds1_read_gyro_integration() {
   uint32_t curr_timer_val = nrfx_timer_capture(&gyro_timer, NRF_TIMER_CC_CHANNEL0);
   float time_diff = ((float)(curr_timer_val - prev_timer_val))/1000000.0;
-  printf("curr %lu prev %lu diff %f\n", curr_timer_val, prev_timer_val, time_diff);
   prev_timer_val = curr_timer_val;
   lsm9ds1_measurement_t measure = lsm9ds1_read_gyro();
   if (measure.z_axis > 0.5 || measure.z_axis < -0.5) {
