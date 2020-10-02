@@ -33,13 +33,18 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
   uint8_t payloadSize = 0;
   uint8_t calcuatedCS;
   size_t paylen;
+  size_t aa_count = 0;
 
   status = nrf_serial_flush(serial_ref, NRF_SERIAL_MAX_TIMEOUT);
   if(status != NRF_SUCCESS) {
-    printf("error: %d\n", status);
+    printf("flush error: %d\n", status);
     return status;
   }
-
+  status = nrf_serial_rx_drain(serial_ref);
+  if(status != NRF_SUCCESS) {
+    printf("rx drain error: %d\n", status);
+    return status;
+  }
   int num_checksum_failures = 0;
 
   if (len <= 4) return NRF_ERROR_NO_MEM;
@@ -47,14 +52,13 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
   while(1){
     switch(state){
       case wait_until_AA:
-        status = nrf_serial_read(serial_ref, header_buf, 1, NULL, 100);
+        status = nrf_serial_read(serial_ref, header_buf, 2, NULL, 100);
         if(status != NRF_SUCCESS) {
           printf("AA error: %d\n", status);
-          return status;
-        }
-        status = nrf_serial_read(serial_ref, header_buf+1, 1, NULL, 100);
-        if(status != NRF_SUCCESS) {
-          printf("55 error: %d\n", status);
+          if (aa_count++ < 20) {
+            break;
+          }
+          aa_count = 0;
           return status;
         }
 
@@ -63,6 +67,7 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
         } else {
           state = wait_until_AA;
         }
+        aa_count = 0;
 
         break;
 
