@@ -30,7 +30,7 @@
 #include "kobukiSensorPoll.h"
 #include "kobukiSensorTypes.h"
 #include "kobukiUtilities.h"
-#include "mpu9250.h"
+#include "lsm9ds1.h"
 
 extern KobukiSensors_t sensors;
 
@@ -105,15 +105,15 @@ bool is_button_press(){
 }
 
 void start_gyro(){
-  mpu9250_start_gyro_integration();
+  lsm9ds1_start_gyro_integration();
 }
 
 void stop_gyro(){
-  mpu9250_stop_gyro_integration();
+  lsm9ds1_stop_gyro_integration();
 }
 
 float read_gyro(){
-  return mpu9250_read_gyro_integration().z_axis;
+  return lsm9ds1_read_gyro_integration().z_axis;
 }
 
 void print_angle(float angle){

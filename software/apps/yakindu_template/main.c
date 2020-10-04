@@ -24,7 +24,7 @@
 #include "kobukiSensorPoll.h"
 #include "kobukiSensorTypes.h"
 #include "kobukiUtilities.h"
-#include "mpu9250.h"
+#include "lsm9ds1.h"
 
 #include "states.h"
 #include "helper_funcs.h"
@@ -76,7 +76,7 @@ int main(void) {
   i2c_config.frequency = NRF_TWIM_FREQ_100K;
   error_code = nrf_twi_mngr_init(&twi_mngr_instance, &i2c_config);
   APP_ERROR_CHECK(error_code);
-  mpu9250_init(&twi_mngr_instance);
+  lsm9ds1_init(&twi_mngr_instance);
   printf("IMU initialized!\n");
 
   // initialize Kobuki

@@ -24,7 +24,7 @@
 #include "kobukiSensorPoll.h"
 #include "kobukiSensorTypes.h"
 #include "kobukiUtilities.h"
-#include "mpu9250.h"
+#include "lsm9ds1.h"
 #include "simple_ble.h"
 
 #include "states.h"
@@ -104,7 +104,7 @@ int main(void) {
   i2c_config.frequency = NRF_TWIM_FREQ_100K;
   error_code = nrf_twi_mngr_init(&twi_mngr_instance, &i2c_config);
   APP_ERROR_CHECK(error_code);
-  mpu9250_init(&twi_mngr_instance);
+  lsm9ds1_init(&twi_mngr_instance);
   printf("IMU initialized!\n");
 
   // initialize Kobuki
@@ -126,7 +126,7 @@ int main(void) {
         // transition logic
         if (is_button_pressed(&sensors)) {
           state = DRIVING;
-          mpu9250_start_gyro_integration();
+          lsm9ds1_start_gyro_integration();
         } else {
           state = OFF;
           // perform state-specific actions here
@@ -139,13 +139,13 @@ int main(void) {
 
         // transition logic
         if (is_button_pressed(&sensors)) {
-          mpu9250_stop_gyro_integration();
+          lsm9ds1_stop_gyro_integration();
           state = OFF;
         } else {
           state = DRIVING;
           // perform state-specific actions here
           uint16_t encoder = sensors.leftWheelEncoder;
-          float angle = mpu9250_read_gyro_integration().z_axis;
+          float angle = lsm9ds1_read_gyro_integration().z_axis;
           simple_ble_adv_manuf_data((uint8_t*) &angle, sizeof(angle));
           kobukiDriveDirect(0, 100);
         }
