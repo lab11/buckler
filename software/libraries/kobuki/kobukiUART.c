@@ -56,9 +56,12 @@ int32_t kobukiReadFeedbackPacket(uint8_t* packetBuffer, uint8_t len){
       case wait_until_AA:
         status = nrf_serial_read(serial_ref, header_buf, 2, NULL, 100);
         if(status != NRF_SUCCESS) {
-          printf("AA error: %d\n", status);
+          printf("UART error: %d\n", status);
           if (aa_count++ < 20) {
+            printf("\ttrying again...\n");
             break;
+          } else {
+            printf("Failed to recieve from robot.\n\tIs robot powered on?\n\tTry unplugging buckler from USB and power cycle robot\n");
           }
           aa_count = 0;
           return status;
