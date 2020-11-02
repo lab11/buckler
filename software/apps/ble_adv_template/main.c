@@ -14,7 +14,7 @@
 #include "buckler.h"
 #include "simple_ble.h"
 
-#include "max44009.h"
+#include "opt3004.h"
 
 // Create a timer
 APP_TIMER_DEF(adv_timer);
@@ -36,8 +36,7 @@ static simple_ble_config_t ble_config = {
 void light_timer_callback() {
     printf("Light timer fired!\n");
     // TODO: implement this function!
-    // Use Simple BLE function to read light sensor and put data in
-    // advertisement, but be careful about doing it in the callback itself!
+    // Use Simple BLE function to read light sensor and put data in advertisement
 }
 
 /*******************************************************************************
@@ -65,16 +64,22 @@ int main(void) {
   error_code = nrf_twi_mngr_init(&twi_mngr_instance, &i2c_config);
   APP_ERROR_CHECK(error_code);
 
-  // initialize MAX44009 driver
-  const max44009_config_t config = {
-    .continuous = 0,
-    .manual = 0,
-    .cdr = 0,
-    .int_time = 3,
+  opt3004_config_t config = {
+    .range_number = OPT3004_AUTORANGE,
+    .conversion_time = OPT3004_CONVERSION_100MS,
+    .latch_interrupt = 1,
+    .interrupt_polarity = OPT3004_INTERRUPT_ACTIVE_LO,
+    .fault_count = OPT3004_FAULT_COUNT_1,
   };
-  max44009_init(&twi_mngr_instance, BUCKLER_LIGHT_INTERRUPT);
-  max44009_config(config);
-  printf("MAX44009 initialized\n");
+
+  // initialize opt3004 driver
+  opt3004_init(&twi_mngr_instance);
+  error_code = opt3004_config(config);
+  // set up opt3004 to read continuously
+  opt3004_continuous();
+
+  printf("opt3004 initialized: %ld\n", error_code);
+
 
   // Setup BLE
   simple_ble_app = simple_ble_init(&ble_config);
