@@ -5,7 +5,7 @@ ifndef BOARD_MAKEFILE
 BOARD_MAKEFILE = 1
 
 # Board-specific configurations
-BOARD = Buckler_revB
+BOARD = Buckler_revC
 USE_BLE = 1
 
 # Get directory of this makefile
