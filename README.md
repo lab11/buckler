@@ -1,7 +1,7 @@
 Berkeley Buckler
 ================
 
-[![Build Status](https://travis-ci.org/lab11/buckler.svg?branch=master)](https://travis-ci.org/lab11/buckler)
+[![Build Status](https://api.travis-ci.com/lab11/buckler.svg?branch=master)](https://app.travis-ci.com/github/lab11/buckler)
 
 A development board for teaching embedded systems.
 
@@ -114,8 +114,8 @@ In order to get code compiling and loading over JTAG, you'll need at least two t
 **JLinkExe** should be installed from [here](https://www.segger.com/downloads/jlink).
 You want to the "J-Link Software and Documentation Pack". There are various packages
 available depending on operating system.
- 
- 
+
+
 **arm-none-eabi-gcc** is the cross-compiler version of GCC for building embedded ARM code.
 
   MacOS:
